@@ -1,0 +1,220 @@
+=== Lean version ===
+Lean (version 4.33.1, arm64-apple-darwin24.6.0, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
+
+=== Build ===
+⚠ [8707/8710] Replayed OUCorridor.Threshold
+warning: OUCorridor/Threshold.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `namespace OUCorridor`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `noncomputable section`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `open Real`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `def volume (κ r : ℝ) : ℝ :=
+  (κ ^ 2 * r ^ 4 + 2 * κ ^ 2 * r ^ 2 + κ ^ 2 + 8 * κ * r ^ 2 + 4 * r ^ 2) / (16 * (κ + 1) ^ 2 * (2 * κ + 1))`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `def volume0 (r : ℝ) : ℝ :=
+  r ^ 2 / 4`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `def bracket (κ r : ℝ) : ℝ :=
+  -8 * r ^ 2 * κ ^ 2 + (r ^ 4 - 18 * r ^ 2 + 1) * κ - 8 * r ^ 2`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `def threshold : ℝ :=
+  3 + 2 * Real.sqrt 2`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `theorem volume_zero (r : ℝ) : volume 0 r = volume0 r :=
+  by
+  unfold volume volume0
+  ring`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `theorem denominator_pos {κ : ℝ} (hk : 0 ≤ κ) :
+    0 < 16 * (κ + 1) ^ 2 * (2 * κ + 1) :=
+  by
+  have h1 : (0 : ℝ) < κ + 1 := by linarith
+  have h2 : (0 : ℝ) < 2 * κ + 1 := by linarith
+  positivity`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `theorem volume_sub_volume0 (κ r : ℝ) (hk : 0 ≤ κ) :
+    volume κ r - volume0 r = κ * bracket κ r / (16 * (κ + 1) ^ 2 * (2 * κ + 1)) :=
+  by
+  have h1 : (κ + 1 : ℝ) ≠ 0 := by
+    have : (0 : ℝ) < κ + 1 := by linarith
+    exact ne_of_gt this
+  have h2 : (2 * κ + 1 : ℝ) ≠ 0 := by
+    have : (0 : ℝ) < 2 * κ + 1 := by linarith
+    exact ne_of_gt this
+  unfold volume volume0 bracket
+  field_simp
+  ring`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `theorem volume_gt_iff_bracket_gt {κ r : ℝ} (hk : 0 < κ) :
+    volume κ r > volume0 r ↔ bracket κ r > 0 :=
+  by
+  have hk0 : (0 : ℝ) ≤ κ := hk.le
+  have hden : (0 : ℝ) < 16 * (κ + 1) ^ 2 * (2 * κ + 1) := denominator_pos hk0
+  have hdiff : volume κ r - volume0 r = κ * bracket κ r / (16 * (κ + 1) ^ 2 * (2 * κ + 1)) := volume_sub_volume0 κ r hk0
+  constructor
+  · intro h
+    have hgt0 : (0 : ℝ) < κ * bracket κ r / (16 * (κ + 1) ^ 2 * (2 * κ + 1)) :=
+      by
+      have hpos : (0 : ℝ) < volume κ r - volume0 r := by linarith
+      rwa [hdiff] at hpos
+    rcases div_pos_iff.mp hgt0 with ⟨hnum, _⟩ | ⟨hnum, hd⟩
+    · rcases mul_pos_iff.mp hnum with ⟨_, hb⟩ | ⟨hneg, _⟩
+      · exact hb
+      · linarith
+    · linarith
+  · intro hb
+    have hnum : (0 : ℝ) < κ * bracket κ r := mul_pos hk hb
+    have hgt0 : (0 : ℝ) < κ * bracket κ r / (16 * (κ + 1) ^ 2 * (2 * κ + 1)) := div_pos hnum hden
+    have hpos : (0 : ℝ) < volume κ r - volume0 r := by rwa [hdiff]
+    linarith`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `/-!=====================  STAGE 2  ===================== -/
+`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/Threshold.lean:162:6: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+warning: OUCorridor/Threshold.lean:166:6: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+⚠ [8708/8710] Replayed OUCorridor.MainTheorem
+warning: OUCorridor/MainTheorem.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/MainTheorem.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `namespace OUCorridor`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/MainTheorem.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/MainTheorem.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `noncomputable section`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/MainTheorem.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/MainTheorem.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `open Real`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/MainTheorem.lean:1:1: * '-/':
+Copyright too short!
+
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/MainTheorem.lean:3:0: The module doc-string for a file should be the first command after the imports.
+Please, add a module doc-string before `/-!=====================  STAGE 5  ===================== -/
+`.
+
+Note: This linter can be disabled with `set_option linter.style.header false`
+warning: OUCorridor/MainTheorem.lean:36:2: `push_neg` has been deprecated. Prefer using `push Not` instead.
+If you'd rather continue using `push_neg` in your project, you can implement it as follows:
+```
+open Lean.Parser.Tactic in
+macro "push_neg" cfg:optConfig loc:(location)? : tactic =>
+  `(tactic| push $cfg:optConfig Not $[$loc]?)
+```
+Build completed successfully (8710 jobs).
+
+=== Unfinished proof audit ===
