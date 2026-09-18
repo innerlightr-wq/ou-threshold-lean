@@ -266,13 +266,13 @@ scoping.
 
 | phrase | where | verdict |
 |---|---|---|
-| **"Synchronization Collapse"** | paper title, README | **NEEDS QUALIFICATION / REMOVE** — the model's synchronization error decreases monotonically in κ. See §1. This is the audit's one substantive finding |
-| "Expansion" | title, README | **NEEDS QUALIFICATION** — the *determinant/entropy* expands; the *trace* contracts. Say which |
+| **"Synchronization Collapse"** | paper title, README | **NEEDS QUALIFICATION / REMOVE** — the model's synchronization error decreases monotonically in κ. See §1. This is the audit's one substantive finding. **Addressed in the README**: the phrase now appears only inside citations of the paper's title, and *Model Scope and Interpretation* states why it is not used in the repository's own prose. The paper title itself is unchanged (see §14) |
+| "Expansion" | title, README | **NEEDS QUALIFICATION** — the *determinant/entropy* expands; the *trace* contracts. Say which. **Addressed**: the README now says generalized variance / stationary entropy explicitly, and distinguishes `det Σ` from `√det Σ` (ellipse area) |
 | "exact threshold" | README | **SAFE** — it is exact |
 | "if and only if" | central result | **SAFE** — verified, and Lean-checked |
 | "formally verified", "machine-checked" | throughout | **SAFE** — and the scope section correctly limits it |
-| "covariance-volume functional" | README | **NEEDS CITATION** — this is Wilks' generalized variance; say so |
-| "noise-heterogeneity ratio `r`" | README | **NEEDS QUALIFICATION** — `r` is the *amplitude* ratio; the variance ratio threshold is `17+12√2` |
+| "covariance-volume functional" | README | **NEEDS CITATION** — this is Wilks' generalized variance; say so. **Resolved**: the phrase is gone from the README, replaced by *generalized variance* (`det Σ`) with `Wilks1932` cited |
+| "noise-heterogeneity ratio `r`" | README | **NEEDS QUALIFICATION** — `r` is the *amplitude* ratio; the variance ratio threshold is `17+12√2`. **Resolved**: stated in the README, together with `cond(Q) > 17 + 12√2` |
 | "no `sorry`, `admit`, or explicit custom `axiom`" | README | **SAFE**, and now confirmed by `#print axioms` rather than grep |
 | "new", "novel", "first", "universal", "phase transition", "critical" | — | **absent** from the README |
 
@@ -281,36 +281,49 @@ claim strength is otherwise well calibrated; the problem is in the *paper title'
 
 ## 10. What should change
 
-1. **Retire "synchronization collapse"** from the framing, or restrict it to a precisely defined
+Status after the second audit commit (*Complete Zotero audit and refine OU interpretation*) is
+recorded in brackets on each item.
+
+1. [**done, README prose**] **Retire "synchronization collapse"** from the framing, or restrict it to a precisely defined
    quantity that actually collapses. Nothing in this model does. Recommended replacement:
    *heterogeneity-driven expansion of stationary covariance volume (equivalently Gaussian
    entropy)*.
-2. **Name `A` as Wilks' generalized variance** `det Σ`, and cite it.
-3. **State that `r` is the amplitude ratio**, and give the equivalent variance-ratio threshold
+2. [**done**] **Name `A` as Wilks' generalized variance** `det Σ`, and cite it.
+3. [**done**] **State that `r` is the amplitude ratio**, and give the equivalent variance-ratio threshold
    `17 + 12√2`.
-4. **Cite the standard chain** for steps 1–4: `UhlenbeckOrnstein1930`, `Gardiner2004`,
+4. [**done** — `references.bib`, and the Zotero collections of §13] **Cite the standard chain** for steps 1–4: `UhlenbeckOrnstein1930`, `Gardiner2004`,
    `Vatiwutipong2019` for the model and Lyapunov solution; `Wilks1932`; `CoverThomas2005` for the
    entropy equivalence.
-5. **Acknowledge the closest physical prior art** — `DotsenkoEtAl2013`, `FilligerReimann2007` —
+5. [**done** — §3 here, and Zotero `15 — Closest Prior Art`] **Acknowledge the closest physical prior art** — `DotsenkoEtAl2013`, `FilligerReimann2007` —
    and say explicitly that those works study currents rather than covariance volume.
-6. Optionally add the remarks of §6: the rational factorization / reciprocal-symmetric form
+6. [**done**] Optionally add the remarks of §6: the rational factorization / reciprocal-symmetric form
    `r + 1/r > 6`, and that `A′(0) < 0` so coupling is initially harmful even above threshold.
-7. **Fix the README's mangled markdown** — every formula is wrapped in
+7. [**done**] **Fix the README's mangled markdown** — every formula is wrapped in
    `$begin:math:text$ … $end:math:text$` escape artifacts, which makes the document nearly
    unreadable on GitHub. This is a rendering defect, not a content one.
 
-None of this touches a theorem, a proof, or a number.
+A manuscript-facing summary of items 1–6, with the classification unchanged at
+**C — moderate framing revision**, is kept in
+[`MANUSCRIPT_REVISION_NOTES.md`](MANUSCRIPT_REVISION_NOTES.md). No manuscript version was prepared
+and no Zenodo record was touched.
+
+None of this touches a theorem, a proof, or a number. Nothing in the Lean sources was changed by
+any of it: the only `.lean` edit in this audit was deleting the unused `lake new` placeholder
+(§11).
 
 ## 11. Repository hygiene
 
-* `OUCorridor/Basic.lean` contains only `def hello := "world"` — a `lake new` leftover, imported by
-  `OUCorridor.lean` and listed in the README's structure.
+* `OUCorridor/Basic.lean` contained only `def hello := "world"` — a `lake new` leftover, imported by
+  `OUCorridor.lean` and listed in the README's structure. **Removed**, together with its `import`
+  line and its README entry; `hello` was referenced nowhere, and `lake build` still completes with
+  the same 8710 jobs.
 * `verified/` holds **byte-identical** copies of the two proof files (verified by `diff`), i.e. a
   genuine frozen record rather than a diverging duplicate. Nothing imports it, so there is no
   shadowing risk.
 * `verified/SHA256SUMS.txt` uses **repository-root-relative** paths, so `sha256sum -c` must be run
-  from the root, not from inside `verified/`. From the root all four hashes verify **OK**. Worth one
-  line in the README.
+  from the root, not from inside `verified/`. From the root all four hashes verify **OK**. **Now
+  documented in the README**, along with the fact that `verified/` is an integrity record outside
+  the build rather than a second copy of the library.
 * `lake update` did not modify any tracked file.
 
 ## 12. Unresolved
@@ -322,3 +335,58 @@ None of this touches a theorem, a proof, or a number.
    and should not be called universal beyond it.
 3. The second threshold `r_D* = 2 + √3` (residual-variance) is mentioned in the README as
    unformalized and was not audited here.
+
+## 13. Zotero library state
+
+The 12 references are mirrored in the local Zotero library (Zotero 10.0.3, local API) under the
+parent collection **`OU Threshold — Heterogeneity and Coupling`** with 16 subcollections. This is a
+bibliographic convenience for the author, not a claim about the literature; the authoritative
+record is [`references.bib`](../references.bib).
+
+* **Items.** All 12 entries of `references.bib` are present as distinct top-level items, with no
+  duplicates. Metadata was compared field by field against the BibTeX: **0 discrepancies in 12
+  items**. Every entry carries a DOI, and every DOI was resolved during the audit.
+* **Filing.** 49 collection memberships across the 12 items — an item may appear in several
+  subcollections, because the subcollections record the *role* a source plays in the argument, not
+  a partition of the bibliography.
+* `14 — Directly Cited` contains all 12.
+* `15 — Closest Prior Art` contains **6**, selected rather than copied wholesale:
+  `Gardiner2004`, `Wilks1932`, `CoverThomas2005`, `BamiehEtAl2012`, `FilligerReimann2007`,
+  `DotsenkoEtAl2013`. These are the works that either supply the objects used (`det Σ`, the
+  Lyapunov solution, the entropy formula) or study the same physical model with a different
+  objective. The remaining six are background or methodology, not prior art for the threshold.
+* `13` is deliberately **empty**: no Lean/mathlib formalization of OU processes, continuous
+  Lyapunov equations, or this threshold was located, so there is no formalization prior art to
+  file. An empty collection here is a finding, not an omission.
+* **Tags applied** (9): `directly-cited` (12), `classical` (6), `closest-prior-art` (5),
+  `lyapunov-standard` (3), `ou-standard` (3), `control-theory-prior-art` (2),
+  `uncertain-more-search` (2), `interpretation` (1), `known-reparameterized` (1). Tags classify the
+  role a *source* plays. Classifications that describe a *repository claim* rather than a source —
+  `elementary-algebra`, `new-derivation-known-ingredients`, `formalization-known-result`,
+  `numerical-illustration` — were deliberately not created as tags; they live in the matrix of §3
+  and the table of §8. `apparently-distinct` was likewise not created, because no source in this
+  bibliography earns it.
+* **Notes.** 11 of the 12 items carry a child note recording, in a fixed format, the repository
+  claim at issue, what the source actually proves, the notation translation into this project's
+  symbols, the source's model assumptions, the relationship to the threshold, whether the source
+  implies the threshold (in every case: **no**), and recommended citation wording.
+
+## 14. The paper title
+
+Reported, not changed. The deposited title is
+
+> *Heterogeneity-Driven Expansion and Synchronization Collapse in Coupled Ornstein–Uhlenbeck
+> Systems*
+
+Its second clause conflicts with §1: no quantity in this model collapses, and the synchronization
+error is monotonically decreasing in the coupling. Two replacements that keep the first clause and
+fix the second:
+
+1. *Heterogeneity-Driven Expansion of the Stationary Generalized Variance in Coupled
+   Ornstein–Uhlenbeck Systems*
+2. *An Exact Heterogeneity Threshold for Coupling-Induced Entropy Expansion in Coupled
+   Ornstein–Uhlenbeck Systems*
+
+The title is part of a published Zenodo deposit and is **not** renamed here: that requires the
+author's decision, and renaming a deposited artifact is not a documentation fix. The README
+continues to cite the paper under its published title.
