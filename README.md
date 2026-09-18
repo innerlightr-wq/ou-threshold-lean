@@ -12,7 +12,33 @@ $end:math:display$
 
 This repository formalizes and machine-checks that threshold statement as a result in exact real algebra.
 
+Equivalently, and more symmetrically, the criterion is
+
+```
+r + 1/r > 6      i.e.      max(r, 1/r) > 3 + 2*sqrt(2)
+```
+
+since `r^4 - 34r^2 + 1 = (r^2 - 6r + 1)(r^2 + 6r + 1)` and the second factor is positive for
+`r >= 1`. This form is manifestly invariant under `r -> 1/r`, the relabelling symmetry of the two
+components, and needs no `r >= 1` hypothesis.
+
 > **Scope:** This is a formal verification companion, not a formalization of the paper's complete stochastic-process content. See [Scope of the Formalization](#scope-of-the-formalization).
+
+> **Provenance note (September 2026 audit).** A literature and provenance audit is recorded in
+> [`docs/NOVELTY_AND_PROVENANCE.md`](docs/NOVELTY_AND_PROVENANCE.md), with verified references in
+> [`references.bib`](references.bib). Three points belong up front:
+>
+> 1. The functional `A` is exactly `det Σ`, the stationary covariance determinant — **Wilks'
+>    generalized variance**. The audit re-derived the stationary covariance from the Lyapunov
+>    equation and confirmed the definition used here matches it exactly.
+> 2. `r` is the **noise-amplitude** ratio (`σ₁ = 1`, `σ₂ = r`). The equivalent **variance**-ratio
+>    threshold is `(3+2√2)² = 17 + 12√2 ≈ 33.97`, and the condition number of
+>    `Q = diag(1, r²)` is `r²`, so the criterion is `cond(Q) > 17 + 12√2` — not `> 3+2√2`.
+> 3. The audit found that **the synchronization error decreases monotonically in the coupling**:
+>    `Var(X₁−X₂) = (1+r²)/(2(1+2κ))`. Covariance-volume expansion therefore does **not** indicate
+>    loss of synchronization in this model; the two occur together. The defensible reading of
+>    `A(κ,r) > A(0,r)` is an increase in stationary Gaussian **entropy**, since
+>    `h = ½ log((2πe)² det Σ)`. See §1 of the provenance document.
 
 ---
 
