@@ -416,6 +416,26 @@ The verification recorded with this repository produced:
 Build completed successfully (8710 jobs).
 ```
 
+That figure is the frozen record of the original run, which still contained the unused `lake new`
+placeholder `OUCorridor/Basic.lean`. Since that file and its `import` were removed, the current tree
+builds one module fewer:
+
+```text
+Build completed successfully (8709 jobs).
+```
+
+The September 2026 audit re-ran the build and confirmed this, together with a kernel-level axiom
+check that is stronger than the grep below:
+
+```text
+'OUCorridor.exists_volume_improvement_iff_threshold' depends on axioms:
+    [propext, Classical.choice, Quot.sound]
+```
+
+The same three standard axioms — and no `sorryAx` or custom axiom — back
+`exists_bracket_pos_iff_threshold`, `quartic_gt_iff_gt_threshold` and `discr_sos`. The build emits
+only style-linter warnings.
+
 ### Unfinished-proof audit
 
 The repository was additionally checked with:
