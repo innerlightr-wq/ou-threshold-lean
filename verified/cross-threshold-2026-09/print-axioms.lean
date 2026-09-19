@@ -1,0 +1,24 @@
+import OUCorridor
+open OUCorridor
+#print axioms exists_volume_improvement_iff_threshold
+#print axioms cov_lyapunov
+#print axioms lyapunov_unique
+#print axioms det_cov
+#print axioms exists_residual_improvement_iff_threshold
+#print axioms threshold_reciprocalInvariant
+#print axioms residualThreshold_reciprocalInvariant
+#print axioms volume_threshold_eq_iff
+#print axioms trace_sq_div_det_merger
+#print axioms cross_threshold_ratio_unique
+#print axioms cross_threshold_spectral_ratio
+#print axioms cross_threshold_eigenvalue_ratio
+#print axioms cross_threshold_eigenvalue_ratio_radical
+#print axioms cov_merger_eigenvalues_exist
+#print axioms cross_threshold_rapidity
+#check @exists_volume_improvement_iff_threshold
+#check @exists_residual_improvement_iff_threshold
+#check @cross_threshold_eigenvalue_ratio
+#check @cross_threshold_spectral_ratio
+#check @cross_threshold_ratio_unique
+#check @cross_threshold_rapidity
+#check @lyapunov_unique
