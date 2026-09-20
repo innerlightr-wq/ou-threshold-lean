@@ -314,6 +314,107 @@ Companion results:
 
 ---
 
+## Two-Mode Active-Subspace Reduction
+
+This section records a general algebraic theorem that **contains** the volume threshold above as
+a special case. It is a statement about a two-dimensional block of a linear system; no graph
+appears in its hypotheses.
+
+### Setting
+
+Heterogeneous forcing is taken to be a **rank-one deformation** of an isotropic baseline,
+
+```text
+Q(τ) = q_b ( I + (τ - 1) e eᵀ ) ,    |e| = 1 ,  τ > 0 ,
+```
+
+so `Q` has eigenvalue `q_b τ` along `e` and `q_b` on `e^⊥`. Here **`e` is the excitation
+direction** (a unit vector selecting where the heterogeneity points — not Euler's number), and
+`τ` is the ratio of the deformed forcing eigenvalue to the baseline one.
+
+Suppose `e` lies in a two-dimensional **invariant plane of the drift**, with relaxation rates
+`D₁, D₂ > 0`, and write `e = c u + s v` in the plane's eigenbasis, `c² + s² = 1`. The quantity
+`c² s²` (`mixing`) measures how much the excitation occupies *both* active modes.
+
+### What is proved (`OUCorridor/ActivePlane.lean`)
+
+| theorem | statement | class |
+|---|---|---|
+| `activeCov_lyapunov`, `activeCov_unique` | the explicit `Σ` is the unique solution of `M Σ + Σ Mᵀ = -Q` on the plane | **NEW FORMAL RESULT** (standard mathematics) |
+| `det_activeForcing` | `det Q = q_b² τ` | STANDARD MATHEMATICS |
+| `activeForcing_self_dual` | `Q_e(τ) = τ • Q_{e^⊥}(1/τ)` — the source of the reciprocal structure | **NEW FORMAL RESULT** |
+| `det_activeCov_palindromic` | `4 D₁ D₂ det Σ = q_b² (A τ² + (1-2A) τ + A)`, `A = c²s²ν²`, `ν = (D₁-D₂)/(D₁+D₂)` | **NEW FORMAL RESULT** |
+| `normalizedActiveDet_eq` | dividing by `τ`: `= 1 + A (w - 2)` with `w = τ + 1/τ` | **NEW FORMAL RESULT** |
+| `two_le_reciprocalExcitation`, `reciprocalExcitation_eq_two_iff` | `w ≥ 2`, equality iff `τ = 1` | STANDARD MATHEMATICS (AM–GM) |
+| `rateContrast_sq_lt_one`, `mixing_le_quarter`, `mixing_eq_quarter_iff` | `ν² < 1`; `c²s² ≤ 1/4` with equality iff `c² = s² = 1/2` | STANDARD MATHEMATICS |
+| `activeCoeff_eq_zero_iff` | the reciprocal contribution vanishes **iff** `c = 0`, `s = 0`, or `D₁ = D₂` | **NEW FORMAL RESULT** |
+| `volumeRatio_gt_one_iff` | `Φ(1 + C(w-2)) > 1 ↔ w > 2 + (1-Φ)/(ΦC)` for `Φ, C > 0` | STANDARD MATHEMATICS |
+
+The order matters and is respected in the file: the **palindromic identity is proved first**, and
+the reciprocal coordinate `w = τ + 1/τ` is introduced only afterwards, because `w` is nothing but
+the classical substitution that a palindromic quadratic admits.
+
+### Why `t + 1/t` appears
+
+Two exact facts: the active forcing block has determinant exactly `q_b² τ`, and its off-diagonal
+entry is proportional to `τ - 1`. Hence `det Σ` is a *quadratic in `τ` whose leading and constant
+coefficients coincide*, and `(τ-1)²/τ = w - 2`. Equivalently — and this is the conceptual
+statement — the forcing family is self-dual under `(τ, e) ↦ (1/τ, e^⊥)`, which is just
+`e eᵀ + e^⊥ e^⊥ᵀ = I`.
+
+### Graph corollaries
+
+| theorem | content | class |
+|---|---|---|
+| `volume_div_volume0_eq` | the repository's own `volume/volume0` **is** the active-plane formula, with `D₁ = 1`, `D₂ = 1 + 2κ`, `c² = s² = 1/2` and `τ = r²` | **GRAPH COROLLARY** |
+| `reciprocalExcitation_sq` | `w(r²) = (r + 1/r)² - 2` — the variance/amplitude bridge | **NEW FORMAL RESULT** |
+| `reciprocalExcitation_threshold_sq` | at `r_A* = 3 + 2√2`, `w = 34` | **GRAPH COROLLARY** |
+| `p3_thresholdCurve_eq`, `p3_threshold_min`, `p3_threshold_attained` | the P3 centre-node curve is `(27κ³+72κ²+64κ+16)/(2κ)`, minimized by `35 + 15√5` at `κ = (√5-1)/3` | **GRAPH COROLLARY** |
+| `k3_thresholdCurve_eq`, `k3_threshold_min`, `k3_threshold_attained` | the K3 one-node curve is `(81κ³+162κ²+112κ+24)/(2κ)`, minimized by `247/2` at `κ = 1/3` | **GRAPH COROLLARY** |
+
+Both graph curves are **derived** from `thresholdCurve` applied to the relevant `Φ` and
+`C = c²s²ν²`; no constant is fitted. **Parameterization warning:** `τ` is a noise *variance*
+ratio, so for the two-node model `τ = r²` and `w = τ + 1/τ = (r + 1/r)² - 2`. The amplitude
+coordinate `r + 1/r = 6` and the variance coordinate `w = 34` describe the same threshold; they
+must not be conflated.
+
+### What this does not say
+
+The theorem applies when the heterogeneity excites the common mode **plus exactly one** further
+drift eigendirection. It does **not** say that arbitrary high-dimensional forcing reduces to one
+scalar: if the excitation reaches more independent modes, the active block is no longer `2 × 2`,
+the determinant is no longer a palindromic quadratic, and no reciprocal coordinate follows.
+The useful way to say this is that the **effective active subspace dimension** may be smaller
+than the ambient dimension — an interpretation, not a formal statement. **INTERPRETATION**
+
+---
+
+## Scale-Free Spectral Shape
+
+`OUCorridor/SpectralShape.lean` records why a single scalar sufficed in the cross-threshold
+argument, and why that is special to `2 × 2`.
+
+* `J2_eq_reciprocalInvariant` — `J₂ = (tr Σ)²/det Σ = q + 1/q + 2` for `q = μ₁/μ₂`.
+* `eigen_ratio_unique_of_J2` — on the branch `q ≥ 1`, `J₂` **determines** the eigenvalue ratio.
+  This is the general form of the uniqueness step used by `cross_threshold_eigenvalue_ratio`.
+* `exists_same_trace_det_different_ratio` — for three eigenvalues it fails: `(1, 8, 12)` and
+  `(2, 3, 16)` have the same trace `21` and the same determinant `96`, hence the same value of
+  every scale-free trace/determinant invariant, but extreme ratios `12` and `8`.
+
+Both are **STANDARD MATHEMATICS** and are recorded, not claimed: `J_n` is (up to a constant) the
+reciprocal of Mauchly's (1940) sphericity statistic, and the `n ≥ 3` failure is the elementary
+fact that a spectrum is determined by all `n` elementary symmetric functions, of which the trace
+and determinant are all of them only when `n = 2`.
+
+The contrast between complete one-scalar reconstruction in two dimensions and higher-dimensional
+non-identifiability is consistent with the invariant-theoretic reconstruction perspective of
+De Jesús (2026), [10.5281/zenodo.19632381](https://doi.org/10.5281/zenodo.19632381). The results
+here are derived independently from the covariance algebra; that note is cited for the
+reconstruction analogy only, and not as a source for OU covariance dynamics, Lyapunov equations,
+graph formulas, or the rank-one forcing theorem.
+
+---
+
 ## Scope of the Formalization
 
 This repository does **not** claim to formalize the paper in full.
@@ -329,6 +430,12 @@ The following are not currently formalized in the Lean development:
 - the mutual-information/coherence monotonicity result;
 - strong-coupling asymptotics;
 - numerical experiments, plots, or tables.
+
+The active-plane development of `OUCorridor/ActivePlane.lean` adds algebraic Lyapunov and
+determinant statements about an explicit `2 × 2` block; it adds no stochastic-process content,
+and in particular it does not formalize invariant subspaces of general `n × n` drifts — the
+active plane enters as explicit rates `D₁, D₂`, with the basis reduction documented rather than
+formalized.
 
 In particular, `volume` remains a closed-form definition in `OUCorridor/Threshold.lean`, and the original theorem chain is unchanged. The added `det_cov` proves that this closed form equals `det Σ` for the Lyapunov solution `Σ`. The link from the stochastic system to that Lyapunov equation is still not formalized.
 
@@ -352,7 +459,9 @@ ou-threshold-lean/
 │   ├── MainTheorem.lean
 │   ├── Covariance.lean
 │   ├── ResidualThreshold.lean
-│   └── CrossThreshold.lean
+│   ├── CrossThreshold.lean
+│   ├── ActivePlane.lean
+│   └── SpectralShape.lean
 ├── OUCorridor.lean
 ├── verified/
 │   ├── Threshold.lean
@@ -402,6 +511,17 @@ Defines the residual variance `D = Σxx - Σxy²/Σyy` and `residualThreshold :=
 
 Defines the reciprocal invariant `s(r) = r + 1/r` and the merger invariant `C(s) = (64/3) s²/(s² + 12)`. Proves `s(r_A*) = 6`, `s(r_D*) = 4`, the rational factorization of the volume quartic, the merger of the volume crossings at `κ = 1`, `(tr Σ)²/det Σ = C(s)` at `κ = 1`, and the cross-threshold identity `cross_threshold_eigenvalue_ratio` with its companions.
 
+### `OUCorridor/ActivePlane.lean`
+
+The two-mode active-subspace reduction: the Lyapunov solution on a two-dimensional invariant
+plane, the self-duality of the rank-one forcing family, the palindromic determinant identity, the
+reciprocal coordinate and the threshold equivalence, together with the K₂, P3 and K3 corollaries.
+
+### `OUCorridor/SpectralShape.lean`
+
+`J₂ = (tr)²/det` determines the eigenvalue ratio of a `2 × 2` SPD matrix; an explicit pair of
+positive triples shows this fails for three.
+
 ### `OUCorridor.lean`
 
 Top-level project module importing the formalization.
@@ -440,6 +560,13 @@ With the cross-threshold extension (three additional modules), the build recorde
 
 ```text
 Build completed successfully (8713 jobs).
+```
+
+With the active-plane extension (two further modules), the build recorded in
+`verified/active-plane-2026-09/` produced:
+
+```text
+Build completed successfully (8715 jobs).
 ```
 
 ### Unfinished-proof audit

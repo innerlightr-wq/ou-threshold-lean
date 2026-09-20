@@ -5,3 +5,5 @@ import OUCorridor.MainTheorem
 import OUCorridor.Covariance
 import OUCorridor.ResidualThreshold
 import OUCorridor.CrossThreshold
+import OUCorridor.ActivePlane
+import OUCorridor.SpectralShape
