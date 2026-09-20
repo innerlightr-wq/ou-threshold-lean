@@ -1,0 +1,30 @@
+import OUCorridor
+open OUCorridor
+#print axioms activeCov_lyapunov
+#print axioms activeCov_unique
+#print axioms activeForcing_self_dual
+#print axioms det_activeForcing
+#print axioms det_activeCov_palindromic
+#print axioms normalizedActiveDet_eq
+#print axioms two_le_reciprocalExcitation
+#print axioms reciprocalExcitation_eq_two_iff
+#print axioms rateContrast_sq_lt_one
+#print axioms mixing_le_quarter
+#print axioms mixing_eq_quarter_iff
+#print axioms activeCoeff_eq_zero_iff
+#print axioms volumeRatio_gt_one_iff
+#print axioms volume_div_volume0_eq
+#print axioms reciprocalExcitation_sq
+#print axioms reciprocalExcitation_threshold_sq
+#print axioms p3_thresholdCurve_eq
+#print axioms p3_threshold_min
+#print axioms p3_threshold_attained
+#print axioms k3_thresholdCurve_eq
+#print axioms k3_threshold_min
+#print axioms k3_threshold_attained
+#print axioms J2_eq_reciprocalInvariant
+#print axioms eigen_ratio_unique_of_J2
+#print axioms exists_same_trace_det_different_ratio
+#print axioms exists_volume_improvement_iff_threshold
+#print axioms exists_residual_improvement_iff_threshold
+#print axioms cross_threshold_eigenvalue_ratio
