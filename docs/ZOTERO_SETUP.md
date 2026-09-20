@@ -4,8 +4,10 @@
 actions that §5 previously listed as outstanding **have been carried out**. Zotero 10.0.3 was
 running, its local API was enabled, and write access was granted through the
 `POST /api/local/authorize` approval dialog, which a human answered. The OU collection now holds
-**33 items in 23 subcollections**, matching [`../references.bib`](../references.bib) one-for-one.
-Better BibTeX **is now installed** (9.0.64) and every citation key is pinned.
+**33 items in 24 subcollections**, matching [`../references.bib`](../references.bib) one-for-one.
+Better BibTeX **is now installed** (9.0.64) and every citation key is pinned. A third pass
+(§5b) added one topical subcollection, corrected the `DeJesus2026ou` item type and removed a
+leftover test collection.
 
 The authoritative bibliographic record for the repository is still
 [`../references.bib`](../references.bib), which is **hand-maintained, not generated**. Auto-export
@@ -47,7 +49,7 @@ running.
 ## 2. Library for this project (verified)
 
 Parent collection **`OU Threshold — Heterogeneity and Coupling`** (key `SXXMUAZA`). It now holds
-**23 subcollections** and **33 distinct items**, matching `references.bib` one-for-one (§5).
+**24 subcollections** and **33 distinct items**, matching `references.bib` one-for-one (§5, §5b).
 
 The table below is the **starting** state recorded by the first pass — 16 subcollections and 12
 items, matching the 12 original entries of `references.bib`. It is kept as the baseline that §5's
@@ -160,22 +162,52 @@ direction, **no duplicate DOIs, no duplicate citation keys**, and all 33 agree w
 `references.bib` on title, year, DOI and author list. `15 — Closest Prior Art` went 6 → **10** as
 §3 requires. `13 — Lean / Formalization Context` remains deliberately empty.
 
-### 5a. Still outstanding
+### 5a. Resolved in the third pass
 
-1. **Eight references have no topical subcollection.** `PecoraCarroll1998`, `RulkovEtAl1995`,
-   `AbarbanelEtAl1996`, `KocarevParlitz1996`, `AronsonEtAl1990`, `Haken1983`, `Aubin1991` and
-   `DeJesus2026bjj` are the works cited by the manuscript and by no `docs/` file. They are filed
-   in `14 — Directly Cited` only, because §3 predates them and assigns them none, and inventing
-   a structure was out of scope. `04 — Stochastic Synchronization` fits the four
-   generalized-synchronization papers only loosely — they are deterministic. Decide whether to
-   add `23 — Deterministic & Generalized Synchronization` and `24 — Viability & Synergetics
-   Context`, or to widen an existing subcollection.
-2. **`DeJesus2026ou` is stored as a `journalArticle`.** It is a Zenodo technical note; `preprint`
-   would be accurate, and is what the two newer self-citations use. Left unchanged because
-   altering an existing record's item type was not authorized. This is the direct cause of the
-   `@misc → @article` regression in §6's dry run.
-3. **An empty `__audit_write_test__` collection** (`S6UZDBCB`) sits at the library root, left by
-   an earlier session. Harmless, deletable, not deleted here.
+The three items this section previously listed as outstanding have been dealt with; see §5b.
+
+### 5b. Third pass (19 September 2026) — one collection, one type fix, one deletion
+
+**`23 — Deterministic & Generalized Synchronization`** created (`Q7LRHHXK`), bringing the OU tree
+to **24** subcollections. Four items filed into it, chosen by reading each one's actual role in
+the manuscript rather than by proximity in the reference list:
+
+| citation key | manuscript role |
+|---|---|
+| `PecoraCarroll1998` | master-stability framework, §2 *Synchronization* |
+| `RulkovEtAl1995` | generalized synchronization, §2 *Synchronization* |
+| `KocarevParlitz1996` | generalized synchronization, §2 *Synchronization* |
+| `AbarbanelEtAl1996` | generalized synchronization, §2 *Synchronization* |
+
+**`AronsonEtAl1990` was deliberately NOT filed there.** It is cited under §2 *Amplitude and
+oscillation death*, where the manuscript says the mechanism "is distinct from the present one".
+It is a contrast citation about oscillation death, not a synchronization source, and classifying
+it by adjacency would have been wrong. It stays in `14 — Directly Cited` only.
+
+**`24 — Viability & Synergetics Context` was deliberately NOT created.** `Haken1983` (§2
+*Synergetics*) and `Aubin1991` (§2 *Viability language*) are single contextual citations; one
+item each does not justify a permanent subcollection, and no existing collection fits them
+honestly. They remain in `14 — Directly Cited` with their tags. The library is optimised for
+being small and defensible, not for leaving `14` as nobody's only home.
+
+Filing into `23` **added** membership: all four remain in `14 — Directly Cited`, which still
+holds all 33.
+
+**`DeJesus2026ou` (`4L5K6XCQ`) converted `journalArticle` → `preprint`.** All fields were
+recorded first and verified after: title, author, date, DOI, URL, `citationKey`, rights, tags,
+collections and `extra` all preserved unchanged. `publisher: Zenodo` is not a `preprint` field,
+so the information was carried into `repository: Zenodo`, and `archiveID` was set to the DOI —
+the shape `DeJesus2026dual` already used. Better BibTeX now exports it as **`@misc`**, not
+`@article`; that row of §6b's regression table no longer applies.
+
+**`__audit_write_test__` (`S6UZDBCB`) deleted**, after confirming through two independent
+endpoints that it held 0 items and 0 subcollections. Only the collection was removed; no item
+was deleted. Re-fetching the key now returns 404.
+
+**Read back after all changes:** 33 OU items, 24 subcollections, `14 — Directly Cited` = 33,
+`23` = 4, **0 duplicate DOIs, 0 duplicate citation keys, 33/33 pinned keys intact** (including
+`DeJesus2026ou` after its type change), and all eight documented provenance cautions still
+present in their items' `extra` fields.
 
 ## 6. Bibliography export
 
@@ -227,7 +259,7 @@ hand-verified file:
 | `url` dropped | all 33 |
 | `publisher` dropped | 12 journal articles |
 | title re-cased with brace protection | all 33 — e.g. `Barucca2014` becomes `{{Ornstein-Uhlenbeck}}` in Title Case, discarding the published APS wording that the audit specifically corrected to |
-| `@misc → @article` | `DeJesus2026ou`, misrepresenting a Zenodo note as a journal article (see §5a.2) |
+| ~~`@misc → @article`~~ | **Fixed in the third pass** (§5b): `DeJesus2026ou` is now a `preprint` and exports as `@misc`. Listed here because it was part of the evidence that decided the standing decision. |
 | `journal` / `issn` dropped | `Haken1983`, `Muirhead1982` (series information) |
 | `keywords` added | all 33 — exports internal provenance tags into the bibliography |
 
