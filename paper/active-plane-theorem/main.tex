@@ -139,16 +139,23 @@ but $Q(\tau)$ is a forcing covariance only where it is positive definite, and th
 statement needs $K\ge0$. Both are guaranteed by taking $H$ positive semidefinite with
 $\tr H=q_b$, and we say so rather than quietly assuming it.
 
-\paragraph{What is standard and what is not.} The ingredients are almost entirely classical: the
-OU stationary covariance and the Lyapunov equation \cite{Gardiner2004}; the modal solution
-$\Sig_{ij}=Q_{ij}/(D_i+D_j)$, standard in the heterogeneous-OU literature
-\cite{Barucca2014,GodrecheLuck2019}; the reduction of a self-reciprocal polynomial through
-$t+1/t$ \cite{Vieira2019}; the trace/determinant shape statistic and its relation to Mauchly's
-sphericity test \cite{Mauchly1940,Muirhead1982}; and the Newton-identity obstruction in dimension
-$n\ge3$. What we did not locate in the literature we searched is the specific assembly: the exact
-palindromic determinant identity, its reciprocal reduction, and the resulting exact
-generalized-variance threshold optimized over a coupling parameter. We state that conservatively
-in Section~\ref{sec:priorart} and claim nothing stronger.
+\paragraph{What is standard and what is not.} Almost every ingredient is classical, and we are
+explicit about it: the OU stationary covariance and the Lyapunov equation \cite{Gardiner2004};
+the modal solution $\Sig_{ij}=Q_{ij}/(D_i+D_j)$, standard in the heterogeneous-OU literature
+\cite{Barucca2014,GodrecheLuck2019}, and its Cauchy--Hadamard form
+\cite{PalittaLefteriu2022,YadykinEtAl2023}; the determinant identity \eqref{eq:sharpintro}
+itself, which is the $2\times2$ Hadamard expansion behind Oppenheim's inequality
+(Remark~\ref{rem:hadamard}); the reciprocal coordinate, an invertible function of the usual
+two-temperature combination (Remark~\ref{rem:wknown}); the reduction of a self-reciprocal
+polynomial through $t+1/t$ \cite{Vieira2019}; the trace/determinant shape statistic and its
+relation to Mauchly's sphericity test \cite{Mauchly1940,Muirhead1982}; and the Newton-identity
+obstruction in dimension $n\ge3$.
+
+What we did not locate in the literature we searched is the \emph{trace criterion} of
+Theorem~\ref{thm:trace}, any published statement that a covariance determinant is palindromic in
+a forcing parameter, or the resulting exact generalized-variance threshold minimized over a
+coupling strength. We state that conservatively in Section~\ref{sec:priorart} and claim nothing
+stronger.
 
 \paragraph{Scope.} All results are exact real algebra about a linear-Gaussian model. Nothing here
 is asserted about nonlinear, biological, cognitive or social systems, and no physical universality
@@ -301,10 +308,11 @@ a convex combination of $q_{11}q_{22}$ and $\det Q$ with weight $\nu^2$.
 
 Equation \eqref{eq:hadexp} is the $2\times2$ case underlying Oppenheim's inequality
 $\det(A\circ B)\ge\det A\prod_ib_{ii}$ for positive semidefinite $A,B$
-\cite[Thm.~1.1(ii)]{Yamada2024}; see \cite{HornJohnson2012} for Hadamard products generally.
+\cite[Thm.~7.8.16, eq.~(7.8.17), p.~509]{HornJohnson2012}, originally due to
+Oppenheim \cite{Oppenheim1930}.
 Oppenheim gives the inequality; \eqref{eq:sharp} simply records the remainder, which at $n=2$ is
 exactly $C_{12}^2\det Q$. The combination ``Cauchy--Hadamard solution, then Oppenheim, then a
-determinant bound'' has been used before --- \cite[\S4.1.5]{SchlickDemissie2011} does precisely
+determinant bound'' has been used before --- \cite[\S4.5]{SchlickDemissie2011} does precisely
 this for a discrete-time steady-state covariance, stopping at the inequality. We therefore claim
 nothing for Theorem~\ref{thm:sharp} beyond convenience of form. What we do claim begins in
 Section~\ref{sec:thm2}.
@@ -388,6 +396,39 @@ This is the structural statement of the paper, and it is worth saying plainly wh
 The reciprocal structure is \emph{not} caused by the deformation being rank one, nor by the
 baseline being isotropic. It is caused by the deformation carrying exactly the baseline's share
 of trace. Rank one is the case where that happens for free.
+
+\begin{remark}[Why the criterion is a trace, and why it is a $2\times2$ statement]\label{rem:whytrace}
+Three features of Theorem~\ref{thm:trace} are worth isolating.
+
+\emph{(i) Where the coefficients come from.} Writing $\Sig(\tau)=S_0+\tau S_1$ with
+$S_1=C\circ H$ and $S_0=C\circ(q_bI-H)$, the leading and constant coefficients of
+$\det\Sig(\tau)$ are exactly $\det(C\circ H)$ and $\det\bigl(C\circ(q_bI-H)\bigr)$. So
+palindromicity is the single scalar equation
+$\det(C\circ H)=\det\bigl(C\circ(q_bI-H)\bigr)$.
+
+\emph{(ii) Why the drift drops out.} In that equation the off-diagonal of $H$ enters only through
+$h_{12}^2$, which is invariant under $H\mapsto q_bI-H$ (it sends $h_{12}\mapsto-h_{12}$). Every
+trace of the Cauchy structure --- and with it $\nu$, and the whole content of
+Theorem~\ref{thm:sharp} --- therefore cancels, leaving only the diagonal part
+$q_b^2-q_b(h_1+h_2)$. This is why the criterion $\tr H=q_b$ contains no $D_1,D_2$: it is
+\emph{independent of the drift}, which is not obvious from the statement.
+
+\emph{(iii) Why it is special to two modes.} For $n$ modes, self-reciprocity of a degree-$n$
+determinant requires $n-1$ coefficient matchings, not one. Already at $n=3$ two conditions
+appear and $\tr H=q_b$ is only one of them. The clean iff is a two-mode statement, and
+Section~\ref{sec:threemode} is where that boundary is made quantitative.
+\end{remark}
+
+\begin{remark}[A degenerate case the criterion does not see]\label{rem:degenpoly}
+``Palindromic'' in Theorem~\ref{thm:trace} means \emph{leading coefficient equals constant
+coefficient}, which is the form used throughout. When $K=0$ both are zero and the criterion is
+satisfied vacuously by a polynomial that is only of degree one: for instance
+$H=\operatorname{diag}(q_b,0)$ has $\tr H=q_b$ and gives
+$4D_1D_2\det\Sig(\tau)=q_b^2\tau$. That is the case of an excitation aligned with a single drift
+eigenmode, i.e.\ $\Aco=0$ in Proposition~\ref{prop:degenerate}, and it carries no threshold
+(Remark~\ref{rem:edge}). A reader who prefers to define palindromicity through the actual degree
+should read Theorem~\ref{thm:trace} together with $K\neq0$.
+\end{remark}
 
 \begin{theorem}[Trace-normalized determinant]\label{thm:tracenorm}
 If $\tr H=q_b$ then
@@ -847,6 +888,18 @@ Substituting into $w^{*}=2+(1-\Phi)/(\Phi\Aco)$ and simplifying gives the exact 
   w^{*}_{P_3}(\kappa)=\frac{27\kappa^3+72\kappa^2+64\kappa+16}{2\kappa}. \label{eq:P3curve}
 \end{equation}
 
+\begin{remark}[The two-mode hypothesis is not vacuous: $P_3$ forced at an end]\label{rem:P3end}
+It matters that the centre node was chosen. Forcing an \emph{end} node of $P_3$,
+$e=(1,0,0)$, gives modal components $\bigl(1/\sqrt3,\,-1/\sqrt2,\,1/\sqrt6\bigr)$ --- all three
+nonzero --- so the modal support dimension is three and the three rates
+$1,\,1+\kappa,\,1+3\kappa$ are distinct. By Proposition~\ref{prop:cubic} the determinant is then
+a genuine cubic in $\tau$, with leading coefficient
+$\kappa^6/\bigl[4(\kappa+2)^2(2\kappa+1)^2(3\kappa+2)^2\bigr]$, and it is \emph{not} palindromic.
+The affine form \eqref{eq:graphV} fails outright for that configuration. So the hypothesis of
+Corollary~\ref{cor:graph} is a real restriction, and the simplest asymmetric case already
+violates it.
+\end{remark}
+
 \begin{corollary}[$P_3$ constant]\label{cor:P3}
 $\displaystyle\min_{\kappa>0}w^{*}_{P_3}(\kappa)=35+15\sqrt5$, attained at
 $\kappa^{*}=\dfrac{\sqrt5-1}{3}$.
@@ -1025,9 +1078,29 @@ out (Remark~\ref{rem:hadamard}); it is not claimed. The Cauchy--Hadamard form
 of the usual two-temperature combination (Remark~\ref{rem:wknown}) and is not claimed. The
 reduction of a palindromic polynomial through $t+1/t$ is classical \cite{Vieira2019}. The
 closest published use of the same pipeline we located is
-\cite[\S4.1.5]{SchlickDemissie2011}, which forms a discrete-time steady-state covariance as a
+\cite[\S4.5]{SchlickDemissie2011}, which forms a discrete-time steady-state covariance as a
 Cauchy--Hadamard product and applies Oppenheim to bound its determinant, stopping at the
 inequality.
+
+\paragraph{Determinants of Lyapunov solutions.} There is a substantial control-theory
+literature on the solution of the algebraic Lyapunov equation, and it is worth saying what shape
+it has: it consists of \emph{bounds} --- on eigenvalues, on the trace, and on the determinant ---
+rather than of exact expressions; see the survey \cite{KwonEtAl1996}. We did not locate an exact
+determinant identity in that line. Theorem~\ref{thm:sharp} is exact but, as
+Remark~\ref{rem:hadamard} explains, it is exact only because $n=2$ makes the Hadamard expansion
+terminate, so it does not compete with that literature.
+
+\paragraph{Determinants of network covariances.} One line of work does use a covariance
+determinant as a network performance measure: Siami and Motee's \emph{uncertainty volume} is a
+log-determinant of the steady-state output covariance of a noisy consensus network, and sits
+alongside the more familiar trace-type measures \cite{SiamiMotee2018}. It differs from the
+present setting in every respect that matters here --- the noise is homogeneous, the drift is a
+pure Laplacian, and the optimization is over which edges to add rather than over a scalar
+coupling, with no threshold in a heterogeneity parameter. The network-coherence literature it
+grows out of \cite{BamiehEtAl2012} is otherwise uniformly trace-type. Separately, ``generalized
+variance'' in the Granger-causality and integrated-information literature
+\cite{BarrettSeth2011} denotes the determinant of a \emph{residual} covariance, a different
+matrix from $\Sig(\kappa)$; the two should not be conflated.
 
 What we did not locate, in the literature we searched, is:
 \begin{enumerate}\itemsep2pt
@@ -1083,9 +1156,17 @@ covariance dynamics; \cite{DeJesus2026dual} is invariant-theoretic context, not 
   and forced nodes satisfy the hypothesis, and no general bound on $w^{*}_{\min}$ over graphs.
 \item Optimizing $w^{*}$ over $\kappa$ treats coupling as freely tunable and the forcing
   geometry as fixed; other optimizations give other constants.
-\item The literature search behind Section~\ref{sec:priorart} was English-language web and
-  arXiv only, without access to MathSciNet, zbMATH or Scopus full text. ``Not found'' should be
-  read as the outcome of a broad but non-exhaustive sweep.
+\item The literature searches behind Section~\ref{sec:priorart} used web search, the arXiv API,
+  Crossref and OpenAlex full-text search, together with a number of primary sources read in
+  full. They did \emph{not} reach Google Scholar, Scopus, Web of Science, MathSciNet or zbMATH,
+  and arXiv's own search is metadata-only, so a result appearing as an unnamed mid-paper remark
+  would be invisible to them. No matrix-analysis monograph was consulted in full; a
+  Hadamard-product problems section is a plausible home for \eqref{eq:hadexp}. Two specific
+  gaps are worth naming: the two-mode \emph{quantum} Gaussian literature, where
+  $\det\sigma$ for two thermal modes versus coupling is computed routinely (purity being
+  $1/\sqrt{\det\sigma}$), was not searched at all; and non-English literature was not searched.
+  ``Not located'' throughout should therefore be read as the outcome of a documented but
+  non-exhaustive sweep, not as a claim of absence.
 \end{enumerate}
 
 \section{Machine-checked verification}\label{sec:lean}

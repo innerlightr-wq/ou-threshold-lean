@@ -12,6 +12,11 @@ Bassam Bamieh, Mihailo~R. Jovanovic, Partha Mitra, and Stacy Patterson.
 \newblock {\em IEEE Transactions on Automatic Control}, 57(9):2235–2249,
   September 2012.
 
+\bibitem{BarrettSeth2011}
+Adam~B. Barrett and Anil~K. Seth.
+\newblock Practical measures of integrated information for time-series data.
+\newblock {\em PLoS Computational Biology}, 7(1):e1001052, 2011.
+
 \bibitem{Barucca2014}
 Paolo Barucca.
 \newblock Localization in covariance matrices of coupled heterogeneous
@@ -72,7 +77,16 @@ Claude Godrèche and Jean-Marc Luck.
 \bibitem{HornJohnson2012}
 Roger~A. Horn and Charles~R. Johnson.
 \newblock {\em Matrix Analysis}.
-\newblock Cambridge University Press, October 2012.
+\newblock Cambridge University Press, Cambridge, 2nd edition, 2013.
+\newblock Oppenheim's inequality is Theorem 7.8.16, eq. (7.8.17), p.~509. The
+  citation key retains the year of the Crossref online record (2012); the
+  printed second edition is dated 2013.
+
+\bibitem{KwonEtAl1996}
+W.~H. Kwon, Y.~S. Moon, and S.~C. Ahn.
+\newblock Bounds in algebraic {R}iccati and {L}yapunov equations: a survey and
+  some new results.
+\newblock {\em International Journal of Control}, 64(3):377--389, 1996.
 
 \bibitem{Mauchly1940}
 John~W. Mauchly.
@@ -86,6 +100,12 @@ Robb~J. Muirhead.
 \newblock {\em Aspects of Multivariate Statistical Theory}.
 \newblock Wiley, March 1982.
 
+\bibitem{Oppenheim1930}
+A.~Oppenheim.
+\newblock Inequalities connected with definite {H}ermitian forms.
+\newblock {\em Journal of the London Mathematical Society}, s1-5(2):114--119,
+  1930.
+
 \bibitem{PalittaLefteriu2022}
 Davide Palitta and Sanda Lefteriu.
 \newblock An efficient, memory-saving approach for the {L}oewner framework.
@@ -95,6 +115,12 @@ Davide Palitta and Sanda Lefteriu.
 Christian~M. Schlick and Bruno Demissie.
 \newblock Project dynamics and emergent complexity.
 \newblock arXiv:1101.0754, 2011.
+
+\bibitem{SiamiMotee2018}
+Milad Siami and Nader Motee.
+\newblock Growing linear dynamical networks endowed by spectral systemic
+  performance measures.
+\newblock {\em IEEE Transactions on Automatic Control}, 63(7):2091--2106, 2018.
 
 \bibitem{Simoncini2016}
 V.~Simoncini.
@@ -144,10 +170,5 @@ Igor Yadykin.
 \newblock Spectral decomposition of {G}ramians of continuous linear systems in
   the form of {H}adamard products.
 \newblock {\em Mathematics}, 12(1):36, 2023.
-
-\bibitem{Yamada2024}
-Akira Yamada.
-\newblock {O}ppenheim--{S}chur's inequality and {RKHS}.
-\newblock {\em Operators and Matrices}, 18(3):711--733, 2024.
 
 \end{thebibliography}

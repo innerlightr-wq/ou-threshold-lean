@@ -1,14 +1,12 @@
 # Build transcript - paper/active-plane-theorem
-# Date: 2026-09-20 14:52:25 UTC
+# Date: 2026-09-20 15:18:31 UTC
 # pdfTeX 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux)
 # Command: latexmk -C && ./build.sh
 
-</usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/tex
-mf-dist/fonts/type1/public/cm-super/sfti0800.pfb></usr/share/texmf-dist/fonts/t
 ype1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-
 super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.
 pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on main.pdf (21 pages, 682537 bytes).
+Output written on main.pdf (22 pages, 691692 bytes).
 Transcript written on main.log.
 Latexmk: Getting log file 'main.log'
 Latexmk: Examining 'main.fls'
@@ -28,14 +26,14 @@ undefined references: 0
 overfull boxes      : 0
 underfull boxes     : 9   (loose lines only)
 bibtex warnings     : 0
-bibliography entries: 27
-pages               : 21
+bibliography entries: 30  (all cited; no orphans)
+pages               : 22
 
 === manuscript_checks.py ===
 
 ==============================================================
-  95/95 checks passed
+  106/106 checks passed
 ==============================================================
 
-=== Lean ===
+=== Lean (unchanged this pass) ===
 build: 8716 jobs; 20 theorems audited; axioms {propext, Classical.choice, Quot.sound}; no sorry

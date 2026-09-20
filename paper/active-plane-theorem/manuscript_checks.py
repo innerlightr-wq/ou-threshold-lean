@@ -115,6 +115,55 @@ check("palindromic  <=>  q_b (tr H - q_b) = 0   [Theorem 3]",
 check("trace-normalized collapse: 4 D1 D2 det Sigma = K(tau-1)^2 + q_b^2 tau",
       sp.simplify(sp.expand(DETaff.subs(h1, qb - h2) - (Kc.subs(h1, qb - h2) * (tau - 1)**2 + qb**2 * tau))) == 0)
 
+# ---- structural anatomy of the trace criterion (Remark: why a trace, why 2x2)
+section("Anatomy of the trace criterion")
+
+had = lambda A, B: sp.Matrix(A.rows, A.cols, lambda i, j: A[i, j] * B[i, j])
+SigA = had(Cm, Qaff)
+DETA = sp.expand(sp.simplify(SigA.det()))
+aA2, bA2, cA2 = sp.Poly(DETA, tau).all_coeffs()
+check("leading coeff = det(C o H)", sp.simplify(aA2 - had(Cm, Hm).det()) == 0)
+check("constant coeff = det(C o (q_b I - H))",
+      sp.simplify(cA2 - had(Cm, qb * sp.eye(2) - Hm).det()) == 0)
+check("a - c is invariant under h12 -> -h12 (off-diagonal cancels)",
+      sp.simplify(sp.expand((aA2 - cA2).subs(h12, -h12) - (aA2 - cA2))) == 0)
+check("a - c = q_b (tr H - q_b)/(4 D1 D2): criterion is DRIFT-INDEPENDENT",
+      sp.simplify(sp.expand((aA2 - cA2) - qb * (h1 + h2 - qb) / (4 * D1 * D2))) == 0)
+check("degenerate H = diag(q_b, 0): tr H = q_b but the polynomial is degree 1",
+      sp.Poly(sp.expand(sp.simplify(DETA.subs({h1: qb, h2: 0, h12: 0}))), tau).degree() == 1)
+D3s = sp.symbols('D3s', positive=True)
+Ds3 = [D1, D2, D3s]
+C3m = sp.Matrix(3, 3, lambda i, j: 1 / (Ds3[i] + Ds3[j]))
+H3 = sp.Matrix(3, 3, lambda i, j: sp.Symbol(f'g{min(i,j)}{max(i,j)}', real=True))
+S3m = had(C3m, qb * sp.eye(3) + (tau - 1) * H3)
+check("n=3: determinant is degree 3, so self-reciprocity needs n-1 = 2 matchings",
+      sp.Poly(sp.expand(sp.simplify(S3m.det())), tau).degree() == 3)
+
+# ---- P3 forced at an END node: the two-mode hypothesis is not vacuous
+section("P3 end-node: three-mode support breaks the affine form")
+kap = sp.symbols('kap', positive=True)
+LP3 = sp.Matrix([[1, -1, 0], [-1, 2, -1], [0, -1, 1]])
+cols3 = []
+rts3 = []
+for val, mult, vecs in sorted(LP3.eigenvects(), key=lambda t: t[0]):
+    for v in sp.GramSchmidt([sp.Matrix(x) for x in vecs], True):
+        cols3.append(sp.simplify(v))
+        rts3.append(sp.simplify(1 + kap * val))
+U3 = sp.Matrix.hstack(*cols3)
+check("P3 modal basis is orthonormal", sp.simplify(U3.T * U3) == sp.eye(3))
+for nm, nd, want_supp, want_deg in (("centre", sp.Matrix([0, 1, 0]), 2, 2),
+                                    ("end", sp.Matrix([1, 0, 0]), 3, 3)):
+    comp = sp.simplify(U3.T * nd)
+    supp = sum(1 for x in comp if sp.simplify(x) != 0)
+    Qn = sp.eye(3) + (tau - 1) * comp * comp.T
+    Sn = sp.Matrix(3, 3, lambda i, j: Qn[i, j] / (rts3[i] + rts3[j]))
+    Pn = sp.Poly(sp.expand(sp.simplify(sp.prod([2 * r for r in rts3]) * Sn.det())), tau)
+    check(f"P3 {nm}-forced: modal support = {want_supp}, det degree = {want_deg}",
+          supp == want_supp and Pn.degree() == want_deg)
+    cfn = Pn.all_coeffs()
+    pal = sp.simplify(sp.expand(cfn[0] - cfn[-1])) == 0
+    check(f"P3 {nm}-forced: palindromic = {nm == 'centre'}", pal == (nm == "centre"))
+
 # ---- ADVERSARIAL: rank two, satisfying and violating the trace condition
 section("Adversarial — rank two, trace condition satisfied vs violated")
 aa, dd = sp.symbols('aa dd', positive=True)

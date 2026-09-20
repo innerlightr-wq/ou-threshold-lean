@@ -18,7 +18,8 @@ For a **symmetric** drift whose restriction to a two-dimensional invariant subsp
 with `Q12` the off-diagonal in the drift eigenbasis. No rank-one, isotropy or positivity
 assumption. **This identity is not claimed as new**: writing `Sigma = C o Q` for the Cauchy
 matrix `C_ij = 1/(D_i+D_j)`, it is the 2x2 Hadamard-product determinant expansion behind
-Oppenheim's inequality, with the remainder written out. The same pipeline (Cauchy-Hadamard,
+Oppenheim's inequality (Horn & Johnson, *Matrix Analysis* 2nd ed., Thm 7.8.16 eq. (7.8.17)
+p. 509; originally Oppenheim 1930), with the remainder written out. The same pipeline (Cauchy-Hadamard,
 then Oppenheim, then a determinant bound) appears in arXiv:1101.0754 §4.1.5 for a discrete-time
 covariance, stopping at the inequality. Equivalently
 `4 D1 D2 det Sigma = nu^2 q11 q22 + (1-nu^2) det Q`, and dividing through,
@@ -55,10 +56,10 @@ counterexample: its relevant eigenspace is degenerate, so its *distinct-rate* di
 | file | |
 |---|---|
 | `main.tex` | the manuscript |
-| `main.pdf` | compiled, 21 pages, letter |
-| `references.bib` | self-contained bibliography, 27 entries, all cited |
+| `main.pdf` | compiled, 22 pages, letter |
+| `references.bib` | self-contained bibliography, 30 entries, all cited |
 | `figures/fig1–3.pdf` | active-plane schematic; affine determinant; threshold curves |
-| `manuscript_checks.py` | 95 exact symbolic checks (SymPy), including adversarial assumption tests |
+| `manuscript_checks.py` | 106 exact symbolic checks (SymPy), including adversarial assumption tests |
 | `make_figures.py` | regenerates the figures from the exact formulas |
 | `build.sh`, `build.log` | build script and recorded transcript |
 | `SHA256SUMS.txt` | digests of every file above |
@@ -71,12 +72,12 @@ reconstructing it later cost real work. Do not repeat that.
 
 ```bash
 ./build.sh                       # latexmk -pdf, or pdflatex/bibtex/pdflatex x2
-python3 manuscript_checks.py     # 95/95 exact checks, exit 0
+python3 manuscript_checks.py     # 106/106 exact checks, exit 0
 python3 make_figures.py          # regenerate figures (needs matplotlib)
 ```
 
 Recorded build: **0 undefined citations, 0 undefined references, 0 overfull boxes, 0 BibTeX
-warnings, 27 bibliography entries, 21 pages.**
+warnings, 30 bibliography entries, 22 pages.**
 
 ## What is proved where
 
