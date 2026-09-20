@@ -81,6 +81,25 @@ check("4 D1 D2 det Sigma = det Q + nu^2 Q12^2   [Theorem 1]",
 check("mechanism: 4 D1 D2/(D1+D2)^2 = 1 - nu^2",
       sp.simplify(4 * D1 * D2 / (D1 + D2)**2 - (1 - nu_**2)) == 0)
 
+# ---- the identity is the 2x2 Hadamard/Cauchy expansion (Oppenheim equality case)
+Cm = sp.Matrix([[1 / (2 * D1), 1 / (D1 + D2)], [1 / (D1 + D2), 1 / (2 * D2)]])
+CoQ = sp.Matrix(2, 2, lambda i, j: Cm[i, j] * Qgen[i, j])
+check("Sigma = C o Q  (Cauchy matrix Hadamard forcing)", sp.simplify(CoQ - Sgen) == sp.zeros(2, 2))
+check("det(C o Q) = det C * q11 q22 + C12^2 det Q   [2x2 Hadamard expansion]",
+      sp.simplify(sp.expand(CoQ.det() - (Cm.det() * Q11 * Q22 + Cm[0, 1]**2 * Qgen.det()))) == 0)
+check("4 D1 D2 det C = nu^2", sp.simplify(4 * D1 * D2 * Cm.det() - nu_**2) == 0)
+check("4 D1 D2 C12^2 = 1 - nu^2", sp.simplify(4 * D1 * D2 * Cm[0, 1]**2 - (1 - nu_**2)) == 0)
+check("equivalent convex form: 4 D1 D2 det Sigma = nu^2 q11 q22 + (1-nu^2) det Q",
+      sp.simplify(sp.expand(4 * D1 * D2 * Sgen.det()
+                            - (nu_**2 * Q11 * Q22 + (1 - nu_**2) * Qgen.det()))) == 0)
+rho_S = sp.simplify(Sgen[0, 1] / sp.sqrt(Sgen[0, 0] * Sgen[1, 1]))
+rho_Q = Q12g / sp.sqrt(Q11 * Q22)
+check("correlation transfer: rho_Sigma = sqrt(1-nu^2) rho_Q",
+      sp.simplify(sp.radsimp(rho_S / rho_Q) - sp.sqrt(1 - nu_**2)) == 0)
+T1_, T2_ = sp.symbols('T1_ T2_', positive=True)
+check("w - 2 = (T1-T2)^2/(T1 T2) under tau = T1/T2  (w is a known combination)",
+      sp.simplify((T1_ / T2_ + T2_ / T1_ - 2) - (T1_ - T2_)**2 / (T1_ * T2_)) == 0)
+
 # ---- affine family, arbitrary symmetric H of any rank
 h1, h2, h12 = sp.symbols('h1 h2 h12', real=True)
 Hm = sp.Matrix([[h1, h12], [h12, h2]])

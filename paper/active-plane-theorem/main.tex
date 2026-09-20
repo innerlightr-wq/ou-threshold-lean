@@ -51,15 +51,17 @@ ORCID: 0009-0007-0190-9143}
 
 \begin{abstract}
 Let a stable linear Ornstein--Uhlenbeck system have a symmetric drift whose restriction to a
-two-dimensional invariant subspace has relaxation rates $D_1,D_2>0$. We prove an exact identity
-for the stationary covariance $\Sig$ solving the Lyapunov equation, valid for an
+two-dimensional invariant subspace has relaxation rates $D_1,D_2>0$. We start from an exact
+identity for the stationary covariance $\Sig$ solving the Lyapunov equation, valid for an
 \emph{arbitrary} symmetric forcing $Q$ on that subspace:
 \[
   4D_1D_2\det\Sig \;=\; \det Q \;+\; \nu^2 Q_{12}^2,
   \qquad \nu=\frac{D_1-D_2}{D_1+D_2},
 \]
-where $Q_{12}$ is the off-diagonal entry in the drift eigenbasis. No rank-one, isotropy or
-positivity hypothesis is needed. Applied to the affine family
+where $Q_{12}$ is the off-diagonal entry in the drift eigenbasis. This is the $2\times2$
+Hadamard-product determinant expansion behind Oppenheim's inequality, applied to the Cauchy
+matrix $1/(D_i+D_j)$, and we claim nothing for it; it is recorded because it makes what follows
+transparent. No rank-one, isotropy or positivity hypothesis is needed. Applied to the affine family
 $Q(\tau)=q_bI+(\tau-1)H$ with $H$ symmetric of any rank, this gives
 $4D_1D_2\det\Sig(\tau)=q_b^2+q_b(\tr H)(\tau-1)+K(\tau-1)^2$ with $K=\det H+\nu^2H_{12}^2$, and
 hence our main structural result: for $q_b>0$ the determinant is a \emph{palindromic} quadratic
@@ -276,6 +278,55 @@ mean $2\sqrt{D_1D_2}$ instead, the determinant would be exactly $\det Q/(4D_1D_2
 further would happen. The arithmetic mean is larger, the deficit is precisely $\nu^2$, and the
 whole of this paper is what that deficit does.
 
+\begin{remark}[\eqref{eq:sharp} is a known expansion, and we do not claim it]\label{rem:hadamard}
+Theorem~\ref{thm:sharp} should be read as bookkeeping, not as a discovery, and it is worth being
+explicit about where it sits. Writing $C_{ij}=1/(D_i+D_j)$ for the Cauchy matrix of the rate
+pairs, \eqref{eq:modal} says exactly
+\begin{equation}
+  \Sig = C\circ Q \label{eq:hadamard}
+\end{equation}
+with $\circ$ the Hadamard (entrywise) product --- a standard way of writing the solution of a
+Sylvester or Lyapunov equation with diagonal coefficients
+\cite{PalittaLefteriu2022,YadykinEtAl2023}. For $2\times2$ matrices the determinant of a
+Hadamard product expands as
+\begin{equation}
+  \det(C\circ Q) = \det C\cdot q_{11}q_{22} + C_{12}^2\,\det Q, \label{eq:hadexp}
+\end{equation}
+and \eqref{eq:sharp} is \eqref{eq:hadexp} multiplied by $4D_1D_2$, using
+$4D_1D_2\det C=\nu^2$ and $4D_1D_2C_{12}^2=1-\nu^2$. Equivalently,
+\begin{equation}
+  4D_1D_2\det\Sig = \nu^2\,q_{11}q_{22} + (1-\nu^2)\det Q, \label{eq:convex}
+\end{equation}
+a convex combination of $q_{11}q_{22}$ and $\det Q$ with weight $\nu^2$.
+
+Equation \eqref{eq:hadexp} is the $2\times2$ case underlying Oppenheim's inequality
+$\det(A\circ B)\ge\det A\prod_ib_{ii}$ for positive semidefinite $A,B$
+\cite[Thm.~1.1(ii)]{Yamada2024}; see \cite{HornJohnson2012} for Hadamard products generally.
+Oppenheim gives the inequality; \eqref{eq:sharp} simply records the remainder, which at $n=2$ is
+exactly $C_{12}^2\det Q$. The combination ``Cauchy--Hadamard solution, then Oppenheim, then a
+determinant bound'' has been used before --- \cite[\S4.1.5]{SchlickDemissie2011} does precisely
+this for a discrete-time steady-state covariance, stopping at the inequality. We therefore claim
+nothing for Theorem~\ref{thm:sharp} beyond convenience of form. What we do claim begins in
+Section~\ref{sec:thm2}.
+\end{remark}
+
+\begin{corollary}[Correlation transfer]\label{cor:rho}
+With $\rho_\Sig=\Sig_{12}/\sqrt{\Sig_{11}\Sig_{22}}$ and $\rho_Q=q_{12}/\sqrt{q_{11}q_{22}}$,
+\begin{equation}
+  \rho_\Sig = \frac{2\sqrt{D_1D_2}}{D_1+D_2}\;\rho_Q = \sqrt{1-\nu^2}\;\rho_Q. \label{eq:rho}
+\end{equation}
+The stationary correlation is the forcing correlation damped by the ratio of the geometric to
+the arithmetic mean of the relaxation rates.
+\end{corollary}
+
+\begin{proof}
+Direct from \eqref{eq:modal}; and $\bigl(2\sqrt{D_1D_2}/(D_1+D_2)\bigr)^2=4D_1D_2/(D_1+D_2)^2=1-\nu^2$.
+\end{proof}
+
+Corollary~\ref{cor:rho} is an equivalent packaging of Theorem~\ref{thm:sharp} and is likewise not
+claimed as new; it is the kind of statement that may well sit unreferenced in the bivariate-OU or
+correlation-transfer literature, and we have not exhausted that search.
+
 \begin{remark}[What is \emph{not} assumed]
 Theorem~\ref{thm:sharp} assumes only that $Q$ is symmetric. It is not assumed rank one, not
 isotropic, not positive semidefinite, and $\tau$ has not yet been introduced. The drift, by
@@ -365,6 +416,15 @@ For $\tau>0$ set $w=\tau+\dfrac1\tau$.
 \begin{lemma}\label{lem:wge2}
 For $\tau>0$, $w-2=(\tau-1)^2/\tau\ge0$, with equality iff $\tau=1$. Hence $w\ge2$ always.
 \end{lemma}
+
+\begin{remark}[$w$ is not a new variable]\label{rem:wknown}
+If $\tau$ is read as a ratio of temperatures $T_1/T_2$, then
+$w-2=(T_1-T_2)^2/(T_1T_2)$, a combination that appears throughout the two-temperature linear
+literature \cite{FilligerReimann2007,DotsenkoEtAl2013,GodrecheLuck2019}. So $w$ is an invertible
+function of a standard quantity and we claim nothing for the coordinate itself. What the results
+below assert is that the normalized determinant is \emph{exactly affine} in it, and precisely
+when.
+\end{remark}
 
 \begin{corollary}[Reciprocal reduction]\label{cor:reciprocal}
 If $\tr H=q_b$ and $\tau>0$, then
@@ -956,14 +1016,33 @@ structure in Lyapunov solutions is well studied
 \cite{Simoncini2016,TownsendWilber2018}, but for solution approximation and singular-value bounds
 rather than determinants.
 
-\paragraph{What we claim.} Conservatively: we did not identify, in the literature we searched, an
-equivalent closed-form statement of the palindromic determinant identity
-\eqref{eq:tracenorm}, of its reciprocal reduction \eqref{eq:reciprocal}, or of the resulting
-exact generalized-variance threshold optimized over a coupling parameter. We describe this as an
-\emph{apparently distinct assembly of standard ingredients} and make no priority claim. Each
-individual ingredient is standard, and we have cited it as such. Should an equivalent theorem
-exist, the appropriate reading of this paper is as an exact derivation and machine-checked
-formalization of it, not as a new result.
+\paragraph{What we claim.} We are deliberately narrow. The determinant identity
+\eqref{eq:sharp} is the $2\times2$ Hadamard expansion \eqref{eq:hadexp} applied to the
+Cauchy matrix, i.e.\ the equality case of Oppenheim's inequality with the remainder written
+out (Remark~\ref{rem:hadamard}); it is not claimed. The Cauchy--Hadamard form
+\eqref{eq:hadamard} of a Sylvester solution is standard
+\cite{PalittaLefteriu2022,YadykinEtAl2023}. The reciprocal coordinate is an invertible function
+of the usual two-temperature combination (Remark~\ref{rem:wknown}) and is not claimed. The
+reduction of a palindromic polynomial through $t+1/t$ is classical \cite{Vieira2019}. The
+closest published use of the same pipeline we located is
+\cite[\S4.1.5]{SchlickDemissie2011}, which forms a discrete-time steady-state covariance as a
+Cauchy--Hadamard product and applies Oppenheim to bound its determinant, stopping at the
+inequality.
+
+What we did not locate, in the literature we searched, is:
+\begin{enumerate}\itemsep2pt
+\item the \emph{trace criterion} of Theorem~\ref{thm:trace} --- a condition $\tr H=q_b$
+  controlling a palindromic symmetry of a covariance determinant in a deformation parameter;
+\item any statement that a covariance or Gramian determinant is palindromic or self-reciprocal
+  in a forcing or temperature parameter;
+\item the resulting exact generalized-variance threshold, minimized over a coupling strength.
+\end{enumerate}
+We describe these as an \emph{apparently distinct assembly} and make no priority claim. Should
+an equivalent result exist, the right reading of this paper is as an exact derivation and
+machine-checked formalization of it. The search was English-language web and arXiv only, with no
+access to MathSciNet, zbMATH or publisher full text, and no matrix-analysis textbook was
+consulted in full; Theorem~\ref{thm:sharp} in particular is exactly the sort of statement that
+may appear as an exercise in a standard reference.
 
 \paragraph{Relation to the author's other work.} The two-node model of \cite{DeJesus2026ou} is
 recovered in Section~\ref{sec:K2} as the corollary $\tau=r^2$, $c^2=s^2=1/2$; that paper is the

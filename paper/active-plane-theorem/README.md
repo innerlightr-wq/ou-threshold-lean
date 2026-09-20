@@ -16,7 +16,14 @@ For a **symmetric** drift whose restriction to a two-dimensional invariant subsp
 ```
 
 with `Q12` the off-diagonal in the drift eigenbasis. No rank-one, isotropy or positivity
-assumption. For the affine family `Q(tau) = q_b I + (tau-1) H`, `H` symmetric of any rank:
+assumption. **This identity is not claimed as new**: writing `Sigma = C o Q` for the Cauchy
+matrix `C_ij = 1/(D_i+D_j)`, it is the 2x2 Hadamard-product determinant expansion behind
+Oppenheim's inequality, with the remainder written out. The same pipeline (Cauchy-Hadamard,
+then Oppenheim, then a determinant bound) appears in arXiv:1101.0754 §4.1.5 for a discrete-time
+covariance, stopping at the inequality. Equivalently
+`4 D1 D2 det Sigma = nu^2 q11 q22 + (1-nu^2) det Q`, and dividing through,
+`rho_Sigma = sqrt(1-nu^2) rho_Q` — stationary correlation is forcing correlation damped by the
+geometric/arithmetic mean ratio of the rates. For the affine family `Q(tau) = q_b I + (tau-1) H`, `H` symmetric of any rank:
 
 ```
 4 D1 D2 det Sigma(tau) = q_b^2 + q_b (tr H)(tau-1) + K (tau-1)^2 ,   K = det H + nu^2 H12^2
@@ -27,6 +34,10 @@ excitation `H = q_b e e^T` satisfies this automatically for every direction `e`,
 it works; it is **not** the mechanism. Palindromicity then forces `w = tau + 1/tau`, giving an
 exact generalized-variance threshold. Graph corollaries: `K2` → 34, `P3` → `35+15*sqrt(5)`,
 `K3` → `247/2`.
+
+**What is actually claimed** is the trace criterion, the palindromic symmetry it controls, and
+the exact threshold — not the identity, and not the coordinate `w` (which is an invertible
+function of the standard two-temperature combination `(T1-T2)^2/(T1 T2)`).
 
 **`tau` is a variance ratio, not an amplitude ratio** — conflating them misreports a constant by
 a square (Remark 2).
@@ -44,10 +55,10 @@ counterexample: its relevant eigenspace is degenerate, so its *distinct-rate* di
 | file | |
 |---|---|
 | `main.tex` | the manuscript |
-| `main.pdf` | compiled, 20 pages, letter |
-| `references.bib` | self-contained bibliography, 23 entries, all cited |
+| `main.pdf` | compiled, 21 pages, letter |
+| `references.bib` | self-contained bibliography, 27 entries, all cited |
 | `figures/fig1–3.pdf` | active-plane schematic; affine determinant; threshold curves |
-| `manuscript_checks.py` | 88 exact symbolic checks (SymPy), including adversarial assumption tests |
+| `manuscript_checks.py` | 95 exact symbolic checks (SymPy), including adversarial assumption tests |
 | `make_figures.py` | regenerates the figures from the exact formulas |
 | `build.sh`, `build.log` | build script and recorded transcript |
 | `SHA256SUMS.txt` | digests of every file above |
@@ -60,12 +71,12 @@ reconstructing it later cost real work. Do not repeat that.
 
 ```bash
 ./build.sh                       # latexmk -pdf, or pdflatex/bibtex/pdflatex x2
-python3 manuscript_checks.py     # 88/88 exact checks, exit 0
+python3 manuscript_checks.py     # 95/95 exact checks, exit 0
 python3 make_figures.py          # regenerate figures (needs matplotlib)
 ```
 
 Recorded build: **0 undefined citations, 0 undefined references, 0 overfull boxes, 0 BibTeX
-warnings, 23 bibliography entries, 20 pages.**
+warnings, 27 bibliography entries, 21 pages.**
 
 ## What is proved where
 

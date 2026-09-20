@@ -86,6 +86,16 @@ Robb~J. Muirhead.
 \newblock {\em Aspects of Multivariate Statistical Theory}.
 \newblock Wiley, March 1982.
 
+\bibitem{PalittaLefteriu2022}
+Davide Palitta and Sanda Lefteriu.
+\newblock An efficient, memory-saving approach for the {L}oewner framework.
+\newblock {\em Journal of Scientific Computing}, 91, 2022.
+
+\bibitem{SchlickDemissie2011}
+Christian~M. Schlick and Bruno Demissie.
+\newblock Project dynamics and emergent complexity.
+\newblock arXiv:1101.0754, 2011.
+
 \bibitem{Simoncini2016}
 V.~Simoncini.
 \newblock Computational methods for linear matrix equations.
@@ -128,5 +138,16 @@ Henry Wolkowicz and George~P.H. Styan.
 \newblock Bounds for eigenvalues using traces.
 \newblock {\em Linear Algebra and its Applications}, 29:471–506, February
   1980.
+
+\bibitem{YadykinEtAl2023}
+Igor Yadykin.
+\newblock Spectral decomposition of {G}ramians of continuous linear systems in
+  the form of {H}adamard products.
+\newblock {\em Mathematics}, 12(1):36, 2023.
+
+\bibitem{Yamada2024}
+Akira Yamada.
+\newblock {O}ppenheim--{S}chur's inequality and {RKHS}.
+\newblock {\em Operators and Matrices}, 18(3):711--733, 2024.
 
 \end{thebibliography}
