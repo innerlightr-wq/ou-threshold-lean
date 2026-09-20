@@ -18,6 +18,15 @@ open OUCorridor
 #print axioms OUCorridor.affineForcing_rankOne
 #print axioms OUCorridor.affineCov_rankOne
 #print axioms OUCorridor.det_activeCov_palindromic_of_general
+-- complementary-forcing involution
+#print axioms OUCorridor.complementForcing_involutive
+#print axioms OUCorridor.affineForcing_complement
+#print axioms OUCorridor.complementForcing_trace
+#print axioms OUCorridor.complementForcing_traceNormalized
+#print axioms OUCorridor.complementForcing_det
+#print axioms OUCorridor.affineCoeff_complement
+#print axioms OUCorridor.complementForcing_fixed_iff
+#print axioms OUCorridor.complementForcing_rankOne
 -- pre-existing, must still verify
 #print axioms OUCorridor.det_activeCov_palindromic
 #print axioms OUCorridor.normalizedActiveDet_eq

@@ -217,6 +217,74 @@ theorem det_affineForcing_pos_of_posSemidef {qb h1 h12 h2 : ℝ} (hqb : 0 < qb)
   have h2' : 0 ≤ (τ - 1)^2 * (h1 * h2 - h12^2) := by positivity
   linarith
 
+/-!  ### The complementary-forcing involution
+
+`H* = q_b I - H` satisfies `τ • Q_H(1/τ) = Q_{H*}(τ)` **unconditionally**.  Since
+`tr H* = 2 q_b - tr H`, the trace-normalized deformations are exactly the class closed under
+`H ↦ H*`, and on that class `K` is preserved.  This is the structural reading of
+`affine_palindromic_iff_trace`.
+-/
+
+/-- The complementary deformation `H* = q_b I - H`, in entries. -/
+def complementForcing (qb h1 h12 h2 : ℝ) : ℝ × ℝ × ℝ := (qb - h1, -h12, qb - h2)
+
+/-- `H ↦ H*` is an involution. -/
+theorem complementForcing_involutive (qb h1 h12 h2 : ℝ) :
+    complementForcing qb (qb - h1) (-h12) (qb - h2) = (h1, h12, h2) := by
+  simp [complementForcing]
+
+/-- **The duality.**  `τ • Q_H(1/τ) = Q_{H*}(τ)`, with no hypothesis on `tr H`. -/
+theorem affineForcing_complement {τ σ : ℝ} (hστ : σ * τ = 1) (qb h1 h12 h2 : ℝ) :
+    τ • affineForcing qb σ h1 h12 h2 = affineForcing qb τ (qb - h1) (-h12) (qb - h2) := by
+  ext i j
+  fin_cases i <;> fin_cases j <;> simp [affineForcing, genForcing]
+  · linear_combination h1 * hστ
+  · linear_combination h12 * hστ
+  · linear_combination h12 * hστ
+  · linear_combination h2 * hστ
+
+/-- The trace transforms as `tr H* = 2 q_b - tr H`. -/
+theorem complementForcing_trace (qb h1 h2 : ℝ) :
+    (qb - h1) + (qb - h2) = 2 * qb - (h1 + h2) := by ring
+
+/-- **Closure.**  The complement is trace-normalized exactly when `H` is. -/
+theorem complementForcing_traceNormalized {qb h1 h2 : ℝ} (htr : h1 + h2 = qb) :
+    (qb - h1) + (qb - h2) = qb := by linarith
+
+/-- On the trace-normalized class the determinant of the deformation is preserved. -/
+theorem complementForcing_det {qb h1 h2 : ℝ} (htr : h1 + h2 = qb) (h12 : ℝ) :
+    (qb - h1) * (qb - h2) - (-h12) ^ 2 = h1 * h2 - h12 ^ 2 := by
+  have : h2 = qb - h1 := by linarith
+  subst this; ring
+
+/-- Hence the coefficient `K` is invariant under the involution. -/
+theorem affineCoeff_complement {qb h1 h2 : ℝ} (htr : h1 + h2 = qb) (D₁ D₂ h12 : ℝ) :
+    affineCoeff D₁ D₂ (qb - h1) (-h12) (qb - h2) = affineCoeff D₁ D₂ h1 h12 h2 := by
+  have : h2 = qb - h1 := by linarith
+  subst this
+  rw [affineCoeff, affineCoeff]
+  ring
+
+/-- The unique fixed point is `H = (q_b/2) I`. -/
+theorem complementForcing_fixed_iff (qb h1 h12 h2 : ℝ) :
+    complementForcing qb h1 h12 h2 = (h1, h12, h2)
+      ↔ h1 = qb / 2 ∧ h12 = 0 ∧ h2 = qb / 2 := by
+  simp only [complementForcing, Prod.mk.injEq]
+  constructor
+  · rintro ⟨a, b, c⟩
+    exact ⟨by linarith, by linarith, by linarith⟩
+  · rintro ⟨a, b, c⟩
+    exact ⟨by linarith, by linarith, by linarith⟩
+
+/-- **Rank-one complement.**  For `H = q_b e eᵀ` the complement is `q_b e^⊥ e^⊥ᵀ`; this is the
+    familiar `e ↦ e^⊥` duality, now seen as a special case. -/
+theorem complementForcing_rankOne {c s : ℝ} (hcs : c ^ 2 + s ^ 2 = 1) (qb : ℝ) :
+    complementForcing qb (qb * c ^ 2) (qb * c * s) (qb * s ^ 2)
+      = (qb * s ^ 2, -(qb * c * s), qb * c ^ 2) := by
+  have ha : qb - qb * c ^ 2 = qb * s ^ 2 := by linear_combination (-qb) * hcs
+  have hb : qb - qb * s ^ 2 = qb * c ^ 2 := by linear_combination (-qb) * hcs
+  simp [complementForcing, ha, hb]
+
 /-!  ### The rank-one isotropic model as a corollary
 
 Taking `H = q_b e eᵀ` with `e = (c, s)` a unit vector gives `tr H = q_b` automatically, so the

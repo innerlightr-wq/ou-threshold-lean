@@ -1,17 +1,17 @@
 === Verification log — palindromic generalization (September 2026) ===
-Date: 2026-09-20 14:37:02 UTC
+Date: 2026-09-20 17:33:21 UTC
 
 === Lean / mathlib ===
 Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)
 mathlib rev: 0df444a360eaa60ab8c11dca51a86af692955474
 
-=== lake build (project modules rebuilt from source) ===
+=== Unfinished-proof grep (sorry / admit / axiom) ===
+no matches
+
+=== lake build ===
 Build completed successfully (8716 jobs).
 
-=== Unfinished-proof audit: grep -R sorry/admit/axiom ===
-(grep exit status 1 ; 1 = no matches)
-
-=== #print axioms (20 theorems) ===
+=== #print axioms ===
 'OUCorridor.genCov_lyapunov' depends on axioms: [propext, Classical.choice, Quot.sound]
 'OUCorridor.genCov_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
 'OUCorridor.det_genCov_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
@@ -29,6 +29,14 @@ Build completed successfully (8716 jobs).
 'OUCorridor.affineForcing_rankOne' depends on axioms: [propext, Classical.choice, Quot.sound]
 'OUCorridor.affineCov_rankOne' depends on axioms: [propext, Classical.choice, Quot.sound]
 'OUCorridor.det_activeCov_palindromic_of_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OUCorridor.complementForcing_involutive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OUCorridor.affineForcing_complement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OUCorridor.complementForcing_trace' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OUCorridor.complementForcing_traceNormalized' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OUCorridor.complementForcing_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OUCorridor.affineCoeff_complement' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OUCorridor.complementForcing_fixed_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'OUCorridor.complementForcing_rankOne' depends on axioms: [propext, Classical.choice, Quot.sound]
 'OUCorridor.det_activeCov_palindromic' depends on axioms: [propext, Classical.choice, Quot.sound]
 'OUCorridor.normalizedActiveDet_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 'OUCorridor.volumeRatio_gt_one_iff' depends on axioms: [propext, Classical.choice, Quot.sound]

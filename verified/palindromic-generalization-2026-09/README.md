@@ -20,6 +20,16 @@ The generalization of the active-plane theorem, in `OUCorridor/ActivePlaneGenera
   boundary: `K ≥ 0` and `Q(τ) ≻ 0` for all `τ > 0` when `H` is positive semidefinite.
 - `det_activeCov_palindromic_of_general`, `affineCov_rankOne`, `affineForcing_rankOne` — the
   previously verified rank-one isotropic theorem recovered as a specialization.
+- `affineForcing_complement`, `complementForcing_involutive`, `complementForcing_trace`,
+  `complementForcing_traceNormalized`, `complementForcing_det`, `affineCoeff_complement` — the
+  complementary-forcing involution `H* = q_b I − H`. The reciprocal transform
+  `τ · Q_H(1/τ) = Q_{H*}(τ)` holds unconditionally; `tr H* = 2q_b − tr H`, so the
+  trace-normalized family is exactly the family closed under it, and on that family both
+  `det H − h₁₂²`-type data and the coefficient `K` are invariant.
+- `complementForcing_fixed_iff` — closure is not fixedness: the only forcing fixed by the
+  involution is the isotropic `H = (q_b/2) I`.
+- `complementForcing_rankOne` — on a rank-one `H = q_b e eᵀ` the involution is exactly the
+  exchange `e ↔ e^⊥`, so the rank-one duality is a specialization, not a separate mechanism.
 
 `OUCorridor/ActivePlane.lean` is **unchanged**; the older theorem stands exactly as verified.
 
@@ -38,7 +48,7 @@ mathlib:     0df444a360eaa60ab8c11dca51a86af692955474
 Build completed successfully (8716 jobs).
 ```
 
-The unfinished-proof grep returned no matches, and all **20** audited theorems depend only on
+The unfinished-proof grep returned no matches, and all **28** audited theorems depend only on
 `propext`, `Classical.choice` and `Quot.sound` — no `sorryAx`, no custom axiom.
 
 ## Checking

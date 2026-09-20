@@ -164,6 +164,71 @@ for nm, nd, want_supp, want_deg in (("centre", sp.Matrix([0, 1, 0]), 2, 2),
     pal = sp.simplify(sp.expand(cfn[0] - cfn[-1])) == 0
     check(f"P3 {nm}-forced: palindromic = {nm == 'centre'}", pal == (nm == "centre"))
 
+# ---- complementary-forcing involution (Proposition: H* = q_b I - H)
+section("Complementary-forcing involution")
+
+Hstar = qb * sp.eye(2) - Hm
+Qfam = lambda M, sname: qb * sp.eye(2) + (sname - 1) * M
+check("involution: (H*)* = H", sp.simplify(qb * sp.eye(2) - Hstar - Hm) == sp.zeros(2, 2))
+check("UNCONDITIONAL duality: tau * Q_H(1/tau) = Q_{H*}(tau)  (no trace hypothesis)",
+      all(sp.simplify(sp.expand(tau * Qfam(Hm, 1/tau))[i, j]
+                      - sp.expand(Qfam(Hstar, tau))[i, j]) == 0
+          for i in range(2) for j in range(2)))
+check("trace transform: tr H* = 2 q_b - tr H",
+      sp.simplify(sp.trace(Hstar) - (2 * qb - sp.trace(Hm))) == 0)
+check("closure: tr H* = tr H  <=>  tr H = q_b",
+      sp.simplify((2 * qb - (h1 + h2) - (h1 + h2)).subs(h2, qb - h1)) == 0)
+check("on the class: det H* = det H",
+      sp.simplify(sp.expand(Hstar.det() - Hm.det()).subs(h2, qb - h1)) == 0)
+check("on the class: H*_12 = -H_12 and K(H*) = K(H)",
+      sp.simplify(Hstar[0, 1] + Hm[0, 1]) == 0
+      and sp.simplify(sp.expand((Hstar.det() + nu_**2 * Hstar[0, 1]**2)
+                                - (Hm.det() + nu_**2 * Hm[0, 1]**2)).subs(h2, qb - h1)) == 0)
+check("unique fixed point H = (q_b/2) I",
+      sp.solve([sp.Eq(h1, qb - h1), sp.Eq(h2, qb - h2), sp.Eq(h12, -h12)], [h1, h2, h12],
+               dict=True)[0] == {h1: qb/2, h2: qb/2, h12: 0})
+cro, sro = sp.symbols('c_ro s_ro', real=True)
+Hro = qb * sp.Matrix([[cro**2, cro*sro], [cro*sro, sro**2]])
+Hperp = qb * sp.Matrix([[sro**2, -cro*sro], [-cro*sro, cro**2]])
+check("rank-one complement: q_b I - q_b e e^T = q_b e_perp e_perp^T",
+      all(sp.simplify((qb*sp.eye(2) - Hro - Hperp)[i, j].subs(sro**2, 1 - cro**2)) == 0
+          for i in range(2) for j in range(2)))
+
+# ---- Hofer et al. boundary case
+section("Quantum boundary case (Hofer et al. steady-state moments)")
+
+gq, kq, khq, kcq = sp.symbols('g_q kappa_q kappa_h kappa_c', positive=True)
+mhq, mcq = sp.symbols('m_h m_c', positive=True)
+denq = (khq + kcq) * (kcq * khq + 4 * gq**2)
+nh_, nc_ = mhq - sp.Rational(1, 2), mcq - sp.Rational(1, 2)
+N11 = nh_ - 4 * gq**2 * kcq * (nh_ - nc_) / denq + sp.Rational(1, 2)
+N22 = nc_ + 4 * gq**2 * khq * (nh_ - nc_) / denq + sp.Rational(1, 2)
+N12 = -sp.I * 2 * gq * kcq * khq * (nh_ - nc_) / denq
+detN = sp.simplify(sp.expand(N11 * N22 - N12 * sp.conjugate(N12)))
+check("derived det(N + I/2) matches the manuscript formula",
+      sp.simplify(sp.together(detN
+          - (4*gq**2*khq**2*mhq**2 + khq*kcq*(8*gq**2+(khq+kcq)**2)*mhq*mcq
+             + 4*gq**2*kcq**2*mcq**2) / ((4*gq**2+khq*kcq)*(khq+kcq)**2))) == 0)
+Pq = sp.Poly(sp.expand(sp.numer(sp.together(detN))), mhq, mcq)
+ccq = {m: c for m, c in zip(Pq.monoms(), Pq.coeffs())}
+check("coeff m_h^2 = 4 g^2 kappa_h^2 ; coeff m_c^2 = 4 g^2 kappa_c^2",
+      sp.simplify(ccq[(2, 0)] - 4*gq**2*khq**2) == 0
+      and sp.simplify(ccq[(0, 2)] - 4*gq**2*kcq**2) == 0)
+check("UNEQUAL damping -> NOT palindromic", sp.simplify(ccq[(2, 0)] - ccq[(0, 2)]) != 0)
+check("EQUAL damping -> palindromic",
+      sp.simplify((ccq[(2, 0)] - ccq[(0, 2)]).subs(kcq, khq)) == 0)
+tq = sp.symbols('tau_q', positive=True)
+eqq = sp.simplify(detN.subs({khq: kq, kcq: kq}))
+check("equal damping: det/(m_h m_c) = [g^2(w+2)+kappa^2]/(4g^2+kappa^2)",
+      sp.simplify((eqq / (mhq * mcq)).subs(mhq, tq * mcq)
+                  - (gq**2 * ((tq + 1/tq) + 2) + kq**2) / (4 * gq**2 + kq**2)) == 0)
+uq, wq = sp.symbols('u_q w_q', positive=True)
+check("monotone in coupling: d/d(g^2) = kappa^2 (w-2)/(kappa^2+4g^2)^2 >= 0, no interior extremum",
+      sp.simplify(sp.diff((uq*(wq+2) + kq**2)/(4*uq + kq**2), uq)
+                  - kq**2*(wq - 2)/(4*uq + kq**2)**2) == 0)
+check("complex drift: nu = -2ig/kappa is purely imaginary, so nu^2 < 0 (identity inapplicable)",
+      sp.simplify(sp.re(-2*sp.I*gq/kq)) == 0)
+
 # ---- ADVERSARIAL: rank two, satisfying and violating the trace condition
 section("Adversarial — rank two, trace condition satisfied vs violated")
 aa, dd = sp.symbols('aa dd', positive=True)

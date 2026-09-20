@@ -40,6 +40,13 @@ exact generalized-variance threshold. Graph corollaries: `K2` → 34, `P3` → `
 the exact threshold — not the identity, and not the coordinate `w` (which is an invertible
 function of the standard two-temperature combination `(T1-T2)^2/(T1 T2)`).
 
+**The trace criterion is an involution.** Set `H* = q_b I - H`. Then
+`tau * Q_H(1/tau) = Q_{H*}(tau)` holds unconditionally, and `tr H* = 2 q_b - tr H`, so the
+trace-normalized forcings are exactly the family closed under the reciprocal transform.
+Closure is not fixedness: the only fixed point is the isotropic `H = (q_b/2) I`. On a rank-one
+`H = q_b e e^T` the involution is the exchange `e <-> e^perp`, so the rank-one "self-duality" is
+a specialization of the trace criterion, not a second mechanism.
+
 **`tau` is a variance ratio, not an amplitude ratio** — conflating them misreports a constant by
 a square (Remark 2).
 
@@ -56,10 +63,10 @@ counterexample: its relevant eigenspace is degenerate, so its *distinct-rate* di
 | file | |
 |---|---|
 | `main.tex` | the manuscript |
-| `main.pdf` | compiled, 23 pages, letter |
-| `references.bib` | self-contained bibliography, 32 entries, all cited |
+| `main.pdf` | compiled, 24 pages, letter |
+| `references.bib` | self-contained bibliography, 33 entries, all cited |
 | `figures/fig1–3.pdf` | active-plane schematic; affine determinant; threshold curves |
-| `manuscript_checks.py` | 111 exact symbolic checks (SymPy), including adversarial assumption tests |
+| `manuscript_checks.py` | 126 exact symbolic checks (SymPy), including adversarial assumption tests |
 | `make_figures.py` | regenerates the figures from the exact formulas |
 | `build.sh`, `build.log` | build script and recorded transcript |
 | `SHA256SUMS.txt` | digests of every file above |
@@ -72,12 +79,12 @@ reconstructing it later cost real work. Do not repeat that.
 
 ```bash
 ./build.sh                       # latexmk -pdf, or pdflatex/bibtex/pdflatex x2
-python3 manuscript_checks.py     # 111/111 exact checks, exit 0
+python3 manuscript_checks.py     # 126/126 exact checks, exit 0
 python3 make_figures.py          # regenerate figures (needs matplotlib)
 ```
 
 Recorded build: **0 undefined citations, 0 undefined references, 0 overfull boxes, 0 BibTeX
-warnings, 32 bibliography entries, 23 pages.**
+warnings, 33 bibliography entries, 24 pages.**
 
 ## What is proved where
 
@@ -86,9 +93,13 @@ warnings, 32 bibliography entries, 23 pages.**
   reciprocal reduction, the sign of `K` and positivity of `Q(tau)` under positive
   semidefiniteness, the rank-one specialization recovering the earlier theorem, and all three
   graph corollaries. Environment: Lean 4.33.1, mathlib `0df444a360ea…`, build 8716 jobs,
-  20 theorems audited, only `propext`/`Classical.choice`/`Quot.sound`, no `sorry`.
+  28 theorems audited, only `propext`/`Classical.choice`/`Quot.sound`, no `sorry`.
   Snapshot: `verified/palindromic-generalization-2026-09/`. The earlier snapshot
   `verified/active-plane-2026-09/` is unchanged and still verifies.
+- **Quantum comparison** (short remark): the two-mode steady state of Hofer et al.,
+  *New J. Phys.* **19** (2017) 123037, has a palindromic normalized determinant in the same
+  reciprocal coordinate, but reaches it with a *complex* effective rate contrast
+  (`nu = -2ig/kappa`, so `nu^2 < 0`) — the algebra transfers, the positivity reading does not.
 - **Symbolically verified only**: the anisotropic self-duality counterexample, the cubic
   three-mode coefficient, the weak-coupling law.
 - **Analytic only, not formalized**: the `n`-dimensional determinant factorization
@@ -98,7 +109,7 @@ warnings, 32 bibliography entries, 23 pages.**
 ## Bibliography note
 
 `references.bib` here is derived from the repository's curated master bibliography, pruned to the
-23 entries this manuscript actually cites, with internal provenance `note` fields stripped (the
+entries this manuscript actually cites, with internal provenance `note` fields stripped (the
 `plain` style would print them; the master retains them). One entry, `BoffiDeGregorio2024`, was
 added for this manuscript and verified by DOI content negotiation; it is not in the master file.
 

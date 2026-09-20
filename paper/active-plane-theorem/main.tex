@@ -6,7 +6,7 @@
 %
 %  Self-contained: main.tex + references.bib + figures/ in this directory.
 %  Build:  ./build.sh      (latexmk -pdf, or pdflatex/bibtex/pdflatex x2)
-%  Checks: python3 manuscript_checks.py   (55 exact symbolic checks)
+%  Checks: python3 manuscript_checks.py   (126 exact symbolic checks)
 % =============================================================================
 
 \documentclass[11pt]{article}
@@ -118,9 +118,15 @@ quadratic in $\tau$ whose leading and constant coefficients coincide precisely w
 $\tr H=q_b$. So the mechanism is a \emph{trace normalization} of the deformation, and rank-one
 excitation is simply the case in which that normalization is automatic, because a unit rank-one
 $q_bee\T$ has trace $q_b$ whatever direction $e$ points. Isotropy of the baseline is not needed
-either, and forcing-level self-duality --- which does hold in the rank-one isotropic model --- is
-sufficient but not necessary: we exhibit an anisotropic baseline where self-duality fails and
-palindromicity survives.
+either.
+
+The trace condition has a structural reading that we give alongside the computation. The
+complementary forcing $H^{*}=q_bI-H$ satisfies $\tau\,Q_H(1/\tau)=Q_{H^{*}}(\tau)$
+unconditionally, and $\tr H^{*}=2q_b-\tr H$; so the trace-normalized deformations are exactly
+the class \emph{closed} under this involution, and on that class the coefficient $K$ is
+preserved. The duality $e\mapsto\eperp$ familiar from the rank-one model is this involution
+restricted to rank one. Trace balance and self-duality are therefore not two mechanisms for this
+family but two descriptions of one.
 
 Only once palindromicity is established does the reciprocal coordinate appear. It is not posited
 as a convenient substitution: a palindromic quadratic divided by $\tau$ is an affine function of
@@ -397,6 +403,48 @@ The reciprocal structure is \emph{not} caused by the deformation being rank one,
 baseline being isotropic. It is caused by the deformation carrying exactly the baseline's share
 of trace. Rank one is the case where that happens for free.
 
+There is also a structural reason for the criterion, which we give now because it explains the
+theorem better than the coefficient computation does --- though the computation above remains the
+proof.
+
+\begin{definition}[Complementary forcing]\label{def:complement}
+For a symmetric $H$ put $H^{*}:=q_bI-H$.
+\end{definition}
+
+\begin{proposition}[Complementary-forcing involution]\label{prop:involution}
+For every symmetric $H$, every $q_b$ and every $\tau\neq0$,
+\begin{equation}
+  \tau\,Q_H\!\left(\tfrac1\tau\right) \;=\; Q_{H^{*}}(\tau), \label{eq:involution}
+\end{equation}
+and $(H^{*})^{*}=H$. Moreover $\tr H^{*}=2q_b-\tr H$, so the trace-normalized class
+$\{H:\tr H=q_b\}$ is exactly the class closed under $H\mapsto H^{*}$. On that class
+\begin{equation}
+  \det H^{*}=\det H, \qquad H^{*}_{12}=-H_{12}, \qquad\text{hence}\qquad K(H^{*})=K(H).
+  \label{eq:Kinvariant}
+\end{equation}
+The unique fixed point is $H=\tfrac{q_b}{2}I$.
+\end{proposition}
+
+\begin{proof}
+$\tau Q_H(1/\tau)=\tau q_bI+(1-\tau)H=q_bI+(\tau-1)(q_bI-H)=Q_{H^{*}}(\tau)$; note that no
+hypothesis on $\tr H$ is used. Involutivity and the trace transformation are immediate. For the
+rest, $\det(q_bI-H)=q_b^2-q_b\tr H+\det H$, which equals $\det H$ exactly when $\tr H=q_b$; the
+off-diagonal of $q_bI-H$ is $-H_{12}$, so $H_{12}^2$ is unchanged and
+$K=\det H+\nu^2H_{12}^2$ is invariant. Finally $H^{*}=H$ forces $H=\tfrac{q_b}{2}I$.
+\end{proof}
+
+So the identity \eqref{eq:involution} holds \emph{unconditionally}; what the trace condition buys
+is that $H^{*}$ lands back in the same family, with the same $K$. Palindromicity follows at once:
+$\tau^2\det\Sig_H(1/\tau)$ is the determinant built from $Q_{H^{*}}(\tau)$, and on the
+trace-normalized class that has the same coefficient $K$, hence the same polynomial.
+
+\begin{remark}[Closure is not fixedness]\label{rem:closurenotfixed}
+Closure under the involution is much weaker than $H=H^{*}$. The trace-normalized class is a
+two-parameter family; the involution acts on it with a single fixed point $\tfrac{q_b}{2}I$, and
+every other member is paired with a distinct partner. It is the \emph{pairing}, not any
+individual symmetry of $H$, that forces the palindromic coefficients.
+\end{remark}
+
 \begin{remark}[Why the criterion is a trace, and why it is a $2\times2$ statement]\label{rem:whytrace}
 Three features of Theorem~\ref{thm:trace} are worth isolating.
 
@@ -583,27 +631,41 @@ then $\nu^2<1$. Hence $0\le\Aco<\tfrac14$ in the rank-one case.
 $\tfrac14-c^2s^2=(c^2-\tfrac12)^2\ge0$; and $(D_1+D_2)^2-(D_1-D_2)^2=4D_1D_2>0$.
 \end{proof}
 
-\section{Self-duality: sufficient, not necessary}\label{sec:selfdual}
+\section{The rank-one duality is a specialization}\label{sec:selfdual}
 
-The rank-one isotropic model has an extra symmetry that makes the reciprocal structure visually
-obvious, and it is worth recording --- together with the fact that it is not the cause.
+The rank-one isotropic model has a duality that makes the reciprocal structure visually obvious,
+and it is often how the phenomenon is first noticed. It is worth recording precisely because it
+is \emph{not} an independent mechanism: it is Proposition~\ref{prop:involution} restricted to
+rank one.
 
-\begin{proposition}[Self-duality of the rank-one isotropic family]\label{prop:selfdual}
-Let $c^2+s^2=1$, $\eperp=-su+cv$, $\tau>0$, and $Q_e(\tau)=q_b(I+(\tau-1)ee\T)$. Then
+\begin{proposition}[Rank-one complement]\label{prop:selfdual}
+Let $c^2+s^2=1$ and $\eperp=-su+cv$. Then for $H=q_b\,ee\T$,
+\begin{equation}
+  H^{*} \;=\; q_b\bigl(I-ee\T\bigr) \;=\; q_b\,\eperp\eperpT, \label{eq:rankonecomp}
+\end{equation}
+and consequently \eqref{eq:involution} reads
 \begin{equation}
   Q_e(\tau)=\tau\,Q_{\eperp}\!\left(\tfrac1\tau\right). \label{eq:selfdual}
 \end{equation}
 \end{proposition}
 
 \begin{proof}
-$ee\T+\eperp\eperpT=I$, so $Q_e(\tau)=q_b(\tau\,ee\T+\eperp\eperpT)$; and
-$\tau q_b\bigl(I+(\tau^{-1}-1)\eperp\eperpT\bigr)=q_b(\tau\,ee\T+\eperp\eperpT)$ likewise.
+$ee\T+\eperp\eperpT=I$ for an orthonormal pair, so $q_bI-q_bee\T=q_b\eperp\eperpT$. Substituting
+into \eqref{eq:involution} gives \eqref{eq:selfdual}.
 \end{proof}
 
-\begin{remark}[The counterexample]\label{rem:selfdualnotnec}
-Self-duality \eqref{eq:selfdual} is \emph{not} necessary for palindromicity. Take an anisotropic
-baseline diagonal in the drift eigenbasis, $Q_0=\operatorname{diag}(p,q)$ with $p\neq q$, and
-deform along $e$ with the scale $\mu=1/(e\T Q_0^{-1}e)$, i.e.\
+In other words, ``the excitation direction flips to its orthogonal complement'' and ``the
+deformation is replaced by its complement $q_bI-H$'' are the same statement, the first being the
+rank-one case of the second. Likewise ``trace balance'' and ``self-duality'' are not two
+mechanisms for this family: by Proposition~\ref{prop:involution} the trace condition
+\emph{is} the condition that the family is closed under the duality. A unit rank-one deformation
+satisfies it automatically for every direction $e$, which is why the rank-one model looks
+self-dual without any extra hypothesis.
+
+\begin{remark}[The duality picture is specific to an isotropic baseline]\label{rem:selfdualnotnec}
+What \emph{is} genuinely weaker than palindromicity is the existence of any such duality at all,
+once the baseline is allowed to be anisotropic. Take $Q_0=\operatorname{diag}(p,q)$ with $p\neq q$
+in the drift eigenbasis and deform along $e$ with the scale $\mu=1/(e\T Q_0^{-1}e)$, i.e.\
 $Q(\tau)=Q_0+\mu(\tau-1)ee\T$. Then:
 \begin{itemize}\itemsep2pt
 \item $\det Q(\tau)=\tau\det Q_0$ exactly --- that normalization is precisely what makes $\tau$
@@ -611,11 +673,12 @@ $Q(\tau)=Q_0+\mu(\tau-1)ee\T$. Then:
 \item consequently $\det Q(\tau)$ is linear in $\tau$ while $Q_{12}(\tau)=\mu(\tau-1)cs$, so by
   \eqref{eq:sharp} the determinant is $\tau\det Q_0+\nu^2\mu^2c^2s^2(\tau-1)^2$, manifestly
   palindromic;
-\item but \eqref{eq:selfdual} fails for $p\neq q$.
+\item but \eqref{eq:selfdual} fails for $p\neq q$, and Proposition~\ref{prop:involution} does not
+  apply because the baseline is not $q_bI$.
 \end{itemize}
-So palindromicity survives where forcing-level self-duality does not. We therefore present
-\eqref{eq:selfdual} as one transparent mechanism in a special model, not as the reason for the
-theorem. The reason is Theorem~\ref{thm:sharp} together with $\tr H=q_b$.
+So outside the isotropic-baseline family, palindromicity can survive with no forcing-level
+duality available. The clean equivalence of Proposition~\ref{prop:involution} is a statement
+about the affine family \eqref{eq:affine}, not about determinant palindromicity in general.
 \end{remark}
 
 \begin{remark}[Non-commuting baselines]\label{rem:noncommuting}
@@ -1128,6 +1191,45 @@ and we do not develop it here; it is recorded to mark the boundary of what the p
 does and does not explain. (Verified symbolically; see the reproducibility script.)
 \end{remark}
 
+\begin{remark}[A quantum boundary case, and what transfers]\label{rem:hofer}
+One model makes the boundary unusually sharp. Hofer et al.\ \cite{HoferEtAl2017} report the
+steady-state moments of two coherently coupled bosonic modes, each locally damped at rate
+$\kappa_\alpha$ into its own thermal bath, in the standard local-Lindblad treatment. They report
+moments; they report no determinant and no purity. From those moments one obtains, writing
+$m_\alpha=n_\alpha+\tfrac12$ and $N_{ij}=\langle a_i^{\dagger}a_j\rangle$,
+\begin{equation}
+  \det\bigl(N+\tfrac12I\bigr)
+  =\frac{4g^2\kappa_h^2\,m_h^2+\kappa_h\kappa_c\bigl(8g^2+(\kappa_h+\kappa_c)^2\bigr)m_hm_c
+         +4g^2\kappa_c^2\,m_c^2}{\bigl(4g^2+\kappa_h\kappa_c\bigr)(\kappa_h+\kappa_c)^2}.
+  \label{eq:hofer}
+\end{equation}
+The coefficients of $m_h^2$ and $m_c^2$ are $4g^2\kappa_h^2$ and $4g^2\kappa_c^2$, so
+\eqref{eq:hofer} is palindromic in the thermal ratio \emph{exactly when $\kappa_h=\kappa_c$} ---
+which is our criterion in this model, since $Q(\tau)=\kappa\operatorname{diag}(\tau,1)$ has
+$q_b=\kappa$ and $H=\operatorname{diag}(\kappa,0)$, so $\tr H=q_b$ holds precisely for equal
+damping. For $\kappa_h=\kappa_c=\kappa$ the expression collapses and
+\begin{equation}
+  \frac{\det(N+\tfrac12I)}{m_hm_c}=\frac{g^2(w+2)+\kappa^2}{4g^2+\kappa^2},
+  \qquad w=\tau+\tfrac1\tau,\ \ \tau=\tfrac{m_h}{m_c}, \label{eq:hoferw}
+\end{equation}
+again affine in $w$.
+
+What this comparison is for is the dissociation it exhibits. The \emph{criterion} transfers and
+the \emph{reciprocal signature} transfers; the determinant identity \eqref{eq:sharp} and the
+threshold do not. The identity does not because the steady-state equation here has a complex
+drift and Hermitian conjugation rather than the real-symmetric structure of \eqref{eq:lyap}: the
+modal rates are $\kappa/2\pm ig$, so $\nu=-2ig/\kappa$ is purely imaginary and $\nu^2<0$. We
+therefore do not apply Theorem~\ref{thm:sharp} to this model. The threshold does not transfer
+because $\partial_{g^2}$ of \eqref{eq:hoferw} equals $\kappa^2(w-2)/(\kappa^2+4g^2)^2\ge0$: the
+normalized determinant is monotone in the coupling, with no interior extremum of the kind that
+produces the classical threshold.
+
+The moral is worth stating plainly: \emph{palindromicity alone does not imply the threshold
+phenomenon.} Equation \eqref{eq:hofer} is derived here from the moments reported in
+\cite{HoferEtAl2017}; we attribute the steady state to those authors and the determinant to this
+paper, and we located no equivalent palindromic formulation in the literature reviewed.
+\end{remark}
+
 \paragraph{Determinants of network covariances.} One line of work does use a covariance
 determinant as a network performance measure: Siami and Motee's \emph{uncertainty volume} is a
 log-determinant of the steady-state output covariance of a noisy consensus network, and sits
@@ -1240,6 +1342,8 @@ Theorem~\ref{thm:cov} & \texttt{genCov\_lyapunov}, \texttt{genCov\_unique} & \te
 Theorem~\ref{thm:sharp} & \texttt{det\_genCov\_eq} & \textsc{lean}\\
 Theorem~\ref{thm:affine} & \texttt{det\_affineCov\_eq}, \texttt{det\_affineCov\_expand} & \textsc{lean}\\
 Theorem~\ref{thm:trace} & \texttt{affine\_palindromic\_iff}, \texttt{affine\_palindromic\_iff\_trace} & \textsc{lean}\\
+Proposition~\ref{prop:involution} & \texttt{affineForcing\_complement}, \texttt{complementForcing\_involutive}, \texttt{complementForcing\_trace}, \texttt{complementForcing\_traceNormalized}, \texttt{complementForcing\_det}, \texttt{affineCoeff\_complement} & \textsc{lean}\\
+Remark~\ref{rem:closurenotfixed} & \texttt{complementForcing\_fixed\_iff} & \textsc{lean}\\
 Theorem~\ref{thm:tracenorm} & \texttt{det\_affineCov\_traceNormalized} & \textsc{lean}\\
 Lemma~\ref{lem:wge2} & \texttt{two\_le\_reciprocalExcitation}, \texttt{reciprocalExcitation\_eq\_two\_iff} & \textsc{lean}\\
 Corollary~\ref{cor:reciprocal} & \texttt{normalizedAffineDet\_eq}, \texttt{normalizedAffineDet\_div\_eq} & \textsc{lean}\\
@@ -1248,7 +1352,7 @@ Proposition~\ref{prop:posdef} & \texttt{det\_affineForcing\_pos\_of\_posSemidef}
 Corollary~\ref{cor:rankone} & \texttt{rankOne\_trace}, \texttt{affineCoeff\_rankOne}, \texttt{affineForcing\_rankOne}, \texttt{affineCov\_rankOne}, \texttt{det\_activeCov\_palindromic\_of\_general} & \textsc{lean}\\
 Proposition~\ref{prop:degenerate} & \texttt{activeCoeff\_eq\_zero\_iff} & \textsc{lean}\\
 Proposition~\ref{prop:mixing} & \texttt{mixing\_le\_quarter}, \texttt{rateContrast\_sq\_lt\_one} & \textsc{lean}\\
-Proposition~\ref{prop:selfdual} & \texttt{activeForcing\_self\_dual} & \textsc{lean}\\
+Proposition~\ref{prop:selfdual} & \texttt{complementForcing\_rankOne}, \texttt{activeForcing\_self\_dual} & \textsc{lean}\\
 Theorem~\ref{thm:threshold} & \texttt{volumeRatio\_gt\_one\_iff} & \textsc{lean}\\
 Section~\ref{sec:K2} & \texttt{volume\_div\_volume0\_eq}, \texttt{reciprocalExcitation\_sq} & \textsc{lean}\\
 Corollary~\ref{cor:P3} & \texttt{p3\_thresholdCurve\_eq}, \texttt{p3\_threshold\_min/\_attained} & \textsc{lean}\\
@@ -1272,7 +1376,7 @@ revision
 \end{center}
 
 \paragraph{Audit.} A grep of the library for \texttt{sorry}, \texttt{admit} and \texttt{axiom}
-returns no matches. The $20$ theorems of the generalized development audited here, together with
+returns no matches. The $28$ theorems of the generalized development audited here, together with
 the $28$ audited for the earlier snapshot, report exactly the three standard axioms of mathlib's
 classical foundation under \texttt{\#print axioms}: \texttt{propext}, \texttt{Classical.choice},
 \texttt{Quot.sound}. There is no custom axiom and no \texttt{sorryAx}. The recorded build
@@ -1294,7 +1398,7 @@ floating-point step in any claim: it solves the Lyapunov equation from scratch r
 checking a pre-written solution, extracts the determinant's coefficients in $\tau$ and compares
 leading against constant, derives $\Phi$ and $\Aco$ for $P_3$ and $K_3$ from the graph
 Laplacians, and confirms each exact minimum by algebraic factorization. The script reports
-$88/88$ checks passing.
+$126/126$ checks passing.
 
 Exact commit hashes, the branch name and file digests are recorded in the accompanying
 \texttt{README.md} and \texttt{SHA256SUMS.txt} at the state in which this draft was built.
