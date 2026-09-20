@@ -1,12 +1,10 @@
 # Build transcript - paper/active-plane-theorem
-# Date: 2026-09-20 15:18:31 UTC
+# Date: 2026-09-20 17:04:03 UTC
 # pdfTeX 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux)
 # Command: latexmk -C && ./build.sh
 
-ype1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-
-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.
 pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on main.pdf (22 pages, 691692 bytes).
+Output written on main.pdf (23 pages, 697377 bytes).
 Transcript written on main.log.
 Latexmk: Getting log file 'main.log'
 Latexmk: Examining 'main.fls'
@@ -26,13 +24,13 @@ undefined references: 0
 overfull boxes      : 0
 underfull boxes     : 9   (loose lines only)
 bibtex warnings     : 0
-bibliography entries: 30  (all cited; no orphans)
-pages               : 22
+bibliography entries: 32  (all cited; no orphans)
+pages               : 23
 
 === manuscript_checks.py ===
 
 ==============================================================
-  106/106 checks passed
+  111/111 checks passed
 ==============================================================
 
 === Lean (unchanged this pass) ===

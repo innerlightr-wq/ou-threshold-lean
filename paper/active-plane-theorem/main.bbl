@@ -29,6 +29,11 @@ Nicola Boffi and Paolo De~Gregorio.
   thermal gradients.
 \newblock {\em Entropy}, 26(12):1087, 2024.
 
+\bibitem{BrunelliPaternostro2016}
+Matteo Brunelli and Mauro Paternostro.
+\newblock Irreversibility and correlations in coupled quantum oscillators.
+\newblock arXiv:1610.01172, 2016.
+
 \bibitem{CoverThomas2005}
 Thomas~M. Cover and Joy~A. Thomas.
 \newblock {\em Elements of Information Theory}.
@@ -81,6 +86,12 @@ Roger~A. Horn and Charles~R. Johnson.
 \newblock Oppenheim's inequality is Theorem 7.8.16, eq. (7.8.17), p.~509. The
   citation key retains the year of the Crossref online record (2012); the
   printed second edition is dated 2013.
+
+\bibitem{HsiangHu2015}
+Jen-Tsung Hsiang and B.~L. Hu.
+\newblock Quantum entanglement at high temperatures? {B}osonic systems in
+  nonequilibrium steady state.
+\newblock {\em Journal of High Energy Physics}, 2015(11):090, 2015.
 
 \bibitem{KwonEtAl1996}
 W.~H. Kwon, Y.~S. Moon, and S.~C. Ahn.

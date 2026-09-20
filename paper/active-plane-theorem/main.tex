@@ -1090,6 +1090,44 @@ determinant identity in that line. Theorem~\ref{thm:sharp} is exact but, as
 Remark~\ref{rem:hadamard} explains, it is exact only because $n=2$ makes the Hadamard expansion
 terminate, so it does not compete with that literature.
 
+\paragraph{Gaussian quantum steady states.} The same Lyapunov machinery governs the steady
+state of two coupled quantum oscillators attached to baths at different temperatures, and there
+$\tfrac12\log\det\sigma$ is the standard R\'enyi-2 entropy --- so this is the literature in which
+an equivalent of our construction would most plausibly hide. We checked it and did not find one.
+The nearest setting is \cite{BrunelliPaternostro2016}, which solves exactly this Lyapunov problem
+for two oscillators with two baths, uses $\tfrac12\log\det\sigma$, and plots its figure of merit
+against the bath-occupation ratio with an extremum at ratio one --- but the quantity studied is
+the entropy-production rate, and no determinant threshold appears. Elsewhere in that literature
+the exchange symmetry $T_1\leftrightarrow T_2$ is noted explicitly and the stronger ratio
+structure is \emph{not} claimed; \cite[\S\,discussion of Fig.~5]{HsiangHu2015} states the
+invariance and then argues against a reduction to $|\beta_1-\beta_2|$, proposing no
+ratio-symmetric form. Thresholds in that literature are typically in \emph{absolute} temperature
+for a separability predicate, not in a temperature \emph{ratio} for a determinant crossover.
+
+Two structural obstructions keep the quantum case outside our hypotheses, and we record them
+rather than gesture at them. First, a two-mode Gaussian system carries momenta, so its covariance
+is $4\times4$ and its drift is \emph{not} symmetric --- the Hamiltonian part sees to that --- so
+the modal solution \eqref{eq:modal} does not apply. Second, bath asymmetry is precisely what
+mixes the normal modes, so the $4\times4$ problem does not block-diagonalize into $2\times2$
+blocks in the regime of interest.
+
+\begin{remark}[The reciprocal phenomenon is broader than this theorem]\label{rem:quantum}
+It is worth being candid that palindromicity is not peculiar to the hypotheses used here. For the
+canonical underdamped pair --- two oscillators coupled by a spring, each damped at rate
+$\gamma_i$ and driven by its own bath at temperature $T_i$ --- we computed the stationary
+$4\times4$ covariance directly. Its determinant is a \emph{quartic} in $(T_1,T_2)$, and it is
+palindromic in the temperature ratio exactly when the two damping rates are equal; unequal
+frequencies do no harm, unequal damping destroys it. In that case
+$\det\sigma/(T_1T_2)^2$ is a \emph{quadratic} in $w$, not an affine function of it.
+
+So the reciprocal structure appears there too, but in a different form and for a different
+reason: the condition is on the \emph{drift} (equal damping), whereas
+Theorem~\ref{thm:trace} imposes a condition on the \emph{forcing} ($\tr H=q_b$) and returns an
+exactly affine dependence. We did not locate this quartic observation in the literature either,
+and we do not develop it here; it is recorded to mark the boundary of what the present theorem
+does and does not explain. (Verified symbolically; see the reproducibility script.)
+\end{remark}
+
 \paragraph{Determinants of network covariances.} One line of work does use a covariance
 determinant as a network performance measure: Siami and Motee's \emph{uncertainty volume} is a
 log-determinant of the steady-state output covariance of a noisy consensus network, and sits
@@ -1158,13 +1196,13 @@ covariance dynamics; \cite{DeJesus2026dual} is invariant-theoretic context, not 
   geometry as fixed; other optimizations give other constants.
 \item The literature searches behind Section~\ref{sec:priorart} used web search, the arXiv API,
   Crossref and OpenAlex full-text search, together with a number of primary sources read in
-  full. They did \emph{not} reach Google Scholar, Scopus, Web of Science, MathSciNet or zbMATH,
+  full. They did \emph{not} reach Google Scholar, Scopus, Web of Science, MathSciNet or zbMATH ---
+  each was attempted and returned a captcha, paywall redirect or HTTP error ---
   and arXiv's own search is metadata-only, so a result appearing as an unnamed mid-paper remark
   would be invisible to them. No matrix-analysis monograph was consulted in full; a
-  Hadamard-product problems section is a plausible home for \eqref{eq:hadexp}. Two specific
-  gaps are worth naming: the two-mode \emph{quantum} Gaussian literature, where
-  $\det\sigma$ for two thermal modes versus coupling is computed routinely (purity being
-  $1/\sqrt{\det\sigma}$), was not searched at all; and non-English literature was not searched.
+  Hadamard-product problems section is a plausible home for \eqref{eq:hadexp}. The two-mode \emph{quantum} Gaussian literature has since been searched as well
+  (Section~\ref{sec:priorart}), using the arXiv, Crossref, OpenAlex and INSPIRE full-text APIs;
+  non-English literature was not searched.
   ``Not located'' throughout should therefore be read as the outcome of a documented but
   non-exhaustive sweep, not as a claim of absence.
 \end{enumerate}

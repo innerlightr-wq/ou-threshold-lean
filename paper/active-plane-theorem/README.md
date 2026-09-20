@@ -56,10 +56,10 @@ counterexample: its relevant eigenspace is degenerate, so its *distinct-rate* di
 | file | |
 |---|---|
 | `main.tex` | the manuscript |
-| `main.pdf` | compiled, 22 pages, letter |
-| `references.bib` | self-contained bibliography, 30 entries, all cited |
+| `main.pdf` | compiled, 23 pages, letter |
+| `references.bib` | self-contained bibliography, 32 entries, all cited |
 | `figures/fig1–3.pdf` | active-plane schematic; affine determinant; threshold curves |
-| `manuscript_checks.py` | 106 exact symbolic checks (SymPy), including adversarial assumption tests |
+| `manuscript_checks.py` | 111 exact symbolic checks (SymPy), including adversarial assumption tests |
 | `make_figures.py` | regenerates the figures from the exact formulas |
 | `build.sh`, `build.log` | build script and recorded transcript |
 | `SHA256SUMS.txt` | digests of every file above |
@@ -72,12 +72,12 @@ reconstructing it later cost real work. Do not repeat that.
 
 ```bash
 ./build.sh                       # latexmk -pdf, or pdflatex/bibtex/pdflatex x2
-python3 manuscript_checks.py     # 106/106 exact checks, exit 0
+python3 manuscript_checks.py     # 111/111 exact checks, exit 0
 python3 make_figures.py          # regenerate figures (needs matplotlib)
 ```
 
 Recorded build: **0 undefined citations, 0 undefined references, 0 overfull boxes, 0 BibTeX
-warnings, 30 bibliography entries, 22 pages.**
+warnings, 32 bibliography entries, 23 pages.**
 
 ## What is proved where
 

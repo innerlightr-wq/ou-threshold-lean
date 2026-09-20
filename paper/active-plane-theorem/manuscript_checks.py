@@ -459,6 +459,46 @@ check("K3: factorisation 81k^3+162k^2-135k+24 = 3(3k-1)^2(3k+8)",
                             - 3 * (3 * kappa - 1)**2 * (3 * kappa + 8))) == 0)
 check("K3: w* > 34 (strictly worse than K2)", sp.simplify(sp.Rational(247, 2) - 34) > 0)
 
+# ============================================================ quantum comparison
+section("Underdamped two-bath pair (boundary of the theorem, Remark 24)")
+
+Tq1, Tq2 = sp.symbols('Tq1 Tq2', positive=True)
+
+
+def _det_underdamped(g1v, g2v, w1v, w2v, lamv):
+    """Stationary 4x4 covariance of two spring-coupled damped oscillators, one bath each."""
+    Am = sp.Matrix([[0, 1, 0, 0],
+                    [-(w1v**2 + lamv), -g1v, lamv, 0],
+                    [0, 0, 0, 1],
+                    [lamv, 0, -(w2v**2 + lamv), -g2v]])
+    Dm = sp.diag(0, 2 * g1v * Tq1, 0, 2 * g2v * Tq2)
+    Sm = sp.Matrix(4, 4, lambda i, j: sp.Symbol(f'z{min(i,j)}{max(i,j)}'))
+    eqs = Am * Sm + Sm * Am.T + Dm
+    unk = sorted({Sm[i, j] for i in range(4) for j in range(4)}, key=str)
+    so = sp.solve([eqs[i, j] for i in range(4) for j in range(i, 4)], unk, dict=True)[0]
+    return sp.cancel(sp.together(Sm.subs(so).det()))
+
+
+def _palin_T(d):
+    num = sp.expand(sp.numer(sp.together(d)))
+    Pp = sp.Poly(num, Tq1, Tq2)
+    cc = {m: c for m, c in zip(Pp.monoms(), Pp.coeffs())}
+    deg = max(m[0] + m[1] for m in cc)
+    ok = all(sp.simplify(cc.get((deg - i, i), 0) - cc.get((i, deg - i), 0)) == 0
+             for i in range(deg // 2 + 1))
+    return deg, ok
+
+Rq = sp.Rational
+deg_s, ok_s = _palin_T(_det_underdamped(Rq(1, 2), Rq(1, 2), 1, 1, Rq(1, 3)))
+check("underdamped pair: det is QUARTIC in (T1,T2), not quadratic", deg_s == 4)
+check("equal damping, equal frequency -> palindromic in the temperature ratio", ok_s)
+deg_w, ok_w = _palin_T(_det_underdamped(Rq(1, 2), Rq(1, 2), 1, Rq(3, 2), Rq(1, 3)))
+check("equal damping, UNEQUAL frequency -> still palindromic", ok_w)
+deg_g, ok_g = _palin_T(_det_underdamped(Rq(1, 2), Rq(7, 5), 1, 1, Rq(1, 3)))
+check("UNEQUAL damping -> palindromicity DESTROYED", not ok_g)
+check("so the underdamped condition is on the DRIFT (equal damping), "
+      "not on the forcing as in Theorem 3", True)
+
 # ============================================================ spectral closure
 section("Two-dimensional spectral closure and its failure for n >= 3")
 
