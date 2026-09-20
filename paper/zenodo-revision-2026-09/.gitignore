@@ -1,0 +1,10 @@
+# LaTeX build intermediates.
+# main.pdf, main.bbl and build.log ARE tracked: main.pdf is the artifact prepared for
+# deposit, main.bbl lets the manuscript rebuild without the repository-root bibliography,
+# and build.log is the recorded build transcript.
+*.aux
+*.blg
+*.out
+*.toc
+main.log
+venv/

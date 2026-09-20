@@ -149,12 +149,27 @@ maintained by hand and the keys are fixed by this document.
 
 ## 6a. Citation policy
 
-`references.bib` is **"directly cited only"**: every entry is cited by key in at least one of
-`docs/LITERATURE_REVIEW.md` or `docs/NOVELTY_AND_PROVENANCE.md`, and every key cited there exists
-in the file. Checked mechanically — 25 keys, 25 cited, no orphans in either direction. Sources
+`references.bib` is **"directly cited only"**: every entry is cited by key in at least one
+citing document of this repository, and every key cited there exists in the file. Sources
 consulted during the searches but not bearing on a specific claim are **not** added; the
 bibliography is meant to make the provenance traceable, not to look large. If a source is ever
 retained for provenance without being cited in prose, that exception must be recorded here.
+
+**Updated 19 September 2026 (`revise-zenodo-ou-2026-09`).** The set of citing documents now has
+three members, not two: `docs/LITERATURE_REVIEW.md`, `docs/NOVELTY_AND_PROVENANCE.md`, and the
+manuscript `paper/zenodo-revision-2026-09/main.tex`. The file holds **33** entries. The 8 added
+in that task (`PecoraCarroll1998`, `RulkovEtAl1995`, `AbarbanelEtAl1996`, `KocarevParlitz1996`,
+`AronsonEtAl1990`, `Haken1983`, `Aubin1991`, `DeJesus2026bjj`) are the works cited by the
+manuscript and by no repository document, and they were verified the same way as the rest — DOI
+content negotiation against Crossref/DataCite, cross-checked as CSL-JSON. The manuscript cites
+24 of the 33; the remaining 9 are cited by the two `docs/` files, so there are still no orphans
+in either direction.
+
+Two entries carry a `note` recording a metadata problem rather than hiding it: `Aubin1991` (the
+manuscript cites the 1991 Birkhäuser edition, but the only registered DOI resolves to the 2009
+Modern Birkhäuser Classics reprint) and `DeJesus2026bjj` (DataCite returns an `@article` with no
+journal and a trailing comma in the author string, which BibTeX rejects; reformatted into the
+`@misc` house style used by the other Zenodo entries).
 
 ## 7. Citation keys
 
@@ -163,7 +178,10 @@ disambiguating suffix where an author has two entries in the same year (`DeJesus
 `DeJesus2026dual`). New keys follow the same rule: `Barucca2014`, `GodrecheLuck2019`,
 `FerreiraMetzBarucca2025`, `Mauchly1940`, `Muirhead1982`, `SummersEtAl2016`,
 `TownsendWilber2018`, `WolkowiczStyan1980`, `HornJohnson2012`, `Lauritzen1996`,
-`Simoncini2016`, `Vieira2019`, `DeJesus2026dual`. No key was changed, and no key is duplicated.
+`Simoncini2016`, `Vieira2019`, `DeJesus2026dual`; and, from the September revision task,
+`PecoraCarroll1998`, `RulkovEtAl1995`, `AbarbanelEtAl1996`, `KocarevParlitz1996`,
+`AronsonEtAl1990`, `Haken1983`, `Aubin1991`, `DeJesus2026bjj`. No key was changed, and no key is
+duplicated.
 
 ## 8. Source-note template
 

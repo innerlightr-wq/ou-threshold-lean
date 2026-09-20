@@ -1,0 +1,143 @@
+\begin{thebibliography}{10}
+
+\bibitem{AbarbanelEtAl1996}
+Henry D.~I. Abarbanel, Nikolai~F. Rulkov, and Mikhail~M. Sushchik.
+\newblock Generalized synchronization of chaos: The auxiliary system approach.
+\newblock {\em Physical Review E}, 53(5):4528–4535, May 1996.
+
+\bibitem{AronsonEtAl1990}
+D.G. Aronson, G.B. Ermentrout, and N.~Kopell.
+\newblock Amplitude response of coupled oscillators.
+\newblock {\em Physica D: Nonlinear Phenomena}, 41(3):403–449, April 1990.
+
+\bibitem{Aubin1991}
+Jean-Pierre Aubin.
+\newblock {\em Viability Theory}.
+\newblock Birkh{\"a}user Boston, Boston, 1991.
+\newblock Cited from the 1991 Birkh{\"a}user edition, as in version~1 of the
+  manuscript. The DOI resolves to the 2009 Modern Birkh{\"a}user Classics
+  reprint, which is the earliest registered identifier for this work; no DOI
+  exists for the 1991 printing.
+
+\bibitem{Barucca2014}
+Paolo Barucca.
+\newblock Localization in covariance matrices of coupled heterogeneous
+  ornstein-uhlenbeck processes.
+\newblock {\em Physical Review E}, 90(6), December 2014.
+
+\bibitem{CoverThomas2005}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock {\em Elements of Information Theory}.
+\newblock Wiley, April 2005.
+
+\bibitem{DeJesus2026bjj}
+Elias De~Jes{\'u}s.
+\newblock Local stability, separatrix geometry, and basin accessibility in a
+  dissipative bosonic josephson junction.
+\newblock Zenodo, 2026.
+\newblock Technical note, CC BY 4.0. Metadata verified by DOI content
+  negotiation against DataCite; reformatted here into the house style used by
+  the other Zenodo entries (the registry record supplies no journal and an
+  author string with a trailing comma).
+
+\bibitem{DotsenkoEtAl2013}
+Victor Dotsenko, Anna Maciołek, Oleg Vasilyev, and Gleb Oshanin.
+\newblock Two-temperature langevin dynamics in a parabolic potential.
+\newblock {\em Physical Review E}, 87(6), June 2013.
+
+\bibitem{FerreiraMetzBarucca2025}
+Leonardo~S. Ferreira, Fernando~L. Metz, and Paolo Barucca.
+\newblock Random matrix ensemble for the covariance matrix of
+  ornstein-uhlenbeck processes with heterogeneous temperatures.
+\newblock {\em Physical Review E}, 111(1), January 2025.
+
+\bibitem{FilligerReimann2007}
+Roger Filliger and Peter Reimann.
+\newblock Brownian gyrator: A minimal heat engine on the nanoscale.
+\newblock {\em Physical Review Letters}, 99(23), December 2007.
+
+\bibitem{Gardiner2004}
+Crispin~W. Gardiner.
+\newblock {\em Handbook of Stochastic Methods}.
+\newblock Springer Berlin Heidelberg, 2004.
+
+\bibitem{GodrecheLuck2019}
+Claude Godrèche and Jean-Marc Luck.
+\newblock Characterising the nonequilibrium stationary states of
+  ornstein–uhlenbeck processes.
+\newblock {\em Journal of Physics A: Mathematical and Theoretical},
+  52(3):035002, December 2019.
+
+\bibitem{Haken1983}
+Hermann Haken.
+\newblock {\em Synergetics: An Introduction}.
+\newblock Springer Berlin Heidelberg, 1983.
+
+\bibitem{HornJohnson2012}
+Roger~A. Horn and Charles~R. Johnson.
+\newblock {\em Matrix Analysis}.
+\newblock Cambridge University Press, October 2012.
+
+\bibitem{KocarevParlitz1996}
+L.~Kocarev and U.~Parlitz.
+\newblock Generalized synchronization, predictability, and equivalence of
+  unidirectionally coupled dynamical systems.
+\newblock {\em Physical Review Letters}, 76(11):1816–1819, March 1996.
+
+\bibitem{Lauritzen1996}
+Steffen~L Lauritzen.
+\newblock {\em Graphical Models}.
+\newblock Oxford University PressOxford, May 1996.
+
+\bibitem{Mauchly1940}
+John~W. Mauchly.
+\newblock Significance test for sphericity of a normal $n$-variate
+  distribution.
+\newblock {\em The Annals of Mathematical Statistics}, 11(2):204–209, June
+  1940.
+
+\bibitem{Muirhead1982}
+Robb~J. Muirhead.
+\newblock {\em Aspects of Multivariate Statistical Theory}.
+\newblock Wiley, March 1982.
+
+\bibitem{PecoraCarroll1998}
+Louis~M. Pecora and Thomas~L. Carroll.
+\newblock Master stability functions for synchronized coupled systems.
+\newblock {\em Physical Review Letters}, 80(10):2109–2112, March 1998.
+
+\bibitem{PikovskyEtAl2001}
+Arkady Pikovsky, Michael Rosenblum, and Jürgen Kurths.
+\newblock {\em Synchronization: A Universal Concept in Nonlinear Sciences}.
+\newblock Cambridge University Press, October 2001.
+
+\bibitem{RulkovEtAl1995}
+Nikolai~F. Rulkov, Mikhail~M. Sushchik, Lev~S. Tsimring, and Henry D.~I.
+  Abarbanel.
+\newblock Generalized synchronization of chaos in directionally coupled chaotic
+  systems.
+\newblock {\em Physical Review E}, 51(2):980–994, February 1995.
+
+\bibitem{UhlenbeckOrnstein1930}
+G.~E. Uhlenbeck and L.~S. Ornstein.
+\newblock On the theory of the brownian motion.
+\newblock {\em Physical Review}, 36(5):823–841, September 1930.
+
+\bibitem{Vatiwutipong2019}
+P.~Vatiwutipong and N.~Phewchean.
+\newblock Alternative way to derive the distribution of the multivariate
+  ornstein–uhlenbeck process.
+\newblock {\em Advances in Difference Equations}, 2019(1), July 2019.
+
+\bibitem{Wilks1932}
+S.~S. WILKS.
+\newblock Certain generalizations in the analysis of variance.
+\newblock {\em Biometrika}, 24(3-4):471–494, 1932.
+
+\bibitem{WolkowiczStyan1980}
+Henry Wolkowicz and George~P.H. Styan.
+\newblock Bounds for eigenvalues using traces.
+\newblock {\em Linear Algebra and its Applications}, 29:471–506, February
+  1980.
+
+\end{thebibliography}
