@@ -1,10 +1,41 @@
-# Zenodo deposit metadata — draft
+# Zenodo deposit metadata and version record
 
-**Status: draft only. Nothing has been uploaded. No DOI has been reserved or assigned.**
+**Status: deposited.**
 
-Fill the publication date at upload time. Everything else below is ready to paste.
+> De Jesus, Elias. (2026). *Palindromic Covariance Determinants and Reciprocal Thresholds in
+> Two-Mode Linear Ornstein–Uhlenbeck Systems*. Zenodo.
+> <https://doi.org/10.5281/zenodo.22862620>
+
+The deposited PDF carried `Draft --- September 2026` on its title page. That label has been
+removed from the source and the PDF rebuilt, so what follows is now a **new-version** checklist,
+not a first-upload one. See "Uploading the new version" immediately below; the metadata sections
+after it are unchanged and still describe the record.
 
 ---
+
+## Uploading the new version
+
+Do **not** start a fresh upload — that would create an unrelated record with its own concept DOI.
+From the existing record page: **New version** → replace both files → **Publish**. Zenodo then
+mints a new *version* DOI while the *concept* DOI (the "Cite all versions" one) keeps resolving
+to the latest.
+
+Check on the record page which of the two `10.5281/zenodo.…` identifiers shown is the concept DOI
+and which is this version's, and cite the concept DOI wherever a stable pointer is wanted.
+
+Files to replace, both rebuilt after the label change:
+
+| upload as | source |
+|---|---|
+| `DeJesus_Palindromic_Covariance_Thresholds_2026.pdf` | `paper/active-plane-theorem/main.pdf` |
+| `palindromic-covariance-thresholds-source-v1.zip` | `paper/active-plane-theorem/release/` |
+
+Everything else on the form stays as deposited. Set the new version's publication date to the
+day you publish it, leave the title, authors, keywords, license and related identifiers alone,
+and add a one-line version note, for example:
+
+> Title-page label corrected: the first deposit read "Draft"; this version reads "September
+> 2026". No change to the mathematics, the figures, the bibliography or any verification result.
 
 ## Title
 
@@ -31,13 +62,13 @@ Sole author. No contributors to list.
 
 ## Publication date
 
-`YYYY-MM-DD` — **set to the actual upload date.** Do not backdate.
+`YYYY-MM-DD` — **set to the actual publication date of each version.** Do not backdate.
 
 ## Version
 
-`1` (or `v1`). This is the first deposit of this work.
+`2` for this upload; the first deposit was version `1`.
 
-It is **not** a new version of the earlier two-node deposit
+This work is **not** a new version of the earlier two-node deposit
 (10.5281/zenodo.22059089). That is a different paper, cited here as the
 motivating special case and recovered in Section 12.1 as a corollary. Do not
 attach this to that concept DOI.
@@ -154,7 +185,7 @@ which shipped only a PDF and whose source was later unrecoverable.
 
 ## Do not
 
-- Do not assign or reserve a DOI before the deposit is actually being published.
-- Do not attach this to the earlier note's concept DOI as a new version.
+- Do not start a fresh upload for the label fix; use **New version** on the existing record.
+- Do not attach this to the earlier two-node note's concept DOI as a new version.
 - Do not list a journal, volume or pages; there are none.
 - Do not add co-authors, funders or grant numbers; there are none.

@@ -1,6 +1,16 @@
 # Palindromic Covariance Determinants and Reciprocal Thresholds
 
-**September 2026. Mathematics frozen. Not deposited, not submitted, no DOI.**
+**September 2026. Mathematics frozen. Deposited on Zenodo:
+[10.5281/zenodo.22862620](https://doi.org/10.5281/zenodo.22862620). Not submitted to a journal,
+not peer reviewed.**
+
+> De Jesus, Elias. (2026). *Palindromic Covariance Determinants and Reciprocal Thresholds in
+> Two-Mode Linear Ornstein–Uhlenbeck Systems*. Zenodo.
+> <https://doi.org/10.5281/zenodo.22862620>
+
+The first deposit carried `Draft --- September 2026` on the title page. That label is removed in
+the current source, and `release/` holds the corresponding rebuild for a new Zenodo version; the
+mathematics, the figures and every verification result are unchanged.
 
 A new paper — *not* a revision of the deposited two-node note
 ([10.5281/zenodo.22059089](https://doi.org/10.5281/zenodo.22059089)), which is cited here as the
@@ -71,7 +81,7 @@ counterexample: its relevant eigenspace is degenerate, so its *distinct-rate* di
 | `build.sh`, `build.log` | build script and recorded transcript |
 | `SHA256SUMS.txt` | digests of every file above |
 | `release/` | self-contained source package for deposit (builds in isolation) |
-| `ZENODO_METADATA_DRAFT.md` | deposit metadata, drafted only — nothing uploaded |
+| `ZENODO_METADATA_DRAFT.md` | deposit metadata, and the record of what was deposited |
 
 This directory is **self-contained**: `main.tex` reads `references.bib` from beside it, not from
 the repository root. That is deliberate — the previous Zenodo deposit shipped only a PDF, and

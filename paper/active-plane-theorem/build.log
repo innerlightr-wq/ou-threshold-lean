@@ -1196,7 +1196,7 @@ f-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/ty
 pe1/public/cm-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-s
 uper/sftt1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.p
 fb>
-Output written on main.pdf (25 pages, 705812 bytes).
+Output written on main.pdf (25 pages, 705568 bytes).
 Transcript written on main.log.
 Latexmk: Getting log file 'main.log'
 Latexmk: Examining 'main.fls'
@@ -1379,7 +1379,7 @@ mf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/t
 ype1/public/cm-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-
 super/sftt1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.
 pfb>
-Output written on main.pdf (25 pages, 721907 bytes).
+Output written on main.pdf (25 pages, 721680 bytes).
 Transcript written on main.log.
 Latexmk: Getting log file 'main.log'
 Latexmk: Examining 'main.fls'

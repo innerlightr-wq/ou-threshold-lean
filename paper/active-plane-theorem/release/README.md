@@ -4,6 +4,8 @@ Elias De Jesús — Independent Researcher — ORCID [0009-0007-0190-9143](https
 
 Self-contained source package for the manuscript. September 2026.
 
+Deposited on Zenodo: [10.5281/zenodo.22862620](https://doi.org/10.5281/zenodo.22862620).
+
 ## What the paper proves
 
 Let a stable linear Ornstein–Uhlenbeck system have a **symmetric** drift whose
