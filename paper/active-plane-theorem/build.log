@@ -42,6 +42,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
 (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def)))
 (/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/share/texmf-dist/tex/latex/tools/array.sty)
 (/usr/share/texmf-dist/tex/latex/base/fontenc.sty)
 (/usr/share/texmf-dist/tex/latex/base/inputenc.sty)
 (/usr/share/texmf-dist/tex/latex/microtype/microtype.sty
@@ -87,1081 +88,1076 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texmf-dist/tex/latex/microtype/mt-msb.cfg)
 
 LaTeX Warning: Citation `UhlenbeckOrnstein1930' on page 1 undefined on input li
-ne 87.
+ne 80.
 
 
-LaTeX Warning: Citation `Gardiner2004' on page 1 undefined on input line 87.
+LaTeX Warning: Citation `Gardiner2004' on page 1 undefined on input line 80.
 
 
-LaTeX Warning: Citation `Vatiwutipong2019' on page 1 undefined on input line 87
+LaTeX Warning: Citation `Vatiwutipong2019' on page 1 undefined on input line 80
 .
 
 
-LaTeX Warning: Citation `Barucca2014' on page 1 undefined on input line 90.
+LaTeX Warning: Citation `Barucca2014' on page 1 undefined on input line 83.
 
 
 LaTeX Warning: Citation `FerreiraMetzBarucca2025' on page 1 undefined on input 
-line 91.
+line 84.
 
 
-LaTeX Warning: Citation `GodrecheLuck2019' on page 1 undefined on input line 93
+LaTeX Warning: Citation `GodrecheLuck2019' on page 1 undefined on input line 86
 .
 
 
 LaTeX Warning: Citation `FilligerReimann2007' on page 1 undefined on input line
- 94.
+ 87.
 
 
-LaTeX Warning: Citation `DotsenkoEtAl2013' on page 1 undefined on input line 94
+LaTeX Warning: Citation `DotsenkoEtAl2013' on page 1 undefined on input line 87
 .
+
+
+LaTeX Warning: Citation `Wilks1932' on page 1 undefined on input line 90.
+
+
+LaTeX Warning: Citation `CoverThomas2005' on page 1 undefined on input line 91.
+
+
+
+LaTeX Warning: Citation `DeJesus2026ou' on page 1 undefined on input line 91.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fon
 ts/enc/dvips/cm-super/cm-super-t1.enc}]
 
-LaTeX Warning: Citation `Wilks1932' on page 2 undefined on input line 97.
-
-
-LaTeX Warning: Citation `CoverThomas2005' on page 2 undefined on input line 98.
+LaTeX Warning: Reference `eq:sharpintro' on page 2 undefined on input line 109.
 
 
 
-LaTeX Warning: Citation `DeJesus2026ou' on page 2 undefined on input line 98.
-
-
-LaTeX Warning: Reference `eq:sharpintro' on page 2 undefined on input line 116.
+LaTeX Warning: Reference `eq:sharpintro' on page 2 undefined on input line 136.
 
 
 
-LaTeX Warning: Reference `eq:sharpintro' on page 2 undefined on input line 143.
+LaTeX Warning: Citation `Gardiner2004' on page 2 undefined on input line 142.
 
 
-
-LaTeX Warning: Citation `Gardiner2004' on page 2 undefined on input line 149.
-
-
-LaTeX Warning: Citation `Barucca2014' on page 2 undefined on input line 151.
+LaTeX Warning: Citation `Barucca2014' on page 2 undefined on input line 144.
 
 
-LaTeX Warning: Citation `GodrecheLuck2019' on page 2 undefined on input line 15
-1.
+LaTeX Warning: Citation `GodrecheLuck2019' on page 2 undefined on input line 14
+4.
 
 
 LaTeX Warning: Citation `PalittaLefteriu2022' on page 2 undefined on input line
- 152.
+ 145.
 
 
-LaTeX Warning: Citation `YadykinEtAl2023' on page 2 undefined on input line 152
+LaTeX Warning: Citation `YadykinEtAl2023' on page 2 undefined on input line 145
 .
 
 
-LaTeX Warning: Reference `eq:sharpintro' on page 2 undefined on input line 152.
+LaTeX Warning: Reference `eq:sharpintro' on page 2 undefined on input line 145.
 
 
 
-LaTeX Warning: Reference `rem:hadamard' on page 2 undefined on input line 154.
+LaTeX Warning: Reference `rem:hadamard' on page 2 undefined on input line 147.
 
 
-LaTeX Warning: Reference `rem:wknown' on page 2 undefined on input line 155.
+LaTeX Warning: Reference `rem:wknown' on page 2 undefined on input line 148.
 
 
-LaTeX Warning: Citation `Vieira2019' on page 2 undefined on input line 156.
+LaTeX Warning: Citation `Vieira2019' on page 2 undefined on input line 149.
 
 
-LaTeX Warning: Citation `Mauchly1940' on page 2 undefined on input line 157.
+LaTeX Warning: Citation `Mauchly1940' on page 2 undefined on input line 150.
 
 
-LaTeX Warning: Citation `Muirhead1982' on page 2 undefined on input line 157.
+LaTeX Warning: Citation `Muirhead1982' on page 2 undefined on input line 150.
+
+
+LaTeX Warning: Reference `thm:trace' on page 2 undefined on input line 154.
+
+
+LaTeX Warning: Reference `sec:priorart' on page 2 undefined on input line 156.
 
 [2]
 
-LaTeX Warning: Reference `thm:trace' on page 3 undefined on input line 161.
+LaTeX Warning: Reference `eq:sde' on page 3 undefined on input line 174.
 
 
-LaTeX Warning: Reference `sec:priorart' on page 3 undefined on input line 163.
+LaTeX Warning: Citation `Gardiner2004' on page 3 undefined on input line 175.
 
 
-LaTeX Warning: Reference `eq:sde' on page 3 undefined on input line 181.
+LaTeX Warning: Citation `Vatiwutipong2019' on page 3 undefined on input line 17
+5.
 
 
-LaTeX Warning: Citation `Gardiner2004' on page 3 undefined on input line 182.
+LaTeX Warning: Reference `eq:lyap' on page 3 undefined on input line 175.
 
 
-LaTeX Warning: Citation `Vatiwutipong2019' on page 3 undefined on input line 18
-2.
+LaTeX Warning: Reference `sec:thm1' on page 3 undefined on input line 181.
 
 
-LaTeX Warning: Reference `eq:lyap' on page 3 undefined on input line 182.
-
-
-LaTeX Warning: Reference `sec:thm1' on page 3 undefined on input line 188.
-
-
-LaTeX Warning: Reference `sec:threshold' on page 3 undefined on input line 188.
+LaTeX Warning: Reference `sec:threshold' on page 3 undefined on input line 181.
 
 
 
-LaTeX Warning: Reference `eq:modal' on page 3 undefined on input line 189.
+LaTeX Warning: Reference `eq:modal' on page 3 undefined on input line 182.
 
 
-LaTeX Warning: Reference `eq:forcing' on page 3 undefined on input line 211.
+LaTeX Warning: Reference `eq:forcing' on page 3 undefined on input line 204.
 
 
-LaTeX Warning: Citation `DeJesus2026ou' on page 3 undefined on input line 212.
+LaTeX Warning: Citation `DeJesus2026ou' on page 3 undefined on input line 205.
 
 
-LaTeX Warning: Reference `sec:K2' on page 3 undefined on input line 213.
+LaTeX Warning: Reference `sec:K2' on page 3 undefined on input line 206.
 
 
-LaTeX Warning: Reference `eq:tvsr' on page 3 undefined on input line 219.
+LaTeX Warning: Reference `eq:tvsr' on page 3 undefined on input line 212.
 
 
-LaTeX Warning: Reference `sec:thm3' on page 3 undefined on input line 221.
+LaTeX Warning: Reference `sec:thm3' on page 3 undefined on input line 214.
+
+
+LaTeX Warning: Reference `fig:plane' on page 3 undefined on input line 223.
+
+
+LaTeX Warning: Reference `eq:lyap' on page 3 undefined on input line 239.
 
 [3]
 
-LaTeX Warning: Reference `fig:plane' on page 4 undefined on input line 230.
+LaTeX Warning: Reference `eq:lyap' on page 4 undefined on input line 251.
 
 
-LaTeX Warning: Reference `eq:lyap' on page 4 undefined on input line 246.
+LaTeX Warning: Reference `eq:modal' on page 4 undefined on input line 255.
 
 
-LaTeX Warning: Reference `eq:lyap' on page 4 undefined on input line 258.
+LaTeX Warning: Citation `Barucca2014' on page 4 undefined on input line 257.
+
+
+LaTeX Warning: Citation `GodrecheLuck2019' on page 4 undefined on input line 25
+7.
+
+
+LaTeX Warning: Citation `FerreiraMetzBarucca2025' on page 4 undefined on input 
+line 257.
 
 
 LaTeX Warning: Reference `eq:modal' on page 4 undefined on input line 262.
 
 
-LaTeX Warning: Citation `Barucca2014' on page 4 undefined on input line 264.
+LaTeX Warning: Reference `eq:modal' on page 4 undefined on input line 270.
 
 
-LaTeX Warning: Citation `GodrecheLuck2019' on page 4 undefined on input line 26
-4.
-
-
-LaTeX Warning: Citation `FerreiraMetzBarucca2025' on page 4 undefined on input 
-line 264.
-
-
-LaTeX Warning: Reference `eq:modal' on page 4 undefined on input line 269.
-
-
-LaTeX Warning: Reference `eq:modal' on page 4 undefined on input line 277.
+LaTeX Warning: Reference `eq:sharp' on page 4 undefined on input line 281.
 
 [4 <./figures/fig1.pdf>]
 
-LaTeX Warning: Reference `eq:sharp' on page 5 undefined on input line 288.
+LaTeX Warning: Reference `eq:sharp' on page 5 undefined on input line 287.
 
 
-LaTeX Warning: Reference `eq:sharp' on page 5 undefined on input line 294.
+LaTeX Warning: Reference `thm:sharp' on page 5 undefined on input line 288.
 
 
-LaTeX Warning: Reference `thm:sharp' on page 5 undefined on input line 295.
-
-
-LaTeX Warning: Reference `eq:modal' on page 5 undefined on input line 297.
+LaTeX Warning: Reference `eq:modal' on page 5 undefined on input line 290.
 
 
 LaTeX Warning: Citation `PalittaLefteriu2022' on page 5 undefined on input line
- 303.
+ 296.
 
 
-LaTeX Warning: Citation `YadykinEtAl2023' on page 5 undefined on input line 303
+LaTeX Warning: Citation `YadykinEtAl2023' on page 5 undefined on input line 296
 .
 
 
-LaTeX Warning: Reference `eq:sharp' on page 5 undefined on input line 308.
+LaTeX Warning: Reference `eq:sharp' on page 5 undefined on input line 301.
+
+
+LaTeX Warning: Reference `eq:hadexp' on page 5 undefined on input line 301.
 
 
 LaTeX Warning: Reference `eq:hadexp' on page 5 undefined on input line 308.
 
 
-LaTeX Warning: Reference `eq:hadexp' on page 5 undefined on input line 315.
-
-
-LaTeX Warning: Citation `HornJohnson2012' on page 5 undefined on input line 317
+LaTeX Warning: Citation `HornJohnson2012' on page 5 undefined on input line 310
 .
 
 
-LaTeX Warning: Citation `Oppenheim1930' on page 5 undefined on input line 318.
+LaTeX Warning: Citation `Oppenheim1930' on page 5 undefined on input line 311.
 
 
-LaTeX Warning: Reference `eq:sharp' on page 5 undefined on input line 319.
+LaTeX Warning: Reference `eq:sharp' on page 5 undefined on input line 312.
 
 
 LaTeX Warning: Citation `SchlickDemissie2011' on page 5 undefined on input line
- 321.
+ 314.
 
 
-LaTeX Warning: Reference `thm:sharp' on page 5 undefined on input line 323.
+LaTeX Warning: Reference `thm:sharp' on page 5 undefined on input line 316.
 
 
-LaTeX Warning: Reference `sec:thm2' on page 5 undefined on input line 324.
+LaTeX Warning: Reference `sec:thm2' on page 5 undefined on input line 317.
 
 
-LaTeX Warning: Reference `eq:modal' on page 5 undefined on input line 337.
+LaTeX Warning: Reference `eq:modal' on page 5 undefined on input line 330.
 
 
-LaTeX Warning: Reference `cor:rho' on page 5 undefined on input line 340.
+LaTeX Warning: Reference `cor:rho' on page 5 undefined on input line 333.
 
 
-LaTeX Warning: Reference `thm:sharp' on page 5 undefined on input line 340.
+LaTeX Warning: Reference `thm:sharp' on page 5 undefined on input line 333.
 
 
-LaTeX Warning: Reference `thm:sharp' on page 5 undefined on input line 345.
+LaTeX Warning: Reference `thm:sharp' on page 5 undefined on input line 338.
 
 
-LaTeX Warning: Reference `def:active' on page 5 undefined on input line 347.
+LaTeX Warning: Reference `def:active' on page 5 undefined on input line 340.
 
 
-LaTeX Warning: Reference `eq:modal' on page 5 undefined on input line 348.
+LaTeX Warning: Reference `eq:modal' on page 5 undefined on input line 341.
+
+
+LaTeX Warning: Reference `eq:affine' on page 5 undefined on input line 358.
 
 [5]
 
-LaTeX Warning: Reference `eq:affine' on page 6 undefined on input line 364.
+LaTeX Warning: Reference `eq:sharp' on page 6 undefined on input line 369.
 
 
-LaTeX Warning: Reference `eq:sharp' on page 6 undefined on input line 375.
+LaTeX Warning: Reference `eq:affinedet' on page 6 undefined on input line 370.
 
 
-LaTeX Warning: Reference `eq:affinedet' on page 6 undefined on input line 376.
+LaTeX Warning: Reference `eq:affinedet' on page 6 undefined on input line 373.
 
 
-LaTeX Warning: Reference `eq:affinedet' on page 6 undefined on input line 379.
+LaTeX Warning: Reference `eq:expand' on page 6 undefined on input line 382.
 
 
-LaTeX Warning: Reference `eq:expand' on page 6 undefined on input line 388.
-
-
-LaTeX Warning: Reference `eq:involution' on page 6 undefined on input line 436.
+LaTeX Warning: Reference `eq:involution' on page 6 undefined on input line 431.
 
 
 [6]
 
-LaTeX Warning: Reference `thm:trace' on page 7 undefined on input line 449.
+LaTeX Warning: Reference `thm:trace' on page 7 undefined on input line 444.
 
 
-LaTeX Warning: Reference `thm:sharp' on page 7 undefined on input line 460.
+LaTeX Warning: Reference `thm:sharp' on page 7 undefined on input line 455.
 
 
-LaTeX Warning: Reference `sec:threemode' on page 7 undefined on input line 467.
+LaTeX Warning: Reference `sec:threemode' on page 7 undefined on input line 462.
 
 
 
-LaTeX Warning: Reference `thm:trace' on page 7 undefined on input line 471.
+LaTeX Warning: Reference `thm:trace' on page 7 undefined on input line 466.
 
 
 LaTeX Warning: Reference `prop:degenerate' on page 7 undefined on input line 47
-6.
+1.
 
 
-LaTeX Warning: Reference `rem:edge' on page 7 undefined on input line 477.
+LaTeX Warning: Reference `rem:edge' on page 7 undefined on input line 472.
 
 
-LaTeX Warning: Reference `thm:trace' on page 7 undefined on input line 478.
+LaTeX Warning: Reference `thm:trace' on page 7 undefined on input line 473.
 
 
-LaTeX Warning: Reference `eq:affinedet' on page 7 undefined on input line 490.
+LaTeX Warning: Reference `eq:affinedet' on page 7 undefined on input line 485.
 
 
-LaTeX Warning: Citation `Vieira2019' on page 7 undefined on input line 498.
-
-
-LaTeX Warning: Citation `FilligerReimann2007' on page 7 undefined on input line
- 512.
-
-
-LaTeX Warning: Citation `DotsenkoEtAl2013' on page 7 undefined on input line 51
-2.
-
-
-LaTeX Warning: Citation `GodrecheLuck2019' on page 7 undefined on input line 51
-2.
+LaTeX Warning: Citation `Vieira2019' on page 7 undefined on input line 493.
 
 [7]
 
-LaTeX Warning: Reference `eq:tracenorm' on page 8 undefined on input line 528.
+LaTeX Warning: Citation `FilligerReimann2007' on page 8 undefined on input line
+ 507.
 
 
-LaTeX Warning: Reference `lem:wge2' on page 8 undefined on input line 528.
+LaTeX Warning: Citation `DotsenkoEtAl2013' on page 8 undefined on input line 50
+7.
 
 
-LaTeX Warning: Reference `fig:affine' on page 8 undefined on input line 532.
+LaTeX Warning: Citation `GodrecheLuck2019' on page 8 undefined on input line 50
+7.
 
 
-LaTeX Warning: Reference `eq:reciprocal' on page 8 undefined on input line 532.
+LaTeX Warning: Reference `eq:tracenorm' on page 8 undefined on input line 523.
+
+
+LaTeX Warning: Reference `lem:wge2' on page 8 undefined on input line 523.
+
+
+LaTeX Warning: Reference `fig:affine' on page 8 undefined on input line 527.
+
+
+LaTeX Warning: Reference `eq:reciprocal' on page 8 undefined on input line 527.
 
 
 
-LaTeX Warning: Reference `eq:reciprocal' on page 8 undefined on input line 542.
+LaTeX Warning: Reference `eq:reciprocal' on page 8 undefined on input line 537.
 
 
 
-LaTeX Warning: Reference `def:admissible' on page 8 undefined on input line 542
+LaTeX Warning: Reference `def:admissible' on page 8 undefined on input line 537
 .
 
 
-LaTeX Warning: Reference `eq:reciprocal' on page 8 undefined on input line 542.
+LaTeX Warning: Reference `eq:reciprocal' on page 8 undefined on input line 537.
 
 
 
-LaTeX Warning: Reference `def:admissible' on page 8 undefined on input line 542
+LaTeX Warning: Reference `def:admissible' on page 8 undefined on input line 537
 .
 
 
-LaTeX Warning: Reference `prop:mixing' on page 8 undefined on input line 559.
-
-
-LaTeX Warning: Reference `eq:affinedet' on page 8 undefined on input line 570.
+LaTeX Warning: Reference `prop:mixing' on page 8 undefined on input line 554.
 
 [8 <./figures/fig2.pdf>]
 
-LaTeX Warning: Reference `eq:affine' on page 9 undefined on input line 575.
+LaTeX Warning: Reference `eq:affinedet' on page 9 undefined on input line 565.
 
 
-LaTeX Warning: Reference `prop:Ksign' on page 9 undefined on input line 576.
+LaTeX Warning: Reference `eq:affine' on page 9 undefined on input line 570.
 
 
-LaTeX Warning: Reference `prop:posdef' on page 9 undefined on input line 576.
+LaTeX Warning: Reference `prop:Ksign' on page 9 undefined on input line 571.
 
 
-LaTeX Warning: Reference `eq:reciprocal' on page 9 undefined on input line 577.
+LaTeX Warning: Reference `prop:posdef' on page 9 undefined on input line 571.
+
+
+LaTeX Warning: Reference `eq:reciprocal' on page 9 undefined on input line 572.
 
 
 
-LaTeX Warning: Reference `eq:reciprocal' on page 9 undefined on input line 597.
+LaTeX Warning: Reference `eq:reciprocal' on page 9 undefined on input line 592.
 
 
 
-LaTeX Warning: Reference `eq:degen' on page 9 undefined on input line 619.
+LaTeX Warning: Reference `eq:degen' on page 9 undefined on input line 614.
 
 
-LaTeX Warning: Reference `eq:tracecrit' on page 9 undefined on input line 622.
+LaTeX Warning: Reference `eq:tracecrit' on page 9 undefined on input line 617.
 
 
 LaTeX Warning: Reference `prop:involution' on page 9 undefined on input line 63
-8.
+3.
 
 [9]
 
-LaTeX Warning: Reference `eq:involution' on page 10 undefined on input line 646
+LaTeX Warning: Reference `eq:involution' on page 10 undefined on input line 641
 .
 
 
-LaTeX Warning: Reference `eq:involution' on page 10 undefined on input line 654
+LaTeX Warning: Reference `eq:involution' on page 10 undefined on input line 649
 .
 
 
-LaTeX Warning: Reference `eq:selfdual' on page 10 undefined on input line 654.
+LaTeX Warning: Reference `eq:selfdual' on page 10 undefined on input line 649.
 
 
 LaTeX Warning: Reference `prop:involution' on page 10 undefined on input line 6
-60.
+55.
 
 
-LaTeX Warning: Reference `eq:sharp' on page 10 undefined on input line 674.
+LaTeX Warning: Reference `eq:sharp' on page 10 undefined on input line 669.
 
 
-LaTeX Warning: Reference `eq:selfdual' on page 10 undefined on input line 676.
-
-
-LaTeX Warning: Reference `prop:involution' on page 10 undefined on input line 6
-76.
+LaTeX Warning: Reference `eq:selfdual' on page 10 undefined on input line 671.
 
 
 LaTeX Warning: Reference `prop:involution' on page 10 undefined on input line 6
-80.
+71.
 
 
-LaTeX Warning: Reference `eq:affine' on page 10 undefined on input line 681.
+LaTeX Warning: Reference `prop:involution' on page 10 undefined on input line 6
+75.
+
+
+LaTeX Warning: Reference `eq:affine' on page 10 undefined on input line 676.
 
 
 LaTeX Warning: Reference `cor:reciprocal' on page 10 undefined on input line 70
-6.
+1.
 
 
-LaTeX Warning: Reference `lem:wge2' on page 10 undefined on input line 710.
+LaTeX Warning: Reference `lem:wge2' on page 10 undefined on input line 705.
 
 [10{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 
-LaTeX Warning: Reference `eq:threshold' on page 11 undefined on input line 712.
+LaTeX Warning: Reference `eq:threshold' on page 11 undefined on input line 707.
 
 
 
 LaTeX Warning: Reference `prop:degenerate' on page 11 undefined on input line 7
-18.
+13.
 
 
-LaTeX Warning: Reference `prop:Ksign' on page 11 undefined on input line 719.
+LaTeX Warning: Reference `prop:Ksign' on page 11 undefined on input line 714.
 
 
-LaTeX Warning: Reference `eq:tvsr' on page 11 undefined on input line 722.
+LaTeX Warning: Reference `eq:tvsr' on page 11 undefined on input line 717.
 
 
-LaTeX Warning: Reference `thm:trace' on page 11 undefined on input line 727.
+LaTeX Warning: Reference `thm:trace' on page 11 undefined on input line 722.
 
 
-LaTeX Warning: Reference `eq:modal' on page 11 undefined on input line 752.
+LaTeX Warning: Reference `eq:modal' on page 11 undefined on input line 747.
 
 
-LaTeX Warning: Reference `cor:reciprocal' on page 11 undefined on input line 75
-4.
+LaTeX Warning: Reference `cor:reciprocal' on page 11 undefined on input line 74
+9.
 
 
-LaTeX Warning: Reference `eq:modal' on page 11 undefined on input line 759.
+LaTeX Warning: Reference `eq:modal' on page 11 undefined on input line 754.
 
 
-LaTeX Warning: Reference `prop:factor' on page 11 undefined on input line 769.
+LaTeX Warning: Reference `prop:factor' on page 11 undefined on input line 764.
 
 
-LaTeX Warning: Reference `sec:lean' on page 11 undefined on input line 770.
+LaTeX Warning: Reference `sec:lean' on page 11 undefined on input line 765.
 
 
-LaTeX Warning: Reference `thm:cov' on page 11 undefined on input line 770.
+LaTeX Warning: Reference `thm:cov' on page 11 undefined on input line 765.
 
 
-LaTeX Warning: Reference `thm:trace' on page 11 undefined on input line 771.
+LaTeX Warning: Reference `thm:trace' on page 11 undefined on input line 766.
 
 
-LaTeX Warning: Reference `cor:reciprocal' on page 11 undefined on input line 77
-1.
-
-
-LaTeX Warning: Reference `thm:threshold' on page 11 undefined on input line 771
+LaTeX Warning: Reference `thm:threshold' on page 11 undefined on input line 766
 .
 
 
-LaTeX Warning: Reference `prop:factor' on page 11 undefined on input line 772.
+LaTeX Warning: Reference `cor:reciprocal' on page 11 undefined on input line 76
+6.
 
 
-LaTeX Warning: Reference `prop:factor' on page 11 undefined on input line 779.
+LaTeX Warning: Reference `prop:factor' on page 11 undefined on input line 767.
+
+
+LaTeX Warning: Reference `prop:factor' on page 11 undefined on input line 774.
 
 [11]
 
-LaTeX Warning: Reference `thm:sharp' on page 12 undefined on input line 793.
+LaTeX Warning: Reference `thm:sharp' on page 12 undefined on input line 788.
 
 
-LaTeX Warning: Reference `thm:trace' on page 12 undefined on input line 793.
+LaTeX Warning: Reference `thm:trace' on page 12 undefined on input line 788.
 
 
-LaTeX Warning: Reference `sec:K3' on page 12 undefined on input line 797.
+LaTeX Warning: Reference `sec:K3' on page 12 undefined on input line 792.
 
 
-LaTeX Warning: Reference `sec:threemode' on page 12 undefined on input line 802
+LaTeX Warning: Reference `sec:threemode' on page 12 undefined on input line 797
 .
 
 
-LaTeX Warning: Reference `eq:cubic' on page 12 undefined on input line 821.
+LaTeX Warning: Reference `eq:cubic' on page 12 undefined on input line 816.
 
 
-LaTeX Warning: Citation `DeJesus2026ou' on page 12 undefined on input line 846.
+LaTeX Warning: Citation `DeJesus2026ou' on page 12 undefined on input line 841.
 
 
 [12]
 
-LaTeX Warning: Reference `eq:Qambient' on page 13 undefined on input line 857.
+LaTeX Warning: Reference `eq:Qambient' on page 13 undefined on input line 852.
 
 
-LaTeX Warning: Reference `eq:factored' on page 13 undefined on input line 876.
+LaTeX Warning: Reference `eq:factored' on page 13 undefined on input line 871.
 
 
-LaTeX Warning: Reference `eq:graphV' on page 13 undefined on input line 878.
+LaTeX Warning: Reference `eq:graphV' on page 13 undefined on input line 873.
 
 
-LaTeX Warning: Reference `thm:threshold' on page 13 undefined on input line 879
+LaTeX Warning: Reference `thm:threshold' on page 13 undefined on input line 874
 .
 
 
-LaTeX Warning: Reference `fig:curves' on page 13 undefined on input line 884.
+LaTeX Warning: Reference `fig:curves' on page 13 undefined on input line 879.
 
 
-LaTeX Warning: Reference `sec:K2' on page 13 undefined on input line 893.
+LaTeX Warning: Reference `sec:K2' on page 13 undefined on input line 888.
 
 
-LaTeX Warning: Reference `sec:K3' on page 13 undefined on input line 893.
+LaTeX Warning: Reference `sec:K3' on page 13 undefined on input line 888.
 
 
-LaTeX Warning: Reference `sec:K2' on page 13 undefined on input line 893.
+LaTeX Warning: Reference `sec:K2' on page 13 undefined on input line 888.
 
 
-LaTeX Warning: Reference `sec:K3' on page 13 undefined on input line 893.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 897.
+LaTeX Warning: Reference `sec:K3' on page 13 undefined on input line 888.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 897.
+(hyperref)                removing `math shift' on input line 892.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 897.
+(hyperref)                removing `subscript' on input line 892.
 
 
-LaTeX Warning: Reference `cor:graph' on page 13 undefined on input line 905.
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 892.
 
 
-LaTeX Warning: Citation `DeJesus2026ou' on page 13 undefined on input line 910.
+LaTeX Warning: Reference `cor:graph' on page 13 undefined on input line 900.
 
 
-
-LaTeX Warning: Reference `eq:tvsr' on page 13 undefined on input line 915.
-
-
-LaTeX Warning: Citation `DeJesus2026ou' on page 13 undefined on input line 916.
+LaTeX Warning: Citation `DeJesus2026ou' on page 13 undefined on input line 905.
 
 
 
-LaTeX Warning: Reference `rem:variance' on page 13 undefined on input line 921.
+LaTeX Warning: Reference `eq:tvsr' on page 13 undefined on input line 910.
+
+
+LaTeX Warning: Citation `DeJesus2026ou' on page 13 undefined on input line 911.
+
+
+
+LaTeX Warning: Reference `rem:variance' on page 13 undefined on input line 916.
 
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 925.
+(hyperref)                removing `math shift' on input line 920.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 925.
+(hyperref)                removing `subscript' on input line 920.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 925.
+(hyperref)                removing `math shift' on input line 920.
 
 [13]
 
-LaTeX Warning: Reference `prop:factor' on page 14 undefined on input line 937.
+LaTeX Warning: Reference `prop:factor' on page 14 undefined on input line 932.
 
 
-LaTeX Warning: Reference `prop:cubic' on page 14 undefined on input line 958.
+LaTeX Warning: Reference `prop:cubic' on page 14 undefined on input line 953.
 
 
-LaTeX Warning: Reference `eq:graphV' on page 14 undefined on input line 961.
+LaTeX Warning: Reference `eq:graphV' on page 14 undefined on input line 956.
 
 
-LaTeX Warning: Reference `cor:graph' on page 14 undefined on input line 962.
+LaTeX Warning: Reference `cor:graph' on page 14 undefined on input line 957.
 
 [14 <./figures/fig3.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 982.
+(hyperref)                removing `math shift' on input line 977.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 982.
+(hyperref)                removing `subscript' on input line 977.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 982.
+(hyperref)                removing `math shift' on input line 977.
 
 
-LaTeX Warning: Reference `prop:factor' on page 15 undefined on input line 988.
+LaTeX Warning: Reference `prop:factor' on page 15 undefined on input line 983.
 
 
-LaTeX Warning: Reference `sec:effdim' on page 15 undefined on input line 1013.
+LaTeX Warning: Reference `sec:effdim' on page 15 undefined on input line 1008.
 
 
-LaTeX Warning: Reference `prop:factor' on page 15 undefined on input line 1018.
+LaTeX Warning: Reference `prop:factor' on page 15 undefined on input line 1013.
 
 
 
-LaTeX Warning: Reference `prop:cubic' on page 15 undefined on input line 1019.
+LaTeX Warning: Reference `prop:cubic' on page 15 undefined on input line 1014.
 
 
-LaTeX Warning: Reference `sec:effdim' on page 15 undefined on input line 1025.
+LaTeX Warning: Reference `sec:effdim' on page 15 undefined on input line 1020.
 
 
-LaTeX Warning: Reference `cor:graph' on page 15 undefined on input line 1034.
+LaTeX Warning: Reference `cor:graph' on page 15 undefined on input line 1029.
 
 
-LaTeX Warning: Reference `sec:lean' on page 15 undefined on input line 1034.
+LaTeX Warning: Reference `sec:lean' on page 15 undefined on input line 1029.
 
 
-LaTeX Warning: Reference `cor:graph' on page 15 undefined on input line 1034.
+LaTeX Warning: Reference `cor:graph' on page 15 undefined on input line 1029.
 
 
-LaTeX Warning: Reference `sec:lean' on page 15 undefined on input line 1034.
+LaTeX Warning: Reference `sec:lean' on page 15 undefined on input line 1029.
 
 
 LaTeX Warning: Reference `tab:corollaries' on page 15 undefined on input line 1
-047.
+042.
 
 
-LaTeX Warning: Reference `sec:limits' on page 15 undefined on input line 1050.
+LaTeX Warning: Reference `sec:limits' on page 15 undefined on input line 1045.
 
 [15]
 
-LaTeX Warning: Citation `Mauchly1940' on page 16 undefined on input line 1073.
+LaTeX Warning: Citation `Mauchly1940' on page 16 undefined on input line 1068.
 
 
-LaTeX Warning: Citation `Muirhead1982' on page 16 undefined on input line 1074.
+LaTeX Warning: Citation `Muirhead1982' on page 16 undefined on input line 1069.
 
 
 
 LaTeX Warning: Citation `WolkowiczStyan1980' on page 16 undefined on input line
- 1075.
+ 1070.
 
 
 LaTeX Warning: Citation `HornJohnson2012' on page 16 undefined on input line 10
-75.
+70.
 
 
 LaTeX Warning: Reference `cor:reciprocal' on page 16 undefined on input line 10
-77.
+72.
 
 
-LaTeX Warning: Citation `Mauchly1940' on page 16 undefined on input line 1092.
+LaTeX Warning: Citation `Mauchly1940' on page 16 undefined on input line 1087.
 
 
-LaTeX Warning: Citation `Muirhead1982' on page 16 undefined on input line 1092.
+LaTeX Warning: Citation `Muirhead1982' on page 16 undefined on input line 1087.
 
 
 
-LaTeX Warning: Reference `sec:effdim' on page 16 undefined on input line 1094.
+LaTeX Warning: Reference `sec:effdim' on page 16 undefined on input line 1089.
 
 
 LaTeX Warning: Reference `prop:obstruction' on page 16 undefined on input line 
-1094.
+1089.
 
 
-LaTeX Warning: Reference `prop:factor' on page 16 undefined on input line 1095.
+LaTeX Warning: Reference `prop:factor' on page 16 undefined on input line 1090.
 
 
 
-LaTeX Warning: Citation `Gardiner2004' on page 16 undefined on input line 1104.
+LaTeX Warning: Citation `Gardiner2004' on page 16 undefined on input line 1099.
 
 
 
 LaTeX Warning: Citation `Vatiwutipong2019' on page 16 undefined on input line 1
-104.
+099.
 
 
-LaTeX Warning: Citation `Simoncini2016' on page 16 undefined on input line 1104
+LaTeX Warning: Citation `Simoncini2016' on page 16 undefined on input line 1099
 .
 
 
-LaTeX Warning: Reference `eq:modal' on page 16 undefined on input line 1105.
+LaTeX Warning: Reference `eq:modal' on page 16 undefined on input line 1100.
 
 
-LaTeX Warning: Citation `Barucca2014' on page 16 undefined on input line 1106.
+LaTeX Warning: Citation `Barucca2014' on page 16 undefined on input line 1101.
 
 
 LaTeX Warning: Citation `GodrecheLuck2019' on page 16 undefined on input line 1
-106.
+101.
 
 
 LaTeX Warning: Citation `FerreiraMetzBarucca2025' on page 16 undefined on input
- line 1106.
+ line 1101.
 
 
-LaTeX Warning: Citation `Wilks1932' on page 16 undefined on input line 1107.
+LaTeX Warning: Citation `Wilks1932' on page 16 undefined on input line 1102.
 
 
 LaTeX Warning: Citation `CoverThomas2005' on page 16 undefined on input line 11
-07.
+02.
 
 
 LaTeX Warning: Citation `BamiehEtAl2012' on page 16 undefined on input line 110
-8.
+3.
 
 
-LaTeX Warning: Citation `Vieira2019' on page 16 undefined on input line 1109.
+LaTeX Warning: Citation `Vieira2019' on page 16 undefined on input line 1104.
 
 
-LaTeX Warning: Citation `Mauchly1940' on page 16 undefined on input line 1110.
+LaTeX Warning: Citation `Mauchly1940' on page 16 undefined on input line 1105.
 
 
-LaTeX Warning: Citation `Muirhead1982' on page 16 undefined on input line 1110.
+LaTeX Warning: Citation `Muirhead1982' on page 16 undefined on input line 1105.
 
 
 
 LaTeX Warning: Citation `WolkowiczStyan1980' on page 16 undefined on input line
- 1110.
+ 1105.
 
 
 LaTeX Warning: Citation `HornJohnson2012' on page 16 undefined on input line 11
-10.
+05.
 
 [16]
 
 LaTeX Warning: Citation `SummersEtAl2016' on page 17 undefined on input line 11
-14.
+09.
 
 
-LaTeX Warning: Citation `Antoulas2005' on page 17 undefined on input line 1116.
+LaTeX Warning: Citation `Antoulas2005' on page 17 undefined on input line 1111.
 
 
 
-LaTeX Warning: Reference `eq:lyap' on page 17 undefined on input line 1118.
+LaTeX Warning: Reference `eq:lyap' on page 17 undefined on input line 1113.
 
 
-LaTeX Warning: Reference `eq:forcing' on page 17 undefined on input line 1120.
+LaTeX Warning: Reference `eq:forcing' on page 17 undefined on input line 1115.
 
 
 LaTeX Warning: Citation `GodrecheLuck2019' on page 17 undefined on input line 1
-125.
+120.
 
 
 LaTeX Warning: Citation `FilligerReimann2007' on page 17 undefined on input lin
-e 1125.
+e 1120.
 
 
 LaTeX Warning: Citation `DotsenkoEtAl2013' on page 17 undefined on input line 1
-125.
+120.
 
 
 LaTeX Warning: Citation `GodrecheLuck2019' on page 17 undefined on input line 1
-126.
+121.
 
 
 LaTeX Warning: Citation `BoffiDeGregorio2024' on page 17 undefined on input lin
-e 1129.
+e 1124.
 
 
-LaTeX Warning: Citation `Simoncini2016' on page 17 undefined on input line 1132
+LaTeX Warning: Citation `Simoncini2016' on page 17 undefined on input line 1127
 .
 
 
 LaTeX Warning: Citation `TownsendWilber2018' on page 17 undefined on input line
- 1132.
+ 1127.
 
 
-LaTeX Warning: Reference `eq:sharp' on page 17 undefined on input line 1136.
+LaTeX Warning: Reference `eq:sharp' on page 17 undefined on input line 1131.
 
 
-LaTeX Warning: Reference `eq:hadexp' on page 17 undefined on input line 1136.
+LaTeX Warning: Reference `eq:hadexp' on page 17 undefined on input line 1131.
 
 
-LaTeX Warning: Reference `rem:hadamard' on page 17 undefined on input line 1138
+LaTeX Warning: Reference `rem:hadamard' on page 17 undefined on input line 1133
 .
 
 
-LaTeX Warning: Reference `eq:hadamard' on page 17 undefined on input line 1139.
+LaTeX Warning: Reference `eq:hadamard' on page 17 undefined on input line 1134.
 
 
 
 LaTeX Warning: Citation `PalittaLefteriu2022' on page 17 undefined on input lin
-e 1140.
+e 1135.
 
 
 LaTeX Warning: Citation `YadykinEtAl2023' on page 17 undefined on input line 11
-40.
+35.
 
 
-LaTeX Warning: Reference `rem:wknown' on page 17 undefined on input line 1141.
+LaTeX Warning: Reference `rem:wknown' on page 17 undefined on input line 1136.
 
 
-LaTeX Warning: Citation `Vieira2019' on page 17 undefined on input line 1142.
+LaTeX Warning: Citation `Vieira2019' on page 17 undefined on input line 1137.
 
 
 LaTeX Warning: Citation `SchlickDemissie2011' on page 17 undefined on input lin
-e 1144.
+e 1139.
 
 
-LaTeX Warning: Citation `KwonEtAl1996' on page 17 undefined on input line 1151.
+LaTeX Warning: Citation `KwonEtAl1996' on page 17 undefined on input line 1146.
 
 
 
-LaTeX Warning: Reference `thm:sharp' on page 17 undefined on input line 1152.
+LaTeX Warning: Reference `thm:sharp' on page 17 undefined on input line 1147.
 
 
-LaTeX Warning: Reference `rem:hadamard' on page 17 undefined on input line 1153
+LaTeX Warning: Reference `rem:hadamard' on page 17 undefined on input line 1148
 .
 
 
 LaTeX Warning: Citation `BrunelliPaternostro2016' on page 17 undefined on input
- line 1160.
+ line 1155.
 
 
-LaTeX Warning: Citation `HsiangHu2015' on page 17 undefined on input line 1165.
+LaTeX Warning: Citation `HsiangHu2015' on page 17 undefined on input line 1160.
 
 
 [17]
 
-LaTeX Warning: Reference `eq:modal' on page 18 undefined on input line 1173.
+LaTeX Warning: Reference `eq:modal' on page 18 undefined on input line 1168.
 
 
-LaTeX Warning: Reference `thm:trace' on page 18 undefined on input line 1188.
+LaTeX Warning: Reference `thm:trace' on page 18 undefined on input line 1183.
 
 
-LaTeX Warning: Citation `HoferEtAl2017' on page 18 undefined on input line 1195
+LaTeX Warning: Citation `HoferEtAl2017' on page 18 undefined on input line 1190
 .
 
 
-LaTeX Warning: Reference `eq:hofer' on page 18 undefined on input line 1207.
+LaTeX Warning: Reference `eq:hofer' on page 18 undefined on input line 1202.
 
 
-LaTeX Warning: Reference `eq:sharp' on page 18 undefined on input line 1218.
+LaTeX Warning: Reference `eq:sharp' on page 18 undefined on input line 1213.
 
 
-LaTeX Warning: Reference `eq:lyap' on page 18 undefined on input line 1220.
+LaTeX Warning: Reference `eq:lyap' on page 18 undefined on input line 1215.
 
 
-LaTeX Warning: Reference `thm:sharp' on page 18 undefined on input line 1222.
+LaTeX Warning: Reference `thm:sharp' on page 18 undefined on input line 1217.
 
 
-LaTeX Warning: Reference `eq:hoferw' on page 18 undefined on input line 1223.
+LaTeX Warning: Reference `eq:hoferw' on page 18 undefined on input line 1218.
 
 
-LaTeX Warning: Reference `eq:hofer' on page 18 undefined on input line 1228.
+LaTeX Warning: Reference `eq:hofer' on page 18 undefined on input line 1223.
 
 
-LaTeX Warning: Citation `HoferEtAl2017' on page 18 undefined on input line 1229
+LaTeX Warning: Citation `HoferEtAl2017' on page 18 undefined on input line 1224
 .
 
 [18]
 
 LaTeX Warning: Citation `SiamiMotee2018' on page 19 undefined on input line 123
-6.
+1.
 
 
-LaTeX Warning: Citation `BamiehEtAl2012' on page 19 undefined on input line 124
-0.
-
-
-LaTeX Warning: Citation `BarrettSeth2011' on page 19 undefined on input line 12
-42.
-
-
-LaTeX Warning: Reference `thm:trace' on page 19 undefined on input line 1247.
-
-
-LaTeX Warning: Reference `thm:sharp' on page 19 undefined on input line 1257.
-
-
-LaTeX Warning: Citation `DeJesus2026ou' on page 19 undefined on input line 1260
-.
-
-
-LaTeX Warning: Reference `sec:K2' on page 19 undefined on input line 1261.
-
-
-LaTeX Warning: Citation `DeJesus2026dual' on page 19 undefined on input line 12
-62.
-
-
-LaTeX Warning: Citation `DeJesus2026dual' on page 19 undefined on input line 12
-66.
-
-
-LaTeX Warning: Reference `eq:modal' on page 19 undefined on input line 1275.
-
-
-LaTeX Warning: Reference `thm:sharp' on page 19 undefined on input line 1277.
-
-
-LaTeX Warning: Reference `thm:trace' on page 19 undefined on input line 1277.
-
-
-LaTeX Warning: Reference `sec:effdim' on page 19 undefined on input line 1278.
-
-
-LaTeX Warning: Reference `prop:cubic' on page 19 undefined on input line 1280.
-
-
-LaTeX Warning: Reference `def:admissible' on page 19 undefined on input line 12
-84.
-
-[19]
-
-LaTeX Warning: Reference `prop:Ksign' on page 20 undefined on input line 1287.
-
-
-LaTeX Warning: Reference `prop:factor' on page 20 undefined on input line 1288.
-
-
-
-LaTeX Warning: Reference `rem:factorhyp' on page 20 undefined on input line 129
-0.
-
-
-LaTeX Warning: Reference `eq:lyap' on page 20 undefined on input line 1292.
-
-
-LaTeX Warning: Reference `eq:sde' on page 20 undefined on input line 1292.
-
-
-LaTeX Warning: Reference `sec:effdim' on page 20 undefined on input line 1293.
-
-
-LaTeX Warning: Reference `sec:priorart' on page 20 undefined on input line 1299
-.
-
-
-LaTeX Warning: Reference `eq:hadexp' on page 20 undefined on input line 1305.
-
-
-LaTeX Warning: Reference `sec:priorart' on page 20 undefined on input line 1306
-.
-
-
-LaTeX Warning: Reference `thm:cov' on page 20 undefined on input line 1341.
-
-
-LaTeX Warning: Reference `thm:sharp' on page 20 undefined on input line 1342.
-
-
-LaTeX Warning: Reference `thm:affine' on page 20 undefined on input line 1343.
-
-
-LaTeX Warning: Reference `thm:trace' on page 20 undefined on input line 1344.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1344--1344
-[]\T1/cmtt/m/n/10 affine_palindromic_iff\T1/cmr/m/n/10 (+20) ,
-
-LaTeX Warning: Reference `prop:involution' on page 20 undefined on input line 1
-345.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1345--1345
-[]\T1/cmtt/m/n/10 affineForcing_complement\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1345--1345
-\T1/cmtt/m/n/10 complementForcing_involutive\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1345--1345
-\T1/cmtt/m/n/10 complementForcing_trace\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1345--1345
-\T1/cmtt/m/n/10 complementForcing_traceNormalized\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1345--1345
-\T1/cmtt/m/n/10 complementForcing_det\T1/cmr/m/n/10 (+20) ,
-
-LaTeX Warning: Reference `rem:closurenotfixed' on page 20 undefined on input li
-ne 1346.
-
-
-LaTeX Warning: Reference `thm:tracenorm' on page 20 undefined on input line 134
-7.
-
-
-LaTeX Warning: Reference `lem:wge2' on page 20 undefined on input line 1348.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1348--1348
-[]\T1/cmtt/m/n/10 two_le_reciprocalExcitation\T1/cmr/m/n/10 (+20) ,
-
-LaTeX Warning: Reference `cor:reciprocal' on page 20 undefined on input line 13
-49.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1349--1349
-[]\T1/cmtt/m/n/10 normalizedAffineDet_eq\T1/cmr/m/n/10 (+20) ,
-
-LaTeX Warning: Reference `prop:Ksign' on page 20 undefined on input line 1350.
-
-
-LaTeX Warning: Reference `prop:posdef' on page 20 undefined on input line 1351.
-
-
-
-LaTeX Warning: Reference `cor:rankone' on page 20 undefined on input line 1352.
-
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1352--1352
-[]\T1/cmtt/m/n/10 rankOne_trace\T1/cmr/m/n/10 (+20) , \T1/cmtt/m/n/10 affineCoe
-ff_rankOne\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 8132) in paragraph at lines 1352--1352
-\T1/cmtt/m/n/10 affineForcing_rankOne\T1/cmr/m/n/10 (+20) , \T1/cmtt/m/n/10 aff
-ineCov_rankOne\T1/cmr/m/n/10 (+20) ,
-
-LaTeX Warning: Reference `prop:degenerate' on page 20 undefined on input line 1
-353.
-
-
-LaTeX Warning: Reference `prop:mixing' on page 20 undefined on input line 1354.
-
-
-
-LaTeX Warning: Reference `prop:selfdual' on page 20 undefined on input line 135
+LaTeX Warning: Citation `BamiehEtAl2012' on page 19 undefined on input line 123
 5.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1355--1355
-[]\T1/cmtt/m/n/10 complementForcing_rankOne\T1/cmr/m/n/10 (+20) ,
+LaTeX Warning: Citation `BarrettSeth2011' on page 19 undefined on input line 12
+37.
 
-LaTeX Warning: Reference `thm:threshold' on page 20 undefined on input line 135
+
+LaTeX Warning: Reference `thm:trace' on page 19 undefined on input line 1242.
+
+
+LaTeX Warning: Reference `thm:sharp' on page 19 undefined on input line 1252.
+
+
+LaTeX Warning: Citation `DeJesus2026ou' on page 19 undefined on input line 1255
+.
+
+
+LaTeX Warning: Reference `sec:K2' on page 19 undefined on input line 1256.
+
+
+LaTeX Warning: Citation `DeJesus2026dual' on page 19 undefined on input line 12
+57.
+
+
+LaTeX Warning: Citation `DeJesus2026dual' on page 19 undefined on input line 12
+61.
+
+
+LaTeX Warning: Reference `sec:priorart' on page 19 undefined on input line 1282
+.
+
+[19]
+
+LaTeX Warning: Reference `cor:rankone' on page 20 undefined on input line 1286.
+
+
+
+LaTeX Warning: Reference `prop:selfdual' on page 20 undefined on input line 128
 6.
 
 
-LaTeX Warning: Reference `sec:K2' on page 20 undefined on input line 1357.
+LaTeX Warning: Reference `rem:closurenotfixed' on page 20 undefined on input li
+ne 1287.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1357--1357
-[]\T1/cmtt/m/n/10 volume_div_volume0_eq\T1/cmr/m/n/10 (+20) ,
-
-LaTeX Warning: Reference `cor:P3' on page 20 undefined on input line 1358.
+LaTeX Warning: Reference `rem:whytrace' on page 20 undefined on input line 1288
+.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1358--1358
-[]\T1/cmtt/m/n/10 p3_thresholdCurve_eq\T1/cmr/m/n/10 (+20) ,
-
-LaTeX Warning: Reference `cor:K3' on page 20 undefined on input line 1359.
+LaTeX Warning: Reference `prop:cubic' on page 20 undefined on input line 1290.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1359--1359
-[]\T1/cmtt/m/n/10 k3_thresholdCurve_eq\T1/cmr/m/n/10 (+20) ,
-
-LaTeX Warning: Reference `prop:J2' on page 20 undefined on input line 1360.
+LaTeX Warning: Reference `rem:hofer' on page 20 undefined on input line 1291.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1360--1360
-[]\T1/cmtt/m/n/10 J2_eq_reciprocalInvariant\T1/cmr/m/n/10 (+20) ,
-
-LaTeX Warning: Reference `prop:obstruction' on page 20 undefined on input line 
-1361.
+LaTeX Warning: Reference `tab:lean' on page 20 undefined on input line 1295.
 
 
-LaTeX Warning: Reference `rem:selfdualnotnec' on page 20 undefined on input lin
-e 1363.
+LaTeX Warning: Reference `eq:modal' on page 20 undefined on input line 1304.
 
 
-LaTeX Warning: Reference `prop:cubic' on page 20 undefined on input line 1364.
+LaTeX Warning: Reference `thm:sharp' on page 20 undefined on input line 1306.
 
 
-LaTeX Warning: Reference `rem:weak' on page 20 undefined on input line 1365.
+LaTeX Warning: Reference `thm:trace' on page 20 undefined on input line 1306.
 
 
-LaTeX Warning: Reference `prop:factor' on page 20 undefined on input line 1366.
+LaTeX Warning: Reference `sec:effdim' on page 20 undefined on input line 1307.
+
+
+LaTeX Warning: Reference `prop:cubic' on page 20 undefined on input line 1309.
+
+
+LaTeX Warning: Reference `def:admissible' on page 20 undefined on input line 13
+13.
+
+
+LaTeX Warning: Reference `prop:Ksign' on page 20 undefined on input line 1316.
+
+
+LaTeX Warning: Reference `prop:factor' on page 20 undefined on input line 1317.
 
 
 
-LaTeX Warning: Reference `sec:effdim' on page 20 undefined on input line 1367.
+LaTeX Warning: Reference `rem:factorhyp' on page 20 undefined on input line 131
+9.
+
+
+LaTeX Warning: Reference `eq:lyap' on page 20 undefined on input line 1321.
+
+
+LaTeX Warning: Reference `eq:sde' on page 20 undefined on input line 1321.
+
+
+LaTeX Warning: Reference `sec:effdim' on page 20 undefined on input line 1322.
 
 [20]
 
-LaTeX Warning: Reference `rem:formalized' on page 21 undefined on input line 13
-85.
+LaTeX Warning: Reference `sec:priorart' on page 21 undefined on input line 1328
+.
 
 
-LaTeX Warning: Reference `tab:lean' on page 21 undefined on input line 1386.
+LaTeX Warning: Reference `eq:hadexp' on page 21 undefined on input line 1334.
 
 
-LaTeX Warning: Reference `prop:factor' on page 21 undefined on input line 1386.
+LaTeX Warning: Reference `sec:priorart' on page 21 undefined on input line 1335
+.
+
+
+LaTeX Warning: Reference `thm:cov' on page 21 undefined on input line 1370.
+
+
+LaTeX Warning: Reference `thm:sharp' on page 21 undefined on input line 1371.
+
+
+LaTeX Warning: Reference `thm:affine' on page 21 undefined on input line 1372.
+
+
+LaTeX Warning: Reference `thm:trace' on page 21 undefined on input line 1373.
+
+
+LaTeX Warning: Reference `prop:involution' on page 21 undefined on input line 1
+374.
+
+
+LaTeX Warning: Reference `rem:closurenotfixed' on page 21 undefined on input li
+ne 1375.
+
+
+LaTeX Warning: Reference `thm:tracenorm' on page 21 undefined on input line 137
+6.
+
+
+LaTeX Warning: Reference `lem:wge2' on page 21 undefined on input line 1377.
+
+
+LaTeX Warning: Reference `cor:reciprocal' on page 21 undefined on input line 13
+78.
+
+
+LaTeX Warning: Reference `prop:Ksign' on page 21 undefined on input line 1379.
+
+
+LaTeX Warning: Reference `prop:posdef' on page 21 undefined on input line 1380.
 
 
 
-LaTeX Warning: Reference `sec:effdim' on page 21 undefined on input line 1387.
+LaTeX Warning: Reference `cor:rankone' on page 21 undefined on input line 1381.
 
 
-LaTeX Warning: Reference `eq:lyap' on page 21 undefined on input line 1388.
+
+LaTeX Warning: Reference `prop:degenerate' on page 21 undefined on input line 1
+382.
 
 
-LaTeX Warning: Reference `eq:sde' on page 21 undefined on input line 1389.
+LaTeX Warning: Reference `prop:mixing' on page 21 undefined on input line 1383.
 
 
-LaTeX Warning: Reference `tab:lean' on page 21 undefined on input line 1411.
+
+LaTeX Warning: Reference `prop:selfdual' on page 21 undefined on input line 138
+4.
 
 
-LaTeX Warning: Reference `sec:lean' on page 21 undefined on input line 1412.
+LaTeX Warning: Reference `thm:threshold' on page 21 undefined on input line 138
+5.
 
 
-LaTeX Warning: Reference `eq:modal' on page 21 undefined on input line 1432.
+LaTeX Warning: Reference `sec:K2' on page 21 undefined on input line 1386.
 
-[21] (./main.bbl [22]) [23] [24] (./main.aux)
+
+LaTeX Warning: Reference `cor:P3' on page 21 undefined on input line 1387.
+
+
+LaTeX Warning: Reference `cor:K3' on page 21 undefined on input line 1388.
+
+
+LaTeX Warning: Reference `prop:J2' on page 21 undefined on input line 1389.
+
+
+LaTeX Warning: Reference `prop:obstruction' on page 21 undefined on input line 
+1390.
+
+
+LaTeX Warning: Reference `rem:selfdualnotnec' on page 21 undefined on input lin
+e 1392.
+
+
+LaTeX Warning: Reference `prop:cubic' on page 21 undefined on input line 1393.
+
+
+LaTeX Warning: Reference `rem:weak' on page 21 undefined on input line 1394.
+
+
+LaTeX Warning: Reference `prop:factor' on page 21 undefined on input line 1395.
+
+
+
+LaTeX Warning: Reference `sec:effdim' on page 21 undefined on input line 1396.
+
+
+LaTeX Warning: Reference `rem:formalized' on page 21 undefined on input line 14
+14.
+
+
+LaTeX Warning: Reference `tab:lean' on page 21 undefined on input line 1415.
+
+
+LaTeX Warning: Reference `prop:factor' on page 21 undefined on input line 1415.
+
+
+
+LaTeX Warning: Reference `sec:effdim' on page 21 undefined on input line 1416.
+
+
+LaTeX Warning: Reference `eq:lyap' on page 21 undefined on input line 1417.
+
+
+LaTeX Warning: Reference `eq:sde' on page 21 undefined on input line 1418.
+
+[21] [22]
+
+LaTeX Warning: Reference `sec:lean' on page 23 undefined on input line 1433.
+
+
+LaTeX Warning: Reference `tab:lean' on page 23 undefined on input line 1447.
+
+
+LaTeX Warning: Reference `sec:lean' on page 23 undefined on input line 1448.
+
+
+LaTeX Warning: Reference `thm:trace' on page 23 undefined on input line 1464.
+
+
+LaTeX Warning: Reference `eq:affine' on page 23 undefined on input line 1466.
+
+
+LaTeX Warning: Reference `prop:cubic' on page 23 undefined on input line 1468.
+
+
+LaTeX Warning: Reference `eq:modal' on page 23 undefined on input line 1471.
+
+(./main.bbl [23] [24]) [25] (./main.aux)
 
 LaTeX Warning: There were undefined references.
 
@@ -1173,34 +1169,34 @@ Package rerunfilecheck Warning: File `main.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
- )
-(see the transcript file for additional information)</usr/share/texmf-dist/font
-s/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
-/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></u
-sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/sh
-are/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/
-fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf-dist/fonts/type1/pub
-lic/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
-bx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></us
-r/share/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf-d
-ist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1
-/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-supe
-r/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-</usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/tex
-mf-dist/fonts/type1/public/cm-super/sfti0800.pfb></usr/share/texmf-dist/fonts/t
-ype1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-
-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.
-pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on main.pdf (24 pages, 694670 bytes).
+ )</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/
+share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></us
+r/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm1
+0.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/sha
+re/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf-dist/f
+onts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfc
+c1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr
+/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-di
+st/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/
+public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super
+/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb><
+/usr/share/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb></usr/share/texm
+f-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/ty
+pe1/public/cm-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-s
+uper/sftt1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.p
+fb>
+Output written on main.pdf (25 pages, 705812 bytes).
 Transcript written on main.log.
 Latexmk: Getting log file 'main.log'
 Latexmk: Examining 'main.fls'
@@ -1270,6 +1266,7 @@ For additional information on amsmath, use the `?' option.
 (/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg)
 (/usr/share/texmf-dist/tex/latex/graphics-def/pdftex.def)))
 (/usr/share/texmf-dist/tex/latex/booktabs/booktabs.sty)
+(/usr/share/texmf-dist/tex/latex/tools/array.sty)
 (/usr/share/texmf-dist/tex/latex/base/fontenc.sty)
 (/usr/share/texmf-dist/tex/latex/base/inputenc.sty)
 (/usr/share/texmf-dist/tex/latex/microtype/microtype.sty
@@ -1319,116 +1316,70 @@ map/pdftex/updmap/pdftex.map}{/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm
 ] [11] [12]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 897.
+(hyperref)                removing `math shift' on input line 892.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 897.
+(hyperref)                removing `subscript' on input line 892.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 897.
+(hyperref)                removing `math shift' on input line 892.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 925.
+(hyperref)                removing `math shift' on input line 920.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 925.
+(hyperref)                removing `subscript' on input line 920.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 925.
+(hyperref)                removing `math shift' on input line 920.
 
 [13] [14 <./figures/fig3.pdf>]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 982.
+(hyperref)                removing `math shift' on input line 977.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 982.
+(hyperref)                removing `subscript' on input line 977.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 982.
+(hyperref)                removing `math shift' on input line 977.
 
-[15] [16] [17] [18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 1344--1344
-[]\T1/cmtt/m/n/10 affine_palindromic_iff\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1345--1345
-[]\T1/cmtt/m/n/10 affineForcing_complement\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1345--1345
-\T1/cmtt/m/n/10 complementForcing_involutive\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1345--1345
-\T1/cmtt/m/n/10 complementForcing_trace\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1345--1345
-\T1/cmtt/m/n/10 complementForcing_traceNormalized\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1345--1345
-\T1/cmtt/m/n/10 complementForcing_det\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1348--1348
-[]\T1/cmtt/m/n/10 two_le_reciprocalExcitation\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1349--1349
-[]\T1/cmtt/m/n/10 normalizedAffineDet_eq\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1352--1352
-[]\T1/cmtt/m/n/10 rankOne_trace\T1/cmr/m/n/10 (+20) , \T1/cmtt/m/n/10 affineCoe
-ff_rankOne\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 8132) in paragraph at lines 1352--1352
-\T1/cmtt/m/n/10 affineForcing_rankOne\T1/cmr/m/n/10 (+20) , \T1/cmtt/m/n/10 aff
-ineCov_rankOne\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1355--1355
-[]\T1/cmtt/m/n/10 complementForcing_rankOne\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1357--1357
-[]\T1/cmtt/m/n/10 volume_div_volume0_eq\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1358--1358
-[]\T1/cmtt/m/n/10 p3_thresholdCurve_eq\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1359--1359
-[]\T1/cmtt/m/n/10 k3_thresholdCurve_eq\T1/cmr/m/n/10 (+20) ,
-
-Underfull \hbox (badness 10000) in paragraph at lines 1360--1360
-[]\T1/cmtt/m/n/10 J2_eq_reciprocalInvariant\T1/cmr/m/n/10 (+20) ,
-[20] [21] (./main.bbl [22]) [23] [24] (./main.aux) )
-(see the transcript file for additional information)</usr/share/texmf-dist/font
-s/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr
-/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr10.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></u
-sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/sh
-are/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/
-fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf-dist/fonts/type1/pub
-lic/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
-bx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb></us
-r/share/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></usr/share/texmf-d
-ist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-dist/fonts/type1
-/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-supe
-r/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-</usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></usr/share/tex
-mf-dist/fonts/type1/public/cm-super/sfti0800.pfb></usr/share/texmf-dist/fonts/t
-ype1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-
-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1000.
-pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on main.pdf (24 pages, 710733 bytes).
+[15] [16] [17] [18] [19] [20] [21] [22] (./main.bbl [23] [24]) [25] (./main.aux
+) )</usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi6.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmmi7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr
+/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmr7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></u
+sr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm
+10.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/sh
+are/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf-dist/
+fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/pub
+lic/cm-super/sfbx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
+cc1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></us
+r/share/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/share/texmf-d
+ist/fonts/type1/public/cm-super/sfrm1000.pfb></usr/share/texmf-dist/fonts/type1
+/public/cm-super/sfrm1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-supe
+r/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb>
+</usr/share/texmf-dist/fonts/type1/public/cm-super/sfti0800.pfb></usr/share/tex
+mf-dist/fonts/type1/public/cm-super/sfti1000.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/cm-super/sfti1095.pfb></usr/share/texmf-dist/fonts/type1/public/cm-
+super/sftt1000.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.
+pfb>
+Output written on main.pdf (25 pages, 721907 bytes).
 Transcript written on main.log.
 Latexmk: Getting log file 'main.log'
 Latexmk: Examining 'main.fls'

@@ -20,11 +20,11 @@ Adam~B. Barrett and Anil~K. Seth.
 \bibitem{Barucca2014}
 Paolo Barucca.
 \newblock Localization in covariance matrices of coupled heterogeneous
-  ornstein-uhlenbeck processes.
+  {O}rnstein-{U}hlenbeck processes.
 \newblock {\em Physical Review E}, 90(6), December 2014.
 
 \bibitem{BoffiDeGregorio2024}
-Nicola Boffi and Paolo De~Gregorio.
+Tarcisio Boffi and Paolo De~Gregorio.
 \newblock Variance resonance in weakly coupled harmonic oscillators driven by
   thermal gradients.
 \newblock {\em Entropy}, 26(12):1087, 2024.
@@ -48,7 +48,7 @@ Elias De~Jes{\'u}s.
 \bibitem{DeJesus2026ou}
 Elias De~Jes{\'u}s.
 \newblock Heterogeneity-driven expansion and synchronization collapse in
-  coupled ornstein--uhlenbeck systems.
+  coupled {O}rnstein--{U}hlenbeck systems.
 \newblock Zenodo, August 2026.
 
 \bibitem{DotsenkoEtAl2013}
@@ -59,7 +59,7 @@ Victor Dotsenko, Anna Maciołek, Oleg Vasilyev, and Gleb Oshanin.
 \bibitem{FerreiraMetzBarucca2025}
 Leonardo~S. Ferreira, Fernando~L. Metz, and Paolo Barucca.
 \newblock Random matrix ensemble for the covariance matrix of
-  ornstein-uhlenbeck processes with heterogeneous temperatures.
+  {O}rnstein-{U}hlenbeck processes with heterogeneous temperatures.
 \newblock {\em Physical Review E}, 111(1), January 2025.
 
 \bibitem{FilligerReimann2007}
@@ -75,9 +75,9 @@ Crispin~W. Gardiner.
 \bibitem{GodrecheLuck2019}
 Claude Godrèche and Jean-Marc Luck.
 \newblock Characterising the nonequilibrium stationary states of
-  ornstein–uhlenbeck processes.
+  {O}rnstein–{U}hlenbeck processes.
 \newblock {\em Journal of Physics A: Mathematical and Theoretical},
-  52(3):035002, December 2019.
+  52(3):035002, January 2019.
 
 \bibitem{HoferEtAl2017}
 Patrick~P. Hofer, Mart\'i Perarnau-Llobet, L.~David~M. Miranda, G\'eraldine
@@ -89,10 +89,8 @@ Patrick~P. Hofer, Mart\'i Perarnau-Llobet, L.~David~M. Miranda, G\'eraldine
 \bibitem{HornJohnson2012}
 Roger~A. Horn and Charles~R. Johnson.
 \newblock {\em Matrix Analysis}.
-\newblock Cambridge University Press, Cambridge, 2nd edition, 2013.
-\newblock Oppenheim's inequality is Theorem 7.8.16, eq. (7.8.17), p.~509. The
-  citation key retains the year of the Crossref online record (2012); the
-  printed second edition is dated 2013.
+\newblock Cambridge University Press, Cambridge, 2nd edition, 2012.
+\newblock Oppenheim's inequality is Theorem 7.8.16, eq. (7.8.17), p.~509.
 
 \bibitem{HsiangHu2015}
 Jen-Tsung Hsiang and B.~L. Hu.
@@ -130,7 +128,7 @@ Davide Palitta and Sanda Lefteriu.
 \newblock {\em Journal of Scientific Computing}, 91, 2022.
 
 \bibitem{SchlickDemissie2011}
-Christian~M. Schlick and Bruno Demissie.
+Christopher~M. Schlick and Bruno Demissie.
 \newblock Project dynamics and emergent complexity.
 \newblock arXiv:1101.0754, 2011.
 
@@ -164,7 +162,7 @@ G.~E. Uhlenbeck and L.~S. Ornstein.
 \bibitem{Vatiwutipong2019}
 P.~Vatiwutipong and N.~Phewchean.
 \newblock Alternative way to derive the distribution of the multivariate
-  ornstein–uhlenbeck process.
+  {O}rnstein–{U}hlenbeck process.
 \newblock {\em Advances in Difference Equations}, 2019(1), July 2019.
 
 \bibitem{Vieira2019}
@@ -187,6 +185,6 @@ Henry Wolkowicz and George~P.H. Styan.
 Igor Yadykin.
 \newblock Spectral decomposition of {G}ramians of continuous linear systems in
   the form of {H}adamard products.
-\newblock {\em Mathematics}, 12(1):36, 2023.
+\newblock {\em Mathematics}, 12(1):36, 2024.
 
 \end{thebibliography}

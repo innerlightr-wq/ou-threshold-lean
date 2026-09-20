@@ -1,6 +1,6 @@
 # Palindromic Covariance Determinants and Reciprocal Thresholds
 
-**First draft, September 2026. Not deposited, not submitted, no DOI.**
+**September 2026. Mathematics frozen. Not deposited, not submitted, no DOI.**
 
 A new paper — *not* a revision of the deposited two-node note
 ([10.5281/zenodo.22059089](https://doi.org/10.5281/zenodo.22059089)), which is cited here as the
@@ -63,13 +63,15 @@ counterexample: its relevant eigenspace is degenerate, so its *distinct-rate* di
 | file | |
 |---|---|
 | `main.tex` | the manuscript |
-| `main.pdf` | compiled, 24 pages, letter |
+| `main.pdf` | compiled, 25 pages, letter |
 | `references.bib` | self-contained bibliography, 33 entries, all cited |
 | `figures/fig1–3.pdf` | active-plane schematic; affine determinant; threshold curves |
 | `manuscript_checks.py` | 126 exact symbolic checks (SymPy), including adversarial assumption tests |
 | `make_figures.py` | regenerates the figures from the exact formulas |
 | `build.sh`, `build.log` | build script and recorded transcript |
 | `SHA256SUMS.txt` | digests of every file above |
+| `release/` | self-contained source package for deposit (builds in isolation) |
+| `ZENODO_METADATA_DRAFT.md` | deposit metadata, drafted only — nothing uploaded |
 
 This directory is **self-contained**: `main.tex` reads `references.bib` from beside it, not from
 the repository root. That is deliberate — the previous Zenodo deposit shipped only a PDF, and
@@ -84,7 +86,7 @@ python3 make_figures.py          # regenerate figures (needs matplotlib)
 ```
 
 Recorded build: **0 undefined citations, 0 undefined references, 0 overfull boxes, 0 BibTeX
-warnings, 33 bibliography entries, 24 pages.**
+warnings, 33 bibliography entries, 25 pages.**
 
 ## What is proved where
 
