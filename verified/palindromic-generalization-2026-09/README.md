@@ -33,6 +33,24 @@ The generalization of the active-plane theorem, in `OUCorridor/ActivePlaneGenera
 
 `OUCorridor/ActivePlane.lean` is **unchanged**; the older theorem stands exactly as verified.
 
+## Provenance
+
+This snapshot was created at commit `b7c3e0a2783e1d3a042a92dbe083d1f96110edc9` and **extended in place** at commit
+`ff29915e7e11e4177a163e826c633090b55c435e` to include the complementary-forcing involution
+theorems (`complementForcing_involutive`, `affineForcing_complement`, `complementForcing_trace`,
+`complementForcing_traceNormalized`, `complementForcing_det`, `affineCoeff_complement`,
+`complementForcing_fixed_iff`, `complementForcing_rankOne`) and the corresponding entries in
+`print-axioms.lean`. The audited count went from 20 theorems to 28; no earlier theorem, proof or
+recorded result was altered.
+
+The pre-involution state of this snapshot remains recoverable from Git history: its last commit
+before the extension is `8a8bbe99004200a52b6b866847d6a88774faa76b`, from which
+`git show 8a8bbe9:verified/palindromic-generalization-2026-09/...` reproduces every file as it
+then stood.
+
+**This snapshot is now frozen.** Any future mathematical extension gets a new snapshot directory
+rather than another in-place edit.
+
 ## Environment
 
 ```text
