@@ -1,0 +1,9 @@
+# LaTeX intermediates. main.pdf, main.bbl and build.log ARE tracked.
+*.aux
+*.blg
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+main.log
+venv/

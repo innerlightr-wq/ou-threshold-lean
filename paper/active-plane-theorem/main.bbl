@@ -1,0 +1,132 @@
+\begin{thebibliography}{10}
+
+\bibitem{Antoulas2005}
+Athanasios~C. Antoulas.
+\newblock {\em Approximation of Large-Scale Dynamical Systems}.
+\newblock Society for Industrial and Applied Mathematics, January 2005.
+
+\bibitem{BamiehEtAl2012}
+Bassam Bamieh, Mihailo~R. Jovanovic, Partha Mitra, and Stacy Patterson.
+\newblock Coherence in large-scale networks: Dimension-dependent limitations of
+  local feedback.
+\newblock {\em IEEE Transactions on Automatic Control}, 57(9):2235–2249,
+  September 2012.
+
+\bibitem{Barucca2014}
+Paolo Barucca.
+\newblock Localization in covariance matrices of coupled heterogeneous
+  ornstein-uhlenbeck processes.
+\newblock {\em Physical Review E}, 90(6), December 2014.
+
+\bibitem{BoffiDeGregorio2024}
+Nicola Boffi and Paolo De~Gregorio.
+\newblock Variance resonance in weakly coupled harmonic oscillators driven by
+  thermal gradients.
+\newblock {\em Entropy}, 26(12):1087, 2024.
+
+\bibitem{CoverThomas2005}
+Thomas~M. Cover and Joy~A. Thomas.
+\newblock {\em Elements of Information Theory}.
+\newblock Wiley, April 2005.
+
+\bibitem{DeJesus2026dual}
+Elias De~Jes{\'u}s.
+\newblock The dual diagonal and reconstruction of orthogonal hyperrectangles:
+  An alternative invariant basis.
+\newblock Zenodo, April 2026.
+
+\bibitem{DeJesus2026ou}
+Elias De~Jes{\'u}s.
+\newblock Heterogeneity-driven expansion and synchronization collapse in
+  coupled ornstein--uhlenbeck systems.
+\newblock Zenodo, August 2026.
+
+\bibitem{DotsenkoEtAl2013}
+Victor Dotsenko, Anna Maciołek, Oleg Vasilyev, and Gleb Oshanin.
+\newblock Two-temperature langevin dynamics in a parabolic potential.
+\newblock {\em Physical Review E}, 87(6), June 2013.
+
+\bibitem{FerreiraMetzBarucca2025}
+Leonardo~S. Ferreira, Fernando~L. Metz, and Paolo Barucca.
+\newblock Random matrix ensemble for the covariance matrix of
+  ornstein-uhlenbeck processes with heterogeneous temperatures.
+\newblock {\em Physical Review E}, 111(1), January 2025.
+
+\bibitem{FilligerReimann2007}
+Roger Filliger and Peter Reimann.
+\newblock Brownian gyrator: A minimal heat engine on the nanoscale.
+\newblock {\em Physical Review Letters}, 99(23), December 2007.
+
+\bibitem{Gardiner2004}
+Crispin~W. Gardiner.
+\newblock {\em Handbook of Stochastic Methods}.
+\newblock Springer Berlin Heidelberg, 2004.
+
+\bibitem{GodrecheLuck2019}
+Claude Godrèche and Jean-Marc Luck.
+\newblock Characterising the nonequilibrium stationary states of
+  ornstein–uhlenbeck processes.
+\newblock {\em Journal of Physics A: Mathematical and Theoretical},
+  52(3):035002, December 2019.
+
+\bibitem{HornJohnson2012}
+Roger~A. Horn and Charles~R. Johnson.
+\newblock {\em Matrix Analysis}.
+\newblock Cambridge University Press, October 2012.
+
+\bibitem{Mauchly1940}
+John~W. Mauchly.
+\newblock Significance test for sphericity of a normal $n$-variate
+  distribution.
+\newblock {\em The Annals of Mathematical Statistics}, 11(2):204–209, June
+  1940.
+
+\bibitem{Muirhead1982}
+Robb~J. Muirhead.
+\newblock {\em Aspects of Multivariate Statistical Theory}.
+\newblock Wiley, March 1982.
+
+\bibitem{Simoncini2016}
+V.~Simoncini.
+\newblock Computational methods for linear matrix equations.
+\newblock {\em SIAM Review}, 58(3):377–441, January 2016.
+
+\bibitem{SummersEtAl2016}
+Tyler~H. Summers, Fabrizio~L. Cortesi, and John Lygeros.
+\newblock On submodularity and controllability in complex dynamical networks.
+\newblock {\em IEEE Transactions on Control of Network Systems}, 3(1):91–101,
+  March 2016.
+
+\bibitem{TownsendWilber2018}
+Alex Townsend and Heather Wilber.
+\newblock On the singular values of matrices with high displacement rank.
+\newblock {\em Linear Algebra and its Applications}, 548:19–41, July 2018.
+
+\bibitem{UhlenbeckOrnstein1930}
+G.~E. Uhlenbeck and L.~S. Ornstein.
+\newblock On the theory of the brownian motion.
+\newblock {\em Physical Review}, 36(5):823–841, September 1930.
+
+\bibitem{Vatiwutipong2019}
+P.~Vatiwutipong and N.~Phewchean.
+\newblock Alternative way to derive the distribution of the multivariate
+  ornstein–uhlenbeck process.
+\newblock {\em Advances in Difference Equations}, 2019(1), July 2019.
+
+\bibitem{Vieira2019}
+Ricardo Vieira.
+\newblock Polynomials with symmetric zeros.
+\newblock In {\em Polynomials - Theory and Application}. IntechOpen, May 2019.
+
+\bibitem{Wilks1932}
+S.~S. WILKS.
+\newblock Certain generalizations in the analysis of variance.
+\newblock {\em Biometrika}, 24(3-4):471–494, 1932.
+
+\bibitem{WolkowiczStyan1980}
+Henry Wolkowicz and George~P.H. Styan.
+\newblock Bounds for eigenvalues using traces.
+\newblock {\em Linear Algebra and its Applications}, 29:471–506, February
+  1980.
+
+\end{thebibliography}

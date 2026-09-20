@@ -1,0 +1,47 @@
+# Build transcript - paper/active-plane-theorem
+# Date: 2026-09-20 13:51:06 UTC
+# pdfTeX 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux)
+# Latexmk, John Collins, 15 June 2025. Version 4.87
+# Command: latexmk -C && ./build.sh   (clean build from source)
+
+></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/sh
+are/texmf-dist/fonts/type1/public/cm-super/sfbx1000.pfb></usr/share/texmf-dist/
+fonts/type1/public/cm-super/sfbx1095.pfb></usr/share/texmf-dist/fonts/type1/pub
+lic/cm-super/sfbx1200.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sf
+bx1440.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb></us
+r/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texmf-d
+ist/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf-dist/fonts/type1
+/public/cm-super/sfrm1728.pfb></usr/share/texmf-dist/fonts/type1/public/cm-supe
+r/sfti0800.pfb></usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1000.pfb>
+</usr/share/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/share/tex
+mf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf-dist/fonts/t
+ype1/public/cm-super/sftt1095.pfb>
+Output written on main.pdf (18 pages, 616963 bytes).
+Transcript written on main.log.
+Latexmk: Getting log file 'main.log'
+Latexmk: Examining 'main.fls'
+Latexmk: Examining 'main.log'
+Latexmk: Found input bbl file 'main.bbl'
+Latexmk: Log file says output to 'main.pdf'
+Latexmk: Using bibtex to make bibliography file(s).
+  ===Source file 'main.bbl' for 'pdflatex'
+Latexmk: Found bibliography file(s):
+  ./references.bib
+Latexmk: All targets (main.pdf) are up-to-date
+
+
+=== summary ===
+undefined citations : 0
+undefined references: 0
+overfull boxes      : 0
+underfull boxes     : 5   (loose lines only; no overfull)
+bibtex warnings     : 0
+bibliography entries: 23
+pages               : 18
+page size           : 612 x 792 pts (letter)
+
+=== manuscript_checks.py ===
+
+==============================================================
+  61/61 checks passed
+==============================================================
