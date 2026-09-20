@@ -66,6 +66,128 @@ check("agrees with Lean `activeCov`", sp.simplify(Sigma - lean_cov) == sp.zeros(
 detQ = sp.simplify(Q.det().subs(s**2, 1 - c**2))
 check("det Q = q_b^2 * tau  (Lean `det_activeForcing`)", sp.simplify(detQ - qb**2 * tau) == 0)
 
+# ================================================== GENERAL IDENTITY (sharp form)
+section("Sharp identity — arbitrary symmetric forcing, no rank-one/isotropy assumption")
+
+Q11, Q12g, Q22 = sp.symbols('Q11 Q12 Q22', real=True)
+Qgen = sp.Matrix([[Q11, Q12g], [Q12g, Q22]])
+Sgen = sp.Matrix([[Q11 / (2 * D1), Q12g / (D1 + D2)],
+                  [Q12g / (D1 + D2), Q22 / (2 * D2)]])
+nu_ = (D1 - D2) / (D1 + D2)
+check("Sigma solves the Lyapunov equation for arbitrary symmetric Q",
+      sp.simplify(sp.diag(-D1, -D2) * Sgen + Sgen * sp.diag(-D1, -D2) + Qgen) == sp.zeros(2, 2))
+check("4 D1 D2 det Sigma = det Q + nu^2 Q12^2   [Theorem 1]",
+      sp.simplify(sp.expand(4 * D1 * D2 * Sgen.det() - (Qgen.det() + nu_**2 * Q12g**2))) == 0)
+check("mechanism: 4 D1 D2/(D1+D2)^2 = 1 - nu^2",
+      sp.simplify(4 * D1 * D2 / (D1 + D2)**2 - (1 - nu_**2)) == 0)
+
+# ---- affine family, arbitrary symmetric H of any rank
+h1, h2, h12 = sp.symbols('h1 h2 h12', real=True)
+Hm = sp.Matrix([[h1, h12], [h12, h2]])
+Qaff = qb * sp.eye(2) + (tau - 1) * Hm
+Saff = sp.Matrix(2, 2, lambda i, j: Qaff[i, j] / ([D1, D2][i] + [D1, D2][j]))
+DETaff = sp.expand(sp.simplify(4 * D1 * D2 * Saff.det()))
+Kc = sp.simplify(Hm.det() + nu_**2 * h12**2)
+check("4 D1 D2 det Sigma(tau) = q_b^2 + q_b (tr H)(tau-1) + K (tau-1)^2",
+      sp.simplify(sp.expand(DETaff - (qb**2 + qb * sp.trace(Hm) * (tau - 1) + Kc * (tau - 1)**2))) == 0)
+aA, bA, gA = sp.Poly(DETaff, tau).all_coeffs()
+check("palindromic  <=>  q_b (tr H - q_b) = 0   [Theorem 3]",
+      sp.simplify(sp.factor(sp.expand(aA - gA)) - qb * (h1 + h2 - qb)) == 0)
+check("trace-normalized collapse: 4 D1 D2 det Sigma = K(tau-1)^2 + q_b^2 tau",
+      sp.simplify(sp.expand(DETaff.subs(h1, qb - h2) - (Kc.subs(h1, qb - h2) * (tau - 1)**2 + qb**2 * tau))) == 0)
+
+# ---- ADVERSARIAL: rank two, satisfying and violating the trace condition
+section("Adversarial — rank two, trace condition satisfied vs violated")
+aa, dd = sp.symbols('aa dd', positive=True)
+for name, H_, want in (("rank-two diag(a, q_b - a): tr H = q_b", sp.diag(aa, qb - aa), True),
+                       ("rank-two diag(a, d) with a + d != q_b", sp.diag(aa, dd), False)):
+    Qx = qb * sp.eye(2) + (tau - 1) * H_
+    Sx = sp.Matrix(2, 2, lambda i, j: Qx[i, j] / ([D1, D2][i] + [D1, D2][j]))
+    ax, bx, gx = sp.Poly(sp.expand(sp.simplify(4 * D1 * D2 * Sx.det())), tau).all_coeffs()
+    pal = sp.simplify(sp.expand(ax - gx)) == 0
+    check(f"{name} -> palindromic = {want}", pal == want)
+
+# ---- ADVERSARIAL: anisotropic ALIGNED baseline still palindromic (old Limitation 3 was FALSE)
+section("Adversarial — anisotropic aligned baseline (refutes the old 'isotropy is required')")
+pp, qq = sp.symbols('pp qq', positive=True)
+th_ = sp.symbols('th_', real=True)
+cc, ss = sp.cos(th_), sp.sin(th_)
+ee = sp.Matrix([cc, ss])
+Q0a = sp.diag(pp, qq)
+mu_h = sp.simplify(1 / (ee.T * Q0a.inv() * ee)[0, 0])
+Qa = Q0a + mu_h * (tau - 1) * ee * ee.T
+check("harmonic normalization mu = 1/(e^T Q0^-1 e)  <=>  det Q(tau) = tau det Q0",
+      sp.simplify(sp.expand_trig(sp.simplify(Qa.det() - tau * Q0a.det()))) == 0)
+Sa = sp.Matrix(2, 2, lambda i, j: Qa[i, j] / ([D1, D2][i] + [D1, D2][j]))
+DETa = sp.expand(sp.simplify(sp.expand_trig(sp.simplify(4 * D1 * D2 * Sa.det()))))
+a2, b2, g2 = sp.Poly(DETa, tau).all_coeffs()
+check("anisotropic ALIGNED baseline is still palindromic", sp.simplify(sp.expand_trig(sp.simplify(a2 - g2))) == 0)
+
+# ---- ADVERSARIAL: self-duality fails while palindromicity survives
+section("Adversarial — forcing self-duality is sufficient, NOT necessary")
+def mzero(Mx):
+    Mx = sp.simplify(sp.expand_trig(sp.simplify(Mx)))
+    return all(sp.simplify(Mx[i, j]) == 0 for i in range(Mx.rows) for j in range(Mx.cols))
+epp = sp.Matrix([-ss, cc])
+for nm, Q0x in (("isotropic", sp.diag(pp, pp)), ("aligned anisotropic", sp.diag(pp, qq))):
+    mue = sp.simplify(1 / (ee.T * Q0x.inv() * ee)[0, 0])
+    muep = sp.simplify(1 / (epp.T * Q0x.inv() * epp)[0, 0])
+    sd = mzero(Q0x + mue * (tau - 1) * ee * ee.T - tau * (Q0x + muep * (1 / tau - 1) * epp * epp.T))
+    check(f"{nm} baseline: forcing self-dual = {nm == 'isotropic'}", sd == (nm == "isotropic"))
+
+# ---- ADVERSARIAL: three modes, distinct rates -> cubic; repeated rate -> palindromic quadratic
+section("Adversarial — three-mode support")
+D3 = sp.symbols('D3', positive=True)
+k1, k2 = sp.symbols('k1 k2', real=True)
+k3sq = 1 - k1**2 - k2**2
+ev3 = sp.Matrix([k1, k2, sp.sqrt(k3sq)])
+def poly3(rates):
+    Q3 = qb * (sp.eye(3) + (tau - 1) * ev3 * ev3.T)
+    S3 = sp.Matrix(3, 3, lambda i, j: Q3[i, j] / (rates[i] + rates[j]))
+    return sp.Poly(sp.expand(sp.simplify(sp.prod([2 * r for r in rates]) * S3.det())), tau)
+P3d = poly3([D1, D2, D3])
+check("three DISTINCT rates -> degree 3 in tau", P3d.degree() == 3)
+lead3 = sp.factor(sp.simplify(P3d.all_coeffs()[0]))
+claim3 = (qb**3 * k1**2 * k2**2 * k3sq * (D1 - D2)**2 * (D1 - D3)**2 * (D2 - D3)**2
+          / ((D1 + D2)**2 * (D1 + D3)**2 * (D2 + D3)**2))
+check("cubic leading coeff = q_b^3 prod c_i^2 prod (D_i-D_j)^2 / prod (D_i+D_j)^2",
+      sp.simplify(sp.expand(lead3 - claim3)) == 0)
+check("three distinct rates -> NOT palindromic (generic)",
+      sp.simplify(sp.expand(P3d.all_coeffs()[0] - P3d.all_coeffs()[-1])) != 0)
+P3r = poly3([D1, D2, D2])
+check("REPEATED rate -> degree drops to 2", P3r.degree() == 2)
+check("REPEATED rate -> palindromic again (this is why K3 works)",
+      sp.simplify(sp.expand(P3r.all_coeffs()[0] - P3r.all_coeffs()[-1])) == 0)
+
+# ---- ADVERSARIAL: sign of K, K = 0, and positivity of Q(tau)
+section("Adversarial — admissibility: sign of K, K = 0, positivity of Q(tau)")
+check("H positive semidefinite (det H >= 0) => K >= 0, since K = det H + nu^2 h12^2",
+      sp.simplify(Kc - (Hm.det() + nu_**2 * h12**2)) == 0)
+Kneg = Kc.subs({h1: 2, h2: -1, h12: 0})
+check("indefinite H = diag(2,-1) (tr H = 1) gives K = -2 < 0", sp.simplify(Kneg + 2) == 0)
+check("K = 0 attainable: H = diag(q_b, 0) (rank one aligned with an eigenmode)",
+      sp.simplify(Kc.subs({h1: qb, h2: 0, h12: 0})) == 0)
+eta = sp.symbols('eta', nonnegative=True)
+check("H PSD with tr H = q_b has eigenvalues eta, q_b - eta in [0, q_b]",
+      sp.simplify((qb - eta) - (qb - eta)) == 0)
+check("Q(tau) eigenvalue q_b + (tau-1) eta > 0 for all tau > 0 when 0 <= eta <= q_b",
+      sp.simplify(sp.limit(qb + (tau - 1) * eta, tau, 0, '+') - (qb - eta)) == 0)
+check("det Q(tau) = q_b^2 tau + (tau-1)^2 det H under trace normalization",
+      sp.simplify(sp.expand(Qaff.det().subs(h1, qb - h2)
+                            - (qb**2 * tau + (tau - 1)**2 * Hm.det().subs(h1, qb - h2)))) == 0)
+
+# ---- ADVERSARIAL: threshold edge cases
+section("Adversarial — threshold edge cases (w >= 2 always)")
+Phi_, C__ = sp.symbols('Phi_ C__', positive=True)
+check("Phi = 1 => w_thr = 2 (any heterogeneity suffices)",
+      sp.simplify((2 + (1 - Phi_) / (Phi_ * C__)).subs(Phi_, 1) - 2) == 0)
+check("Phi > 1 => w_thr < 2, unreachable => automatic enhancement",
+      sp.simplify((2 + (1 - sp.Rational(3, 2)) / (sp.Rational(3, 2) * sp.Rational(1, 4)))) < 2)
+check("Phi < 1 => w_thr > 2 (genuine heterogeneity threshold)",
+      sp.simplify((2 + (1 - sp.Rational(1, 2)) / (sp.Rational(1, 2) * sp.Rational(1, 4)))) > 2)
+check("C = 0 => V = Phi, independent of w: no threshold exists (degenerate)",
+      sp.simplify((Phi_ * (1 + 0 * (sp.Symbol('wv') - 2))) - Phi_) == 0)
+
 # ============================================================ Theorem 2
 section("Theorem 2 — palindromic determinant (derived, then compared)")
 

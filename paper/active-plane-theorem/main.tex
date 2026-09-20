@@ -1,6 +1,6 @@
 % =============================================================================
-%  Two-Mode Active-Subspace Reduction and Reciprocal Determinant Thresholds
-%  in Linear Ornstein-Uhlenbeck Systems
+%  Palindromic Covariance Determinants and Reciprocal Thresholds
+%  in Two-Mode Linear Ornstein-Uhlenbeck Systems
 %
 %  FIRST DRAFT -- September 2026.  Not deposited, not submitted.
 %
@@ -38,40 +38,43 @@
 \newcommand{\eperpT}{e^{\perp\!\top}}
 \newcommand{\T}{^{\!\top}}
 
-\title{Two-Mode Active-Subspace Reduction and\\
-Reciprocal Determinant Thresholds in\\
+\title{Palindromic Covariance Determinants and\\
+Reciprocal Thresholds in Two-Mode\\
 Linear Ornstein--Uhlenbeck Systems}
 \author{Elias De Jes\'us\\
 Independent Researcher\\
 ORCID: 0009-0007-0190-9143}
-\date{First draft --- September 2026}
+\date{Draft --- September 2026}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-We study the stationary covariance of a stable linear Ornstein--Uhlenbeck system whose drift,
-restricted to a two-dimensional invariant subspace, has distinct relaxation rates $D_1,D_2>0$,
-and whose forcing on that subspace is a rank-one deformation of an isotropic baseline,
-$Q=q_b\bigl(I+(\tau-1)ee\T\bigr)$, along a unit \emph{excitation direction} $e=cu+sv$. Here
-$\tau>0$ is a \emph{variance} ratio. Solving the Lyapunov equation on the plane gives an exact
-$2\times2$ block, and we prove that its determinant is an exactly \emph{palindromic} quadratic
-in $\tau$:
+Let a stable linear Ornstein--Uhlenbeck system have a symmetric drift whose restriction to a
+two-dimensional invariant subspace has relaxation rates $D_1,D_2>0$. We prove an exact identity
+for the stationary covariance $\Sig$ solving the Lyapunov equation, valid for an
+\emph{arbitrary} symmetric forcing $Q$ on that subspace:
 \[
-  4D_1D_2\det\Sig = q_b^2\bigl(\Aco\tau^2+(1-2\Aco)\tau+\Aco\bigr),
-  \qquad \Aco=c^2s^2\nu^2,\quad \nu=\frac{D_1-D_2}{D_1+D_2}.
+  4D_1D_2\det\Sig \;=\; \det Q \;+\; \nu^2 Q_{12}^2,
+  \qquad \nu=\frac{D_1-D_2}{D_1+D_2},
 \]
-The leading and constant coefficients coincide because the forcing family is self-dual,
-$Q_e(\tau)=\tau\,Q_{\eperp}(1/\tau)$, which is $ee\T+\eperp\eperpT=I$ in disguise. Only then
-does the reciprocal coordinate $w=\tau+1/\tau$ appear: dividing by $\tau$ makes the normalized
-determinant exactly affine in $w$, which yields an exact generalized-variance threshold. The
-coefficient $\Aco$ vanishes precisely when the excitation lies in a single drift eigenmode or
-the two rates coincide, and is maximized at equal modal weights. Graph-Laplacian systems give
-corollaries: the two-node model of earlier work is recovered with $\tau=r^2$, and $P_3$ and
-$K_3$ give exact optimal thresholds $35+15\sqrt5$ and $247/2$. The central identities are
-machine-checked in Lean~4 with mathlib. We emphasize that the one-coordinate closure is tied
-to an effectively two-dimensional active structure and does not extend automatically to
-genuinely multi-mode excitation.
+where $Q_{12}$ is the off-diagonal entry in the drift eigenbasis. No rank-one, isotropy or
+positivity hypothesis is needed. Applied to the affine family
+$Q(\tau)=q_bI+(\tau-1)H$ with $H$ symmetric of any rank, this gives
+$4D_1D_2\det\Sig(\tau)=q_b^2+q_b(\tr H)(\tau-1)+K(\tau-1)^2$ with $K=\det H+\nu^2H_{12}^2$, and
+hence our main structural result: for $q_b>0$ the determinant is a \emph{palindromic} quadratic
+in $\tau$ \emph{if and only if the deformation is trace-normalized}, $\tr H=q_b$. Palindromicity
+then forces the reciprocal coordinate $w=\tau+1/\tau$: the normalized determinant is exactly
+affine in $w$, yielding an exact generalized-variance threshold. Rank-one heterogeneous
+excitation $H=q_be e\T$ is the special case $\tr H=q_b$ holds automatically, and recovers
+earlier two-node results with $\tau=r^2$. We separate the algebraic theorem from the
+covariance-admissible family: $H$ positive semidefinite with $\tr H=q_b$ keeps $K\ge0$ and
+$Q(\tau)\succ0$ for every $\tau>0$. Graph-Laplacian corollaries give exact optimal thresholds
+$34$, $35+15\sqrt5$ and $247/2$ for $K_2$, $P_3$ and $K_3$. A three-mode excitation with three
+distinct rates makes the determinant genuinely cubic, with leading coefficient proportional to
+$\prod_{i<j}(D_i-D_j)^2$, so the quadratic closure is tied to having two distinct active
+relaxation rates. The identity, the trace criterion, the reciprocal reduction and the
+admissibility bounds are machine-checked in Lean~4 with mathlib.
 \end{abstract}
 
 \section{Introduction}\label{sec:intro}
@@ -95,26 +98,44 @@ coupled OU processes with unequal noise amplitudes and found that this determina
 its uncoupled value at finite coupling if and only if the noise-amplitude ratio exceeds
 $3+2\sqrt2$ --- an exact algebraic threshold in a two-node model.
 
-The starting point of the present paper is that the two-node graph is \emph{not} the essential
-structure. What matters is a geometric configuration that a two-node system happens to realize:
-a two-dimensional invariant subspace of the drift on which the relaxation rates differ, carrying
-a forcing that is isotropic except for a rank-one deformation along one direction. We call that
-subspace the \emph{active plane} and that direction the \emph{excitation direction}. Under those
-hypotheses --- and with no reference to any graph --- the stationary covariance determinant is
-exactly palindromic in the variance ratio, and therefore collapses onto the single reciprocal
-coordinate $w=\tau+1/\tau$.
+The present paper grew out of trying to say exactly what makes that threshold work, and the
+answer turned out to be neither the graph nor the geometry we first guessed at. An earlier
+formulation of ours isolated a two-dimensional invariant subspace of the drift carrying a
+\emph{rank-one} deformation of an isotropic forcing, and explained the resulting reciprocal
+structure by a self-duality of that rank-one family. That explanation is correct but not sharp.
 
-The logical order matters and we keep it throughout. The reciprocal coordinate is not posited as
-a convenient change of variable: it is \emph{forced} by an algebraic symmetry of the determinant,
-which is in turn forced by a self-duality of the rank-one forcing family. The chain is
+What is actually true is simpler and more general. For a symmetric drift restricted to a
+two-dimensional invariant subspace, the stationary covariance obeys the exact identity
+\begin{equation}
+  4D_1D_2\det\Sig \;=\; \det Q + \nu^2Q_{12}^2,
+  \qquad \nu=\frac{D_1-D_2}{D_1+D_2}, \label{eq:sharpintro}
+\end{equation}
+for \emph{any} symmetric forcing $Q$ --- no rank-one, no isotropy, no positivity. Feeding an
+affine family $Q(\tau)=q_bI+(\tau-1)H$ into \eqref{eq:sharpintro} makes the determinant a
+quadratic in $\tau$ whose leading and constant coefficients coincide precisely when
+$\tr H=q_b$. So the mechanism is a \emph{trace normalization} of the deformation, and rank-one
+excitation is simply the case in which that normalization is automatic, because a unit rank-one
+$q_bee\T$ has trace $q_b$ whatever direction $e$ points. Isotropy of the baseline is not needed
+either, and forcing-level self-duality --- which does hold in the rank-one isotropic model --- is
+sufficient but not necessary: we exhibit an anisotropic baseline where self-duality fails and
+palindromicity survives.
+
+Only once palindromicity is established does the reciprocal coordinate appear. It is not posited
+as a convenient substitution: a palindromic quadratic divided by $\tau$ is an affine function of
+$w=\tau+1/\tau$, and that is what produces an exact threshold. The chain is
 \[
 \begin{gathered}
-  \text{rank-one excitation}\ \to\ \text{two-mode covariance block}
-  \ \to\ \text{palindromic determinant}\\
-  \to\ w=\tau+1/\tau\ \to\ \text{exact threshold},
+  \text{Lyapunov identity}\ \to\ \text{affine forcing family}\ \to\ \text{trace normalization}\\
+  \to\ \text{palindromic determinant}\ \to\ w=\tau+1/\tau\ \to\ \text{exact threshold},
 \end{gathered}
 \]
 and each arrow is proved before the next is used.
+
+We are careful throughout to separate the algebra from the modelling. Identity
+\eqref{eq:sharpintro} and the trace criterion hold for any symmetric $H$ and any real $\tau$;
+but $Q(\tau)$ is a forcing covariance only where it is positive definite, and the threshold
+statement needs $K\ge0$. Both are guaranteed by taking $H$ positive semidefinite with
+$\tr H=q_b$, and we say so rather than quietly assuming it.
 
 \paragraph{What is standard and what is not.} The ingredients are almost entirely classical: the
 OU stationary covariance and the Lyapunov equation \cite{Gardiner2004}; the modal solution
@@ -147,9 +168,13 @@ Existence and uniqueness of the stationary Gaussian law for \eqref{eq:sde} is cl
 statements about it.
 
 \begin{definition}[Active plane and excitation direction]\label{def:active}
-Let $\Pi\subset\Real^n$ be a two-dimensional subspace invariant under $M$, on which $M$ acts
-symmetrically with eigenmodes $u,v$ and relaxation rates $D_1,D_2>0$; that is, in the orthonormal
-basis $(u,v)$ of $\Pi$,
+\textbf{We assume throughout that $M$ is symmetric}, so that it is orthogonally diagonalizable
+and the modal basis below is orthonormal; this hypothesis is load-bearing and is not a
+convenience. Everything in Sections~\ref{sec:thm1}--\ref{sec:threshold} rests on the modal
+solution \eqref{eq:modal}, which is false for non-normal drift.
+
+Let $\Pi\subset\Real^n$ be a two-dimensional subspace invariant under $M$, with eigenmodes
+$u,v$ and relaxation rates $D_1,D_2>0$; that is, in the orthonormal basis $(u,v)$ of $\Pi$,
 \[
   M|_\Pi = \operatorname{diag}(-D_1,-D_2).
 \]
@@ -199,292 +224,350 @@ only features of this picture that enter the determinant.}
 \label{fig:plane}
 \end{figure}
 
-\section{The active covariance block}\label{sec:thm1}
+\section{The general determinant identity}\label{sec:thm1}
 
-\begin{theorem}[Stationary covariance on the active plane]\label{thm:cov}
-Let $D_1,D_2>0$ and let $Q$ be any symmetric forcing on $\Pi$ with entries $q_{11},q_{12},q_{22}$
-in the basis $(u,v)$. Then \eqref{eq:lyap} restricted to $\Pi$ has the unique solution
+\begin{theorem}[Stationary covariance on the plane]\label{thm:cov}
+Let $D_1,D_2>0$ and let $Q=\bigl(\begin{smallmatrix}q_{11}&q_{12}\\ q_{12}&q_{22}\end{smallmatrix}\bigr)$
+be any symmetric forcing on $\Pi$. Then \eqref{eq:lyap} restricted to $\Pi$ has the unique
+solution
 \begin{equation}
-  \Sig = \begin{pmatrix}
+  \Sig_{ij}=\frac{Q_{ij}}{D_i+D_j},
+  \qquad\text{i.e.}\qquad
+  \Sig=\begin{pmatrix}
     \dfrac{q_{11}}{2D_1} & \dfrac{q_{12}}{D_1+D_2}\\[2.2ex]
-    \dfrac{q_{12}}{D_1+D_2} & \dfrac{q_{22}}{2D_2}
-  \end{pmatrix},
-  \qquad\text{that is,}\qquad
-  \Sig_{ij}=\frac{Q_{ij}}{D_i+D_j}. \label{eq:modal}
-\end{equation}
-For the rank-one forcing \eqref{eq:forcing} this reads
-\begin{equation}
-  \Sig = \begin{pmatrix}
-    \dfrac{q_b\bigl(1+(\tau-1)c^2\bigr)}{2D_1} & \dfrac{q_b(\tau-1)cs}{D_1+D_2}\\[2.2ex]
-    \dfrac{q_b(\tau-1)cs}{D_1+D_2} & \dfrac{q_b\bigl(1+(\tau-1)s^2\bigr)}{2D_2}
-  \end{pmatrix}. \label{eq:activecov}
+    \dfrac{q_{12}}{D_1+D_2} & \dfrac{q_{22}}{2D_2}\end{pmatrix}. \label{eq:modal}
 \end{equation}
 \end{theorem}
 
 \begin{proof}
-With $M|_\Pi=\operatorname{diag}(-D_1,-D_2)$, equation \eqref{eq:lyap} reads entrywise
-$-(D_i+D_j)\Sig_{ij}=-Q_{ij}$, which determines each $\Sig_{ij}$ uniquely because $D_i+D_j>0$.
-Substituting the entries of \eqref{eq:forcing} gives \eqref{eq:activecov}.
+In the eigenbasis \eqref{eq:lyap} reads entrywise $-(D_i+D_j)\Sig_{ij}=-Q_{ij}$, and
+$D_i+D_j>0$.
 \end{proof}
 
 Equation \eqref{eq:modal} is the standard modal form of the Lyapunov solution for a symmetric
-drift and is used throughout the heterogeneous-OU literature
-\cite{Barucca2014,GodrecheLuck2019,FerreiraMetzBarucca2025}; we claim no novelty for it. It is
-recorded as a theorem only because everything below is computed from it.
+drift, used throughout the heterogeneous-OU literature
+\cite{Barucca2014,GodrecheLuck2019,FerreiraMetzBarucca2025}; we claim no novelty for it. The
+next identity is the one everything rests on.
 
-\begin{lemma}[Forcing determinant]\label{lem:detQ}
-For $c^2+s^2=1$, $\det Q(\tau)=q_b^2\tau$.
-\end{lemma}
-
-\begin{proof}
-$Q(\tau)$ has eigenvalues $q_b\tau$ and $q_b$; equivalently, expanding the $2\times2$ determinant
-of \eqref{eq:forcing} and using $c^2+s^2=1$ gives
-$q_b^2\bigl[(1+(\tau-1)c^2)(1+(\tau-1)s^2)-(\tau-1)^2c^2s^2\bigr]=q_b^2\tau$.
-\end{proof}
-
-\section{Self-duality of the forcing family}\label{sec:selfdual}
-
-The palindromic structure of the next section is not an accident of the algebra; it descends from
-a symmetry of the family \eqref{eq:forcing} itself.
-
-\begin{proposition}[Self-duality]\label{prop:selfdual}
-Let $c^2+s^2=1$ and $\tau>0$. Then
+\begin{theorem}[General two-mode determinant identity]\label{thm:sharp}
+Let $D_1,D_2>0$ and let $Q$ be any symmetric matrix on $\Pi$. With $\Sig$ as in
+\eqref{eq:modal},
 \begin{equation}
-  Q_e(\tau) \;=\; \tau\;Q_{\eperp}\!\left(\frac1\tau\right), \label{eq:selfdual}
+  4D_1D_2\,\det\Sig \;=\; \det Q \;+\; \nu^2\,Q_{12}^2,
+  \qquad \nu=\frac{D_1-D_2}{D_1+D_2}. \label{eq:sharp}
 \end{equation}
-where $Q_{\eperp}(\sigma)=q_b\bigl(I+(\sigma-1)\eperp\eperpT\bigr)$.
-\end{proposition}
-
-\begin{proof}
-Because $(e,\eperp)$ is an orthonormal basis of $\Pi$,
-\begin{equation}
-  ee\T+\eperp\eperpT = I. \label{eq:resolution}
-\end{equation}
-Hence $q_b\bigl(I+(\tau-1)ee\T\bigr)=q_b\bigl(\tau\,ee\T+\eperp\eperpT\bigr)$, and likewise
-$\tau q_b\bigl(I+(\tau^{-1}-1)\eperp\eperpT\bigr)
- =\tau q_b\bigl(ee\T+\tau^{-1}\eperp\eperpT\bigr)
- =q_b\bigl(\tau ee\T+\eperp\eperpT\bigr)$.
-The two agree.
-\end{proof}
-
-Equation \eqref{eq:selfdual} says that inverting the heterogeneity ratio and rotating the
-excitation by a quarter turn returns the same forcing up to an overall scale $\tau$. Since the
-determinant of a $2\times2$ matrix scales as $\tau^2$ under $Q\mapsto\tau Q$, and since $\Sig$
-depends linearly on $Q$ by Theorem~\ref{thm:cov}, the map $\tau\mapsto1/\tau$ can only act on
-$\det\Sig$ by a factor $\tau^2$ together with the exchange $c\leftrightarrow s$. The coefficient
-$\Aco=c^2s^2\nu^2$ is symmetric in $c\leftrightarrow s$, which is precisely why the exchange
-leaves the polynomial invariant and makes it palindromic.
-
-\begin{remark}
-Self-duality of this kind is elementary and we do not present it as a new concept; identity
-\eqref{eq:resolution} is the resolution of the identity on a plane. The contribution here is its
-role as the structural cause of the determinant identity in Section~\ref{sec:thm2}.
-\end{remark}
-
-\section{The palindromic determinant}\label{sec:thm2}
-
-\begin{theorem}[Palindromic determinant identity]\label{thm:palindromic}
-Let $D_1,D_2>0$, $c^2+s^2=1$, $q_b\in\Real$, $\tau\in\Real$, and let $\Sig$ be as in
-\eqref{eq:activecov}. Then
-\begin{equation}
-  4D_1D_2\,\det\Sig
-  \;=\; q_b^2\Bigl(\Aco\,\tau^2 \;+\; (1-2\Aco)\,\tau \;+\; \Aco\Bigr),
-  \qquad \Aco=c^2s^2\nu^2. \label{eq:palindromic}
-\end{equation}
-In particular the quadratic in $\tau$ is \emph{palindromic}: its leading and constant
-coefficients are equal.
 \end{theorem}
 
 \begin{proof}
-Write $\Delta=D_1+D_2$. From \eqref{eq:activecov},
+From \eqref{eq:modal},
+$\det\Sig=\dfrac{q_{11}q_{22}}{4D_1D_2}-\dfrac{q_{12}^2}{(D_1+D_2)^2}$, so
 \[
-  \det\Sig
-  = \frac{q_b^2\bigl(1+(\tau-1)c^2\bigr)\bigl(1+(\tau-1)s^2\bigr)}{4D_1D_2}
-    - \frac{q_b^2(\tau-1)^2c^2s^2}{\Delta^2}.
+  4D_1D_2\det\Sig
+  = q_{11}q_{22}-\frac{4D_1D_2}{(D_1+D_2)^2}\,q_{12}^2
+  = q_{11}q_{22}-\bigl(1-\nu^2\bigr)q_{12}^2
+  = \det Q+\nu^2q_{12}^2,
 \]
-Multiplying by $4D_1D_2\Delta^2$ and using Lemma~\ref{lem:detQ} in the form
-$q_b^2\bigl(1+(\tau-1)c^2\bigr)\bigl(1+(\tau-1)s^2\bigr)-q_b^2(\tau-1)^2c^2s^2=q_b^2\tau$ gives
-\begin{align}
-  4D_1D_2\Delta^2\det\Sig
-  &= \Delta^2\Bigl[q_b^2\tau + q_b^2(\tau-1)^2c^2s^2\Bigr] - 4D_1D_2\,q_b^2(\tau-1)^2c^2s^2
-  \notag\\
-  &= q_b^2\Bigl[\Delta^2\tau + c^2s^2(\tau-1)^2\bigl(\Delta^2-4D_1D_2\bigr)\Bigr]
-  \notag\\
-  &= q_b^2\Bigl[\Delta^2\tau + c^2s^2(D_1-D_2)^2(\tau-1)^2\Bigr], \label{eq:keystep}
-\end{align}
-since $\Delta^2-4D_1D_2=(D_1-D_2)^2$. Dividing by $\Delta^2$ and using
-$\Aco=c^2s^2(D_1-D_2)^2/\Delta^2$,
-\[
-  4D_1D_2\det\Sig = q_b^2\bigl[\tau+\Aco(\tau-1)^2\bigr]
-  = q_b^2\bigl[\Aco\tau^2+(1-2\Aco)\tau+\Aco\bigr]. \qedhere
-\]
+using $(D_1+D_2)^2-(D_1-D_2)^2=4D_1D_2$, i.e. $4D_1D_2/(D_1+D_2)^2=1-\nu^2$.
 \end{proof}
 
-Two features of \eqref{eq:keystep} deserve comment. First, the entire dependence on the rates
-enters through the single combination $(D_1-D_2)^2/(D_1+D_2)^2=\nu^2$: the determinant does not
-see $D_1$ and $D_2$ separately beyond the overall factor $4D_1D_2$. Second, the heterogeneity
-enters only through $(\tau-1)^2$, which is manifestly symmetric under the substitution that
-sends $\tau-1$ to $\tau(\tau^{-1}-1)$; this is the self-duality of
-Proposition~\ref{prop:selfdual} reappearing as the palindromic symmetry of the coefficients.
+The content of \eqref{eq:sharp} is a mismatch of denominators. The diagonal entries of $\Sig$
+carry $2D_i$ and the off-diagonal carries $D_1+D_2$; if the off-diagonal carried the geometric
+mean $2\sqrt{D_1D_2}$ instead, the determinant would be exactly $\det Q/(4D_1D_2)$ and nothing
+further would happen. The arithmetic mean is larger, the deficit is precisely $\nu^2$, and the
+whole of this paper is what that deficit does.
+
+\begin{remark}[What is \emph{not} assumed]
+Theorem~\ref{thm:sharp} assumes only that $Q$ is symmetric. It is not assumed rank one, not
+isotropic, not positive semidefinite, and $\tau$ has not yet been introduced. The drift, by
+contrast, \emph{is} assumed symmetric on $\Pi$ (Definition~\ref{def:active}); that hypothesis is
+load-bearing, since \eqref{eq:modal} fails for non-normal drift.
+\end{remark}
+
+\section{Affine forcing and the trace criterion}\label{sec:thm2}
+
+We now deform the forcing along a one-parameter family.
+
+\begin{definition}[Affine forcing family]\label{def:affine}
+For a baseline intensity $q_b>0$, a symmetric $H=\bigl(\begin{smallmatrix}h_1&h_{12}\\ h_{12}&h_2\end{smallmatrix}\bigr)$
+and $\tau\in\Real$, set
+\begin{equation}
+  Q(\tau) \;=\; q_b I + (\tau-1)H. \label{eq:affine}
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Affine determinant formula]\label{thm:affine}
+With $\Sig(\tau)$ the stationary covariance of \eqref{eq:affine},
+\begin{equation}
+  4D_1D_2\det\Sig(\tau)
+  \;=\; q_b^2 \;+\; q_b(\tr H)(\tau-1) \;+\; K(\tau-1)^2,
+  \qquad K:=\det H+\nu^2H_{12}^2. \label{eq:affinedet}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+$Q(\tau)$ has off-diagonal $(\tau-1)h_{12}$ and
+$\det Q(\tau)=q_b^2+q_b(\tr H)(\tau-1)+(\det H)(\tau-1)^2$, the standard expansion of the
+determinant of $q_bI+(\tau-1)H$ in dimension two. Substituting both into \eqref{eq:sharp} and
+collecting the $(\tau-1)^2$ terms gives \eqref{eq:affinedet}.
+\end{proof}
+
+Expanding \eqref{eq:affinedet} in powers of $\tau$,
+\begin{equation}
+  4D_1D_2\det\Sig(\tau)
+  = \underbrace{K}_{\text{leading}}\tau^2
+  + \bigl(q_b\tr H-2K\bigr)\tau
+  + \underbrace{\bigl(q_b^2-q_b\tr H+K\bigr)}_{\text{constant}}. \label{eq:expand}
+\end{equation}
+
+\begin{theorem}[Trace criterion for palindromicity]\label{thm:trace}
+The leading and constant coefficients in \eqref{eq:expand} are equal if and only if
+$q_b(\tr H-q_b)=0$. In particular, for $q_b>0$,
+\begin{equation}
+  4D_1D_2\det\Sig(\tau)\ \text{is palindromic in }\tau
+  \iff \tr H=q_b. \label{eq:tracecrit}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Leading minus constant equals $K-(q_b^2-q_b\tr H+K)=q_b\tr H-q_b^2=q_b(\tr H-q_b)$. For
+$q_b>0$ this vanishes iff $\tr H=q_b$.
+\end{proof}
+
+This is the structural statement of the paper, and it is worth saying plainly what it replaces.
+The reciprocal structure is \emph{not} caused by the deformation being rank one, nor by the
+baseline being isotropic. It is caused by the deformation carrying exactly the baseline's share
+of trace. Rank one is the case where that happens for free.
+
+\begin{theorem}[Trace-normalized determinant]\label{thm:tracenorm}
+If $\tr H=q_b$ then
+\begin{equation}
+  4D_1D_2\det\Sig(\tau) \;=\; K(\tau-1)^2+q_b^2\,\tau
+  \;=\; K\tau^2+(q_b^2-2K)\tau+K. \label{eq:tracenorm}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Put $\tr H=q_b$ in \eqref{eq:affinedet}: the linear term becomes $q_b^2(\tau-1)$, and
+$q_b^2+q_b^2(\tau-1)=q_b^2\tau$.
+\end{proof}
 
 \section{The reciprocal reduction}\label{sec:thm3}
 
-Only now, with palindromicity established, do we introduce the reciprocal coordinate. A
-palindromic polynomial of even degree $2m$ in $t$ is a polynomial of degree $m$ in $t+1/t$ after
-division by $t^m$; for $m=1$ this is immediate, and the general statement is classical
-(see \cite[\S2]{Vieira2019}, where the substitution $x=z+1/z$ and its Chebyshev connection are
-set out). We use only the $m=1$ case, which we prove in line; the citation is for provenance of
-the substitution, not for the identity below.
+Only now, with palindromicity in hand, does the reciprocal coordinate enter. A palindromic
+polynomial of even degree $2m$ in $t$ is a degree-$m$ polynomial in $t+1/t$ after division by
+$t^m$; the general statement is classical (see \cite[\S2]{Vieira2019}), and we use only $m=1$,
+proved in line.
 
 \begin{definition}
 For $\tau>0$ set $w=\tau+\dfrac1\tau$.
 \end{definition}
 
 \begin{lemma}\label{lem:wge2}
-For $\tau>0$, $w-2=(\tau-1)^2/\tau\ge0$, with equality if and only if $\tau=1$. Hence $w\ge2$
-always, and $w=2$ exactly in the homogeneous case.
+For $\tau>0$, $w-2=(\tau-1)^2/\tau\ge0$, with equality iff $\tau=1$. Hence $w\ge2$ always.
 \end{lemma}
 
-\begin{theorem}[Reciprocal reduction]\label{thm:reciprocal}
-Let $D_1,D_2>0$, $c^2+s^2=1$, $q_b\ne0$, $\tau>0$. Then
+\begin{corollary}[Reciprocal reduction]\label{cor:reciprocal}
+If $\tr H=q_b$ and $\tau>0$, then
 \begin{equation}
-  \frac{4D_1D_2\,\det\Sig}{q_b^2\,\tau}
-  \;=\; 1+\Aco\,(w-2). \label{eq:normalized}
+  \frac{4D_1D_2\det\Sig(\tau)}{\tau} \;=\; q_b^2+K\,(w-2),
+  \qquad\text{equivalently}\qquad
+  \frac{4D_1D_2\det\Sig(\tau)}{q_b^2\,\tau} \;=\; 1+\frac{K}{q_b^2}(w-2). \label{eq:reciprocal}
 \end{equation}
-\end{theorem}
+\end{corollary}
 
 \begin{proof}
-Divide \eqref{eq:palindromic} by $q_b^2\tau$, which is nonzero:
-\[
-  \frac{\Aco\tau^2+(1-2\Aco)\tau+\Aco}{\tau}
-  = \Aco\tau+1-2\Aco+\frac{\Aco}{\tau}
-  = 1+\Aco\Bigl(\tau+\frac1\tau-2\Bigr). \qedhere
-\]
+Divide \eqref{eq:tracenorm} by $\tau$ and use Lemma~\ref{lem:wge2}:
+$K(\tau-1)^2/\tau+q_b^2=K(w-2)+q_b^2$.
 \end{proof}
 
-The normalization in \eqref{eq:normalized} is natural: $q_b^2\tau=\det Q$ by
-Lemma~\ref{lem:detQ}, and $4D_1D_2=\prod_{i,j}(D_i+D_j)^{1/2}\cdot\ldots$ --- more simply,
-$q_b^2\tau/(4D_1D_2)$ is exactly $\det\Sig$ in the homogeneous-direction case $\Aco=0$. So
-\eqref{eq:normalized} compares the determinant against what it would be with no reciprocal
-contribution, and the comparison is \emph{exactly affine} in $w$ (Figure~\ref{fig:affine}).
+Figure~\ref{fig:affine} plots \eqref{eq:reciprocal}. The dependence on the heterogeneity is
+exactly affine in $w$, with slope $K/q_b^2$ and value $1$ at $w=2$.
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.66\textwidth]{figures/fig2.pdf}
-\caption{The normalized active determinant \eqref{eq:normalized} as a function of the reciprocal
-coordinate $w$, for several values of $\Aco$. The dependence is exactly affine, with slope
-$\Aco\in[0,1/4)$ and value $1$ at $w=2$ (the homogeneous point $\tau=1$).}
+\caption{The normalized determinant \eqref{eq:reciprocal} as a function of the reciprocal
+coordinate $w$, for several values of the slope. The dependence is exactly affine, with value
+$1$ at $w=2$ (the homogeneous point $\tau=1$). In the rank-one case the slope is
+$\Aco=c^2s^2\nu^2\in[0,1/4)$; in general it is $K/q_b^2$, nonnegative for an admissible family
+(Definition~\ref{def:admissible}).}
 \label{fig:affine}
 \end{figure}
 
-\section{Degeneracy and size of the coefficient}\label{sec:degeneracy}
+\section{Admissibility: algebra versus covariance}\label{sec:admissible}
 
-Everything in \eqref{eq:normalized} is controlled by the single number $\Aco=c^2s^2\nu^2$. We
-record exactly when it vanishes and how large it can be.
+Everything above is an identity between polynomials and holds for every symmetric $H$ and every
+real $\tau$. Two further things are needed before it describes a stochastic system, and we state
+them separately rather than folding them into the hypotheses.
 
-\begin{proposition}[Exact degeneracy conditions]\label{prop:degenerate}
-Let $D_1,D_2>0$ and $c^2+s^2=1$. Then $\Aco\ge0$, and
-\begin{equation}
-  \Aco = 0 \iff c=0 \ \text{ or }\ s=0 \ \text{ or }\ D_1=D_2. \label{eq:degen}
-\end{equation}
-Separately, the reciprocal \emph{contribution} $\Aco(w-2)$ vanishes if and only if
-$\Aco=0$ or $\tau=1$.
+\begin{proposition}[Sign of $K$]\label{prop:Ksign}
+$K=\det H+\nu^2H_{12}^2=h_1h_2-(1-\nu^2)h_{12}^2$. If $H$ is positive semidefinite then
+$K\ge0$. If $H$ is indefinite, $K$ may be negative: $H=\operatorname{diag}(2,-1)$ has
+$\tr H=1$ and $K=-2$. Moreover $K=0$ is attained, e.g.\ $H=\operatorname{diag}(q_b,0)$.
 \end{proposition}
 
 \begin{proof}
-$\Aco=c^2s^2\nu^2$ is a product of squares, hence nonnegative, and vanishes iff $c=0$, $s=0$ or
-$D_1-D_2=0$ (note $D_1+D_2>0$, so $\nu$ is well defined and $\nu=0$ iff $D_1=D_2$). The second
-statement follows from Lemma~\ref{lem:wge2}.
+$0\le1-\nu^2\le1$ by Proposition~\ref{prop:mixing} below, so $K\ge\det H$; if $H$ is positive
+semidefinite then $\det H\ge0$ and $\nu^2H_{12}^2\ge0$. The two examples are direct.
 \end{proof}
 
-The three degeneracies have clean readings, and together they say exactly what the mechanism
-requires:
-\begin{itemize}\itemsep2pt
-\item $c=0$ or $s=0$: the excitation lies in a \emph{single} drift eigenmode. The forcing is then
-  simultaneously diagonalizable with the drift, the covariance is diagonal, and heterogeneity
-  cannot couple the modes.
-\item $D_1=D_2$: no relaxation contrast. The active block is a multiple of the identity in its
-  rate structure, and the determinant is blind to how the forcing is oriented.
-\item $\tau=1$: no forcing heterogeneity at all.
-\end{itemize}
-Thus a nonzero reciprocal contribution requires \emph{both} genuinely mixed excitation and
-genuinely unequal rates. This is the sharpest explanatory content of the theorem: the effect is
-an interference between two anisotropies --- one in the drift, one in the forcing --- and it
-disappears if either is absent.
-
-\begin{proposition}[Modal-mixture bound]\label{prop:mixing}
-If $c^2+s^2=1$ then $c^2s^2\le\tfrac14$, with equality if and only if $c^2=s^2=\tfrac12$.
-If moreover $D_1,D_2>0$ then $\nu^2<1$. Consequently
-\begin{equation}
-  0\;\le\;\Aco\;<\;\tfrac14. \label{eq:Abound}
-\end{equation}
+\begin{proposition}[Positivity of the forcing]\label{prop:posdef}
+Let $H$ be positive semidefinite with $\tr H=q_b>0$. Then $Q(\tau)\succ0$ for every $\tau>0$.
 \end{proposition}
 
 \begin{proof}
-$\tfrac14-c^2s^2=\tfrac14-c^2(1-c^2)=(c^2-\tfrac12)^2\ge0$, with equality iff $c^2=\tfrac12$.
-For the rate contrast, $(D_1+D_2)^2-(D_1-D_2)^2=4D_1D_2>0$, so $\nu^2<1$ strictly.
+$H$ has eigenvalues $\eta$ and $q_b-\eta$ with $0\le\eta\le q_b$. The eigenvalues of
+$Q(\tau)=q_bI+(\tau-1)H$ are $q_b+(\tau-1)\eta_i$, which for $\tau>0$ are bounded below by
+$\min\{q_b,\ \tau q_b\}>0$. Equivalently, by \eqref{eq:affinedet} with $\tr H=q_b$,
+$\det Q(\tau)=q_b^2\tau+(\tau-1)^2\det H>0$ and $\tr Q(\tau)=q_b(1+\tau)>0$.
 \end{proof}
+
+\begin{definition}[Admissible family]\label{def:admissible}
+We call \eqref{eq:affine} \emph{admissible} when $q_b>0$ and $H$ is positive semidefinite with
+$\tr H=q_b$. By Propositions~\ref{prop:Ksign} and \ref{prop:posdef} an admissible family has
+$K\ge0$ and $Q(\tau)\succ0$ for all $\tau>0$, so \eqref{eq:reciprocal} is a statement about
+genuine forcing covariances and its slope is nonnegative.
+\end{definition}
+
+\section{Rank-one excitation as a special case}\label{sec:rankone}
+
+\begin{corollary}[Rank-one heterogeneous excitation]\label{cor:rankone}
+Let $e=cu+sv$ with $c^2+s^2=1$ and put $H=q_b\,ee\T$, i.e.\
+$Q(\tau)=q_b\bigl(I+(\tau-1)ee\T\bigr)$. Then $\tr H=q_b$ automatically, $H$ is positive
+semidefinite, $\det H=0$, $H_{12}=q_bcs$, and
+\begin{equation}
+  K=q_b^2\,c^2s^2\nu^2,
+  \qquad
+  \frac{4D_1D_2\det\Sig(\tau)}{q_b^2\tau}=1+\Aco\,(w-2),
+  \quad \Aco:=c^2s^2\nu^2. \label{eq:rankone}
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+$\tr(q_bee\T)=q_b\|e\|^2=q_b$ and $\det(q_bee\T)=0$ since $ee\T$ has rank one. Then
+$K=0+\nu^2(q_bcs)^2$. Divide by $q_b^2$ in \eqref{eq:reciprocal}.
+\end{proof}
+
+This is the theorem of our earlier formulation, now with its hypotheses explained: the rank-one
+model works because a unit rank-one deformation is trace-normalized \emph{for every direction
+$e$}, and it is admissible because such an $H$ is positive semidefinite. The direction enters
+only through $c^2s^2$.
+
+\begin{proposition}[Degeneracy and size, rank-one case]\label{prop:degenerate}
+For the rank-one family, $\Aco\ge0$ and
+\begin{equation}
+  \Aco=0 \iff c=0\ \text{ or }\ s=0\ \text{ or }\ D_1=D_2, \label{eq:degen}
+\end{equation}
+while the reciprocal contribution $\Aco(w-2)$ vanishes iff $\Aco=0$ or $\tau=1$.
+\end{proposition}
+
+The readings are: $c=0$ or $s=0$, the excitation lies in a single drift eigenmode, so forcing
+and drift are simultaneously diagonal and the covariance cannot mix them; $D_1=D_2$, no
+relaxation contrast; $\tau=1$, no heterogeneity. A nonzero reciprocal contribution needs
+\emph{both} anisotropies, in the drift and in the forcing.
 
 \begin{remark}
-The bound $c^2s^2\le1/4$ says the heterogeneity-sensitive coefficient is largest when the
-excitation projects equally onto the two active modes. We read this as a statement about this
-determinant and nothing more; it is not proposed as a physical optimality principle. Note also
-that $\Aco<1/4$ is strict: $\nu^2<1$ for any finite positive rates, and $\nu^2\to1$ only in the
-singular limit $D_2/D_1\to0$ or $\infty$.
+Equation~\eqref{eq:degen} is specific to rank one. For general trace-normalized $H$ the
+coefficient is $K$, and $K$ can be nonzero with $\nu=0$: the isotropic scaling
+$H=\tfrac{q_b}{2}I$ gives $K=q_b^2/4$ for any rates. So the degeneracy analysis must be read as
+a statement about the rank-one family, not about \eqref{eq:tracecrit}.
+\end{remark}
+
+\begin{proposition}[Modal-mixture bound]\label{prop:mixing}
+If $c^2+s^2=1$ then $c^2s^2\le\tfrac14$, with equality iff $c^2=s^2=\tfrac12$. If $D_1,D_2>0$
+then $\nu^2<1$. Hence $0\le\Aco<\tfrac14$ in the rank-one case.
+\end{proposition}
+
+\begin{proof}
+$\tfrac14-c^2s^2=(c^2-\tfrac12)^2\ge0$; and $(D_1+D_2)^2-(D_1-D_2)^2=4D_1D_2>0$.
+\end{proof}
+
+\section{Self-duality: sufficient, not necessary}\label{sec:selfdual}
+
+The rank-one isotropic model has an extra symmetry that makes the reciprocal structure visually
+obvious, and it is worth recording --- together with the fact that it is not the cause.
+
+\begin{proposition}[Self-duality of the rank-one isotropic family]\label{prop:selfdual}
+Let $c^2+s^2=1$, $\eperp=-su+cv$, $\tau>0$, and $Q_e(\tau)=q_b(I+(\tau-1)ee\T)$. Then
+\begin{equation}
+  Q_e(\tau)=\tau\,Q_{\eperp}\!\left(\tfrac1\tau\right). \label{eq:selfdual}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+$ee\T+\eperp\eperpT=I$, so $Q_e(\tau)=q_b(\tau\,ee\T+\eperp\eperpT)$; and
+$\tau q_b\bigl(I+(\tau^{-1}-1)\eperp\eperpT\bigr)=q_b(\tau\,ee\T+\eperp\eperpT)$ likewise.
+\end{proof}
+
+\begin{remark}[The counterexample]\label{rem:selfdualnotnec}
+Self-duality \eqref{eq:selfdual} is \emph{not} necessary for palindromicity. Take an anisotropic
+baseline diagonal in the drift eigenbasis, $Q_0=\operatorname{diag}(p,q)$ with $p\neq q$, and
+deform along $e$ with the scale $\mu=1/(e\T Q_0^{-1}e)$, i.e.\
+$Q(\tau)=Q_0+\mu(\tau-1)ee\T$. Then:
+\begin{itemize}\itemsep2pt
+\item $\det Q(\tau)=\tau\det Q_0$ exactly --- that normalization is precisely what makes $\tau$
+  the \emph{determinant ratio} of the forcing;
+\item consequently $\det Q(\tau)$ is linear in $\tau$ while $Q_{12}(\tau)=\mu(\tau-1)cs$, so by
+  \eqref{eq:sharp} the determinant is $\tau\det Q_0+\nu^2\mu^2c^2s^2(\tau-1)^2$, manifestly
+  palindromic;
+\item but \eqref{eq:selfdual} fails for $p\neq q$.
+\end{itemize}
+So palindromicity survives where forcing-level self-duality does not. We therefore present
+\eqref{eq:selfdual} as one transparent mechanism in a special model, not as the reason for the
+theorem. The reason is Theorem~\ref{thm:sharp} together with $\tr H=q_b$.
+\end{remark}
+
+\begin{remark}[Non-commuting baselines]\label{rem:noncommuting}
+For a baseline with a nonzero off-diagonal in the drift eigenbasis, the analogous condition
+still has solutions, but the required scale then depends on the drift as well as on the
+forcing, which we do not regard as a natural parameterization. We record only that commutation
+of the baseline with the drift is sufficient, not necessary, and do not pursue the exceptional
+family here.
 \end{remark}
 
 \section{The threshold theorem}\label{sec:threshold}
 
-In applications the active block sits inside a larger system and one compares the determinant at
-coupling $\kappa$ against a reference. Both effects --- the shrinking of the homogeneous
-determinant and the reciprocal enhancement --- combine into a single scalar comparison.
-
 \begin{theorem}[Exact threshold]\label{thm:threshold}
-Let $\Phi>0$ and $C>0$ and consider
+Let $\Phi>0$ and $C>0$ and put $V=\Phi\bigl(1+C(w-2)\bigr)$. Then
 \begin{equation}
-  V \;=\; \Phi\bigl(1+C\,(w-2)\bigr). \label{eq:V}
-\end{equation}
-Then
-\begin{equation}
-  V>1 \iff \Phi C\,(w-2) > 1-\Phi \iff w \;>\; w^{*}, \qquad
-  w^{*} \;=\; 2+\frac{1-\Phi}{\Phi C}. \label{eq:threshold}
+  V>1 \iff w>w^{*}, \qquad w^{*}=2+\frac{1-\Phi}{\Phi C}. \label{eq:threshold}
 \end{equation}
 \end{theorem}
 
 \begin{proof}
-The first equivalence is a rearrangement of \eqref{eq:V}. For the second, the identity
-\[
-  w-\Bigl(2+\frac{1-\Phi}{\Phi C}\Bigr) \;=\; \frac{\Phi\bigl(1+C(w-2)\bigr)-1}{\Phi C}
-\]
-holds identically, and $\Phi C>0$, so the left side is positive exactly when the numerator on the
-right is.
+$w-\bigl(2+\tfrac{1-\Phi}{\Phi C}\bigr)=\bigl(\Phi(1+C(w-2))-1\bigr)/(\Phi C)$ identically, and
+$\Phi C>0$.
 \end{proof}
 
+In the applications $C=K/q_b^2$ by Corollary~\ref{cor:reciprocal}, and $C=\Aco$ in the rank-one
+case.
+
 \begin{remark}[Edge cases, stated rather than hidden]\label{rem:edge}
-Three cases deserve explicit mention.
+Since $w\ge2$ always (Lemma~\ref{lem:wge2}), three regimes must be distinguished.
 \begin{enumerate}\itemsep2pt
-\item If $\Phi\ge1$ then $w^{*}\le2$. Since $w\ge2$ always (Lemma~\ref{lem:wge2}), the threshold
-  is then vacuous: the determinant already exceeds the reference at $w=2$, with no heterogeneity
-  required. In the graph applications below $\Phi<1$ for $\kappa>0$, so this does not occur there,
-  but the general statement must allow it.
-\item If $C=0$ the equivalence \eqref{eq:threshold} is unavailable --- \eqref{eq:V} reduces to
-  $V=\Phi$, independent of $w$, and no amount of heterogeneity helps. This is exactly the
-  degenerate case of Proposition~\ref{prop:degenerate}.
-\item $w^{*}$ is a threshold in the \emph{variance} invariant. Translating to an amplitude ratio
-  requires \eqref{eq:tvsr}; failing to do so is the easiest way to misreport a constant by a
-  square.
+\item $\Phi<1$: then $w^{*}>2$ and \eqref{eq:threshold} is a genuine \emph{heterogeneity
+  threshold}. This is the case in all graph applications below.
+\item $\Phi=1$: $w^{*}=2$, so $V>1$ for every $\tau\neq1$. Any heterogeneity at all suffices.
+\item $\Phi>1$: $w^{*}<2$ is unreachable and $V>1$ for every admissible $w$ ---
+  \emph{automatic enhancement}, with no threshold.
+\item $C=0$: excluded by the hypothesis $C>0$. Then $V=\Phi$ identically and no threshold
+  exists; this is the degenerate case of Proposition~\ref{prop:degenerate}, and also the case
+  $K=0$ of Proposition~\ref{prop:Ksign}.
 \end{enumerate}
+Finally, $w^{*}$ is a threshold in the \emph{variance} invariant; converting to an amplitude
+ratio requires \eqref{eq:tvsr}.
 \end{remark}
 
 \section{Passive modes and the ambient system}\label{sec:passive}
 
-Theorem~\ref{thm:palindromic} concerns a $2\times2$ block. We now record, as an analytic
+Theorem~\ref{thm:trace} concerns a $2\times2$ block. We now record, as an analytic
 statement, how that block sits inside an $n$-dimensional system --- and we are careful about what
 is proved versus what is formalized.
 
 \begin{proposition}[Determinant factorization]\label{prop:factor}
 Let $M$ be symmetric and Hurwitz on $\Real^n$ with eigenmodes $\psi_1,\dots,\psi_n$ and rates
-$D_1,\dots,D_n>0$. Suppose the forcing is
+$D_1,\dots,D_n>0$, so that $\Pi=\operatorname{span}(\psi_1,\psi_2)$ and its orthogonal
+complement are both $M$-invariant. Suppose the forcing is
 \begin{equation}
   Q = q_b\bigl(I+(\tau-1)ee\T\bigr) \label{eq:Qambient}
 \end{equation}
@@ -504,83 +587,102 @@ In the modal basis $Q$ has entries $\widetilde Q_{ij}=q_b\delta_{ij}+q_b(\tau-1)
 with $\tilde e=(c,s,0,\dots,0)$. Hence $\widetilde Q_{ij}=0$ whenever $i\le2<j$ or $j\le2<i$, so
 $\widetilde Q$ is block diagonal. By \eqref{eq:modal}, $\widetilde\Sig_{ij}=\widetilde Q_{ij}/(D_i+D_j)$
 inherits the same block structure, and the determinant factors. The active factor is
-Theorem~\ref{thm:reciprocal}; each passive mode contributes $\widetilde\Sig_{jj}=q_b/(2D_j)$.
+Theorem~\ref{cor:reciprocal}; each passive mode contributes $\widetilde\Sig_{jj}=q_b/(2D_j)$.
 \end{proof}
+
+\begin{remark}[The hypotheses are all needed]\label{rem:factorhyp}
+Four separate conditions are doing work here, and forcing support alone is not enough:
+(i) $M$ symmetric, so an orthonormal modal basis exists and \eqref{eq:modal} applies;
+(ii) $\Pi$ invariant under $M$; (iii) $\Pi^{\perp}$ invariant, automatic for symmetric $M$;
+(iv) the \emph{baseline} block-diagonal with respect to $\Pi\oplus\Pi^{\perp}$ --- automatic
+here because the baseline is the isotropic $q_bI$, but false in general; and (v) the
+deformation supported in $\Pi$. If the baseline couples the two blocks, or if the excitation
+leaks into a passive mode, $\Sig$ does not block-diagonalize and the determinant does not
+factor.
+\end{remark}
 
 \begin{remark}[Formalized versus documented]\label{rem:formalized}
 Proposition~\ref{prop:factor} is proved here analytically. The machine-checked theorem
 (Section~\ref{sec:lean}) is the \emph{explicit active block} --- Theorems~\ref{thm:cov},
-\ref{thm:palindromic}, \ref{thm:reciprocal} and \ref{thm:threshold}. The general
+\ref{thm:trace}, \ref{cor:reciprocal} and \ref{thm:threshold}. The general
 invariant-subspace reduction of Proposition~\ref{prop:factor} is documented analytically and is
 \emph{not} formalized. We are explicit about this because the distinction is easy to blur: no
 claim is made that Lean verifies an arbitrary $n\times n$ invariant-subspace reduction.
 \end{remark}
 
-\subsection{Effective active dimension}\label{sec:effdim}
+\subsection{Three dimensions that must not be conflated}\label{sec:effdim}
 
-Proposition~\ref{prop:factor} motivates a piece of vocabulary, which we introduce with care.
-
-The hypothesis is not that the system is two-dimensional. The ambient dimension is $n$, the
-stationary law has full support on $\Real^n$, and all $n$ modes are excited --- the passive ones
-simply at the baseline intensity $q_b$. What is two-dimensional is the \emph{support of the
-heterogeneity}: the rank-one deformation $ (\tau-1)ee\T$ has its modal support inside $\Pi$. We
-therefore say the configuration has
+Proposition~\ref{prop:factor} invites a piece of vocabulary, and the audit of this paper showed
+that a single loose phrase will not do. Three different integers are in play, and the theorems
+depend on the third:
 
 \begin{center}
-\begin{tabular}{ll}
+\begin{tabular}{@{}ll@{}}
 \toprule
-ambient dimension & $n$\\
-heterogeneous active dimension & $2$\\
+\emph{ambient dimension} & $n$, the size of the system\\
+\emph{modal support dimension} & the number of eigenmodes on which the deformation acts\\
+\emph{distinct-rate dimension} & the number of \emph{distinct} relaxation rates among those modes\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-and we call $\Pi$ the active subspace. This is interpretation attached to a hypothesis, not a
-separate theorem: nothing is claimed beyond Proposition~\ref{prop:factor}. In particular we do
-\emph{not} say that the system ``is really two-dimensional''.
+The hypothesis of Theorems~\ref{thm:sharp}--\ref{thm:trace} is that the \textbf{distinct-rate
+dimension is two}. The ambient dimension is irrelevant; the stationary law has full support on
+$\Real^n$ and every mode is excited, the passive ones at the baseline intensity. The modal
+support dimension may exceed two provided the extra modes share a rate --- which is exactly what
+happens for $K_3$ in Section~\ref{sec:K3}, and is why that example is not a counterexample.
 
-The point of the vocabulary is the negative result it makes sayable. If the excitation has modal
-support in three or more modes, the forcing block is no longer $2\times2$, the determinant is no
-longer a quadratic in $\tau$, and there is no reason for a single reciprocal coordinate to
-suffice. Section~\ref{sec:obstruction} makes the corresponding spectral statement precise. The
-one-coordinate closure is a feature of effective active dimension two and should not be
-extrapolated.
+We therefore say the configuration has \emph{distinct-rate dimension two} and avoid saying that
+the system ``is really two-dimensional''. This is interpretation attached to a hypothesis, not a
+separate theorem, but it is the interpretation that makes the failure boundary in
+Section~\ref{sec:threemode} sayable.
 
-\section{A weak-coupling law}\label{sec:weak}
+\section{The failure boundary: three distinct rates}\label{sec:threemode}
 
-Before specializing, we record a general fact about the onset of coupling which is independent of
-everything above --- in particular of the two-dimensional hypothesis --- and which puts the graph
-results in context.
+The quadratic closure is exactly a two-distinct-rate phenomenon, and we can say so with a
+formula rather than a dimension count.
 
-\begin{proposition}[Weak-coupling derivative]\label{prop:weak}
-Let $S$ be symmetric, $a>0$, and let $\Sig(\kappa)$ solve
-$(aI+\kappa S)\Sig+\Sig(aI+\kappa S)=Q$ for a fixed positive-definite $Q$. Then
+\begin{proposition}[Cubic response]\label{prop:cubic}
+Let $M$ be symmetric with rates $D_1,D_2,D_3>0$ on a three-dimensional invariant subspace, and
+let $Q(\tau)=q_b\bigl(I+(\tau-1)ee\T\bigr)$ with $e=\sum_ic_i\psi_i$, $\sum_ic_i^2=1$. Then
+$\det\Sig(\tau)$ is a cubic in $\tau$ whose leading coefficient is
 \begin{equation}
-  \frac{d}{d\kappa}\Bigl[\log\det\Sig(\kappa)\Bigr]_{\kappa=0}
-  \;=\; -\frac{\tr S}{a}, \label{eq:weak}
+  \frac{q_b^3\,c_1^2c_2^2c_3^2\,(D_1-D_2)^2(D_1-D_3)^2(D_2-D_3)^2}
+       {\prod_{i<j}(D_i+D_j)^2}\;\Big/\;\prod_i 2D_i, \label{eq:cubic}
 \end{equation}
-independently of $Q$.
+up to the normalization $\prod_i2D_i$ used to clear denominators. It vanishes if and only if
+some $c_i=0$ --- the support drops to two modes --- or some $D_i=D_j$.
 \end{proposition}
 
-\begin{proof}
-At $\kappa=0$ the equation gives $\Sig_0=Q/(2a)$. Differentiating at $\kappa=0$,
-$S\Sig_0+\Sig_0S+2a\Sig'=0$, so $\Sig'=-(S\Sig_0+\Sig_0S)/(2a)$. Hence
-\[
-  \frac{d}{d\kappa}\log\det\Sig\Big|_0=\tr\bigl(\Sig_0^{-1}\Sig'\bigr)
-  =-\frac{\tr\bigl(\Sig_0^{-1}S\Sig_0\bigr)+\tr S}{2a}
-  =-\frac{2\tr S}{2a}=-\frac{\tr S}{a}. \qedhere
-\]
-\end{proof}
+Two consequences. First, \eqref{eq:cubic} is a clean generalization of $\Aco=c^2s^2\nu^2$: the
+same product structure, one factor of $(D_i-D_j)^2$ and one of $c_i^2$ per mode. Second, the
+correct statement of the failure boundary is \emph{generic}, not absolute:
 
-For a graph Laplacian, $\tr L=2|E|$, so \eqref{eq:weak} reads $-2|E|/a$: the initial logarithmic
-rate of change of the generalized variance counts edges and is blind to the noise profile
-entirely. In particular it is strictly negative, so infinitesimal coupling always contracts the
-stationary covariance volume --- which is the general form of the two-node statement
-$A'(0)<0$ of \cite{DeJesus2026ou}, there proved for $K_2$ only. Any enhancement, here as there,
-is necessarily a finite-coupling phenomenon; this is what makes the minimization over $\kappa$ in
-Section~\ref{sec:graphs} meaningful rather than vacuous.
+\begin{quote}
+A genuinely three-mode excitation with three \emph{distinct} relaxation rates generically
+produces a cubic response, and no single reciprocal coordinate can absorb it. If a rate is
+repeated, or a modal weight vanishes, the cubic term disappears and the quadratic closure
+returns.
+\end{quote}
+
+We have not investigated whether the cubic can be palindromic on some measure-zero set, and we
+do not claim it cannot.
 
 \section{Graph corollaries}\label{sec:graphs}
+
+\begin{remark}[Weak coupling]\label{rem:weak}
+Before specializing, one general fact puts the minimization below in context. If
+$\Sig(\kappa)$ solves $(aI+\kappa S)\Sig+\Sig(aI+\kappa S)=Q$ for symmetric $S$ and fixed
+positive-definite $Q$, then
+$\tfrac{d}{d\kappa}\log\det\Sig|_{\kappa=0}=-\tr S/a$, independently of $Q$: differentiating
+gives $\Sig'=-(S\Sig_0+\Sig_0S)/(2a)$ with $\Sig_0=Q/(2a)$, whence
+$\tr(\Sig_0^{-1}\Sig')=-\tr S/a$. For a graph Laplacian $\tr L=2|E|$, so the initial rate is
+$-2|E|/a<0$: infinitesimal coupling always contracts the generalized variance, and any
+enhancement is necessarily a finite-coupling phenomenon. This generalizes the two-node statement
+$A'(0)<0$ of \cite{DeJesus2026ou}.
+\end{remark}
+
+
 
 We now specialize to a concrete family. Let $G$ be a connected graph on $n$ nodes with Laplacian
 $L$, and take
@@ -731,13 +833,20 @@ $81\kappa^3+162\kappa^2+112\kappa+24-\tfrac{247}{2}\cdot2\kappa
 $\kappa>0$ and vanishes at $\kappa=1/3$.
 \end{proof}
 
-\begin{remark}[Degenerate eigenspaces]
-The $K_3$ computation uses a small but real subtlety. A node indicator in $K_3$ is not supported
-on two \emph{eigenvectors} for any fixed choice of basis; it is supported on $\psi_0$ and on a
-two-dimensional eigenspace. The hypothesis of Proposition~\ref{prop:factor} is nevertheless met,
-because within a degenerate eigenspace any orthonormal basis is admissible and one may choose it
-adapted to the projection. Where the relevant eigenvalues are \emph{distinct}, as in $P_3$, no
-such freedom exists and the vanishing of a modal component is a genuine constraint.
+\begin{remark}[Why $K_3$ is not a counterexample]\label{rem:K3degen}
+$K_3$ is the instructive case for Section~\ref{sec:effdim}. A node indicator in $K_3$ has
+\emph{modal support dimension three}: it meets $\psi_0$ and both vectors of the $\lambda=3$
+eigenspace. Nevertheless its \emph{distinct-rate dimension is two}, because that eigenspace is
+degenerate --- both of its modes relax at $a+3\kappa$. Within a degenerate eigenspace any
+orthonormal basis is admissible, so one may rotate to align a single basis vector with the
+projection, after which the hypothesis of Proposition~\ref{prop:factor} holds with $c^2=1/3$,
+$s^2=2/3$. Consistently with Proposition~\ref{prop:cubic}, the cubic coefficient carries a
+factor $(D_i-D_j)^2$ that vanishes for the repeated rate, so the response is quadratic and
+palindromic after all.
+
+Where the relevant rates are \emph{distinct}, as for $P_3$, no such freedom exists and the
+vanishing of a modal component is a genuine constraint on the graph and the forced node. This is
+precisely the distinction that Section~\ref{sec:effdim} is designed to keep visible.
 \end{remark}
 
 \subsection{Summary of the corollaries}
@@ -789,7 +898,7 @@ classical sphericity diagnostics, going back to Mauchly \cite{Mauchly1940} and t
 textbook-style by Muirhead \cite[Ch.~8]{Muirhead1982}; trace/determinant eigenvalue bounds of this
 type are likewise classical \cite{WolkowiczStyan1980,HornJohnson2012}. We claim no novelty. It is recorded because
 it is the reason a single scale-free scalar suffices in dimension two --- the same reason, in a
-different guise, that one reciprocal coordinate suffices in Theorem~\ref{thm:reciprocal}.
+different guise, that one reciprocal coordinate suffices in Theorem~\ref{cor:reciprocal}.
 
 \subsection{Failure in higher dimension}\label{sec:obstruction}
 
@@ -849,7 +958,7 @@ rather than determinants.
 
 \paragraph{What we claim.} Conservatively: we did not identify, in the literature we searched, an
 equivalent closed-form statement of the palindromic determinant identity
-\eqref{eq:palindromic}, of its reciprocal reduction \eqref{eq:normalized}, or of the resulting
+\eqref{eq:tracenorm}, of its reciprocal reduction \eqref{eq:reciprocal}, or of the resulting
 exact generalized-variance threshold optimized over a coupling parameter. We describe this as an
 \emph{apparently distinct assembly of standard ingredients} and make no priority claim. Each
 individual ingredient is standard, and we have cited it as such. Should an equivalent theorem
@@ -868,31 +977,36 @@ covariance dynamics; \cite{DeJesus2026dual} is invariant-theoretic context, not 
 
 \begin{enumerate}\itemsep3pt
 \item The results are exact statements about a linear-Gaussian model. No nonlinear, biological,
-  cognitive, social or physical-universality claim is made or implied, and no significance is
-  attached to the numerical values of the constants beyond this model class.
-\item Theorems~\ref{thm:cov}--\ref{thm:threshold} require an \emph{exactly} two-dimensional
-  active support. If the excitation has modal support in three or more modes with distinct rates,
-  the determinant is not a quadratic in $\tau$ and nothing here applies.
-\item The forcing baseline is isotropic \emph{on the active plane}. A non-isotropic baseline
-  breaks the self-duality of Proposition~\ref{prop:selfdual} and with it the palindromic
-  structure.
-\item The drift is assumed symmetric on the active plane. Non-normal drift is outside the scope
-  of the modal formula \eqref{eq:modal}.
+  cognitive, social or physical-universality claim is made, and no significance attaches to the
+  numerical value of any constant beyond this model class.
+\item \textbf{The drift is assumed symmetric} on the relevant invariant subspace, so that the
+  modal basis is orthonormal and \eqref{eq:modal} holds. Non-normal drift is outside the scope
+  of every theorem here.
+\item Theorems~\ref{thm:sharp}--\ref{thm:trace} concern a $2\times2$ block, i.e.\ a
+  configuration of distinct-rate dimension two (Section~\ref{sec:effdim}). With three distinct
+  rates and genuine three-mode support the response is generically cubic
+  (Proposition~\ref{prop:cubic}) and nothing here applies.
+\item The palindromicity criterion $\tr H=q_b$ is an identity between polynomials. It carries no
+  positivity: for indefinite $H$ the coefficient $K$ may be negative and $Q(\tau)$ may leave the
+  positive-definite cone, in which case the formula is still true but is no longer a statement
+  about a forcing covariance. The admissible family of Definition~\ref{def:admissible} is where
+  the stochastic reading is valid.
+\item The threshold theorem additionally requires $C>0$, i.e.\ $K>0$. The case $K=0$ is
+  attainable (Proposition~\ref{prop:Ksign}) and has no threshold at all.
 \item Proposition~\ref{prop:factor} --- the $n$-dimensional reduction --- is proved analytically
-  but is \emph{not} machine-checked. Only the $2\times2$ active block is formalized
-  (Remark~\ref{rem:formalized}).
+  and is \emph{not} machine-checked; and it needs all five hypotheses of
+  Remark~\ref{rem:factorhyp}, not merely that the forcing is supported in the active plane.
 \item The formalization verifies algebra, not stochastic-process theory. That the $\Sig$ of
-  \eqref{eq:lyap} is the stationary covariance of \eqref{eq:sde} is classical and is assumed, not
-  verified in Lean.
-\item ``Effective active dimension'' (Section~\ref{sec:effdim}) is interpretive vocabulary
-  attached to a hypothesis, not an independent theorem.
-\item We work out three graph corollaries. We do \emph{not} claim a general characterization of
-  which graphs and forced nodes satisfy the two-dimensional active-support hypothesis, nor a
-  general lower bound on $w^{*}_{\min}$ over all graphs. A bound of that kind was explored in
-  preparatory work but is not reproduced here, because we were not able to reconstruct its proof
-  to the standard applied elsewhere in this paper; see Section~\ref{sec:open}.
+  \eqref{eq:lyap} is the stationary covariance of \eqref{eq:sde} is classical and assumed.
+\item ``Distinct-rate dimension'' (Section~\ref{sec:effdim}) is interpretive vocabulary attached
+  to a hypothesis, not an independent theorem.
+\item We work out three graph corollaries. We claim no general characterization of which graphs
+  and forced nodes satisfy the hypothesis, and no general bound on $w^{*}_{\min}$ over graphs.
 \item Optimizing $w^{*}$ over $\kappa$ treats coupling as freely tunable and the forcing
-  geometry as fixed. Other optimizations are possible and would give different constants.
+  geometry as fixed; other optimizations give other constants.
+\item The literature search behind Section~\ref{sec:priorart} was English-language web and
+  arXiv only, without access to MathSciNet, zbMATH or Scopus full text. ``Not found'' should be
+  read as the outcome of a broad but non-exhaustive sweep.
 \end{enumerate}
 
 \section{Machine-checked verification}\label{sec:lean}
@@ -902,41 +1016,53 @@ The central algebraic content is formalized in Lean~4 with mathlib, in the publi
 
 \begingroup\small\raggedright
 \begin{itemize}\itemsep2pt
-\item the results of this paper live in \texttt{OUCorridor/ActivePlane.lean} and
-  \texttt{OUCorridor/SpectralShape.lean};
+\item the generalized results of this paper live in
+  \texttt{OUCorridor/ActivePlaneGeneral.lean}, with the earlier rank-one development in
+  \texttt{OUCorridor/ActivePlane.lean} and \texttt{OUCorridor/SpectralShape.lean};
 \item supporting material is in \texttt{Covariance.lean}, \texttt{Threshold.lean},
   \texttt{MainTheorem.lean}, \texttt{ResidualThreshold.lean} and \texttt{CrossThreshold.lean};
-\item a frozen snapshot of the exact sources, environment and build is kept at
-  \texttt{verified/active-plane-2026-09/}.
+\item frozen snapshots of the exact sources, environment and build are kept at
+  \texttt{verified/palindromic-generalization-2026-09/} (this paper) and
+  \texttt{verified/active-plane-2026-09/} (the earlier record, unchanged and still verifying).
 \end{itemize}
 \endgroup
 
 \begin{table}[t]
 \centering
-\caption{Correspondence between the statements of this paper and the machine-checked theorems.}
+\caption{Status of every result. \textsc{lean} = machine-checked by Lean's kernel;
+\textsc{sym} = verified symbolically in exact arithmetic by \texttt{manuscript\_checks.py};
+\textsc{an} = proved analytically in this paper only; \textsc{int} = interpretation.}
 \label{tab:lean}
 \small
-\begin{tabular}{@{}l p{0.50\textwidth} l@{}}
+\begin{tabular}{@{}l p{0.46\textwidth} l@{}}
 \toprule
 This paper & Lean name & Status\\
 \midrule
-Theorem~\ref{thm:cov} & \texttt{activeCov\_lyapunov}, \texttt{activeCov\_unique} & formalized\\
-Lemma~\ref{lem:detQ} & \texttt{det\_activeForcing} & formalized\\
-Proposition~\ref{prop:selfdual} & \texttt{activeForcing\_self\_dual} & formalized\\
-Theorem~\ref{thm:palindromic} & \texttt{det\_activeCov\_palindromic} & formalized\\
-Lemma~\ref{lem:wge2} & \texttt{two\_le\_reciprocalExcitation}, \texttt{reciprocalExcitation\_eq\_two\_iff} & formalized\\
-Theorem~\ref{thm:reciprocal} & \texttt{normalizedActiveDet\_eq} & formalized\\
-Proposition~\ref{prop:degenerate} & \texttt{activeCoeff\_eq\_zero\_iff} & formalized\\
-Proposition~\ref{prop:mixing} & \texttt{mixing\_le\_quarter}, \texttt{rateContrast\_sq\_lt\_one} & formalized\\
-Theorem~\ref{thm:threshold} & \texttt{volumeRatio\_gt\_one\_iff} & formalized\\
-Section~\ref{sec:K2} & \texttt{volume\_div\_volume0\_eq}, \texttt{reciprocalExcitation\_sq} & formalized\\
-Corollary~\ref{cor:P3} & \texttt{p3\_thresholdCurve\_eq}, \texttt{p3\_threshold\_min/\_attained} & formalized\\
-Corollary~\ref{cor:K3} & \texttt{k3\_thresholdCurve\_eq}, \texttt{k3\_threshold\_min/\_attained} & formalized\\
-Proposition~\ref{prop:J2} & \texttt{J2\_eq\_reciprocalInvariant}, \texttt{eigen\_ratio\_unique\_of\_J2} & formalized\\
-Proposition~\ref{prop:obstruction} & \texttt{exists\_same\_trace\_det\_different\_ratio} & formalized\\
+Theorem~\ref{thm:cov} & \texttt{genCov\_lyapunov}, \texttt{genCov\_unique} & \textsc{lean}\\
+Theorem~\ref{thm:sharp} & \texttt{det\_genCov\_eq} & \textsc{lean}\\
+Theorem~\ref{thm:affine} & \texttt{det\_affineCov\_eq}, \texttt{det\_affineCov\_expand} & \textsc{lean}\\
+Theorem~\ref{thm:trace} & \texttt{affine\_palindromic\_iff}, \texttt{affine\_palindromic\_iff\_trace} & \textsc{lean}\\
+Theorem~\ref{thm:tracenorm} & \texttt{det\_affineCov\_traceNormalized} & \textsc{lean}\\
+Lemma~\ref{lem:wge2} & \texttt{two\_le\_reciprocalExcitation}, \texttt{reciprocalExcitation\_eq\_two\_iff} & \textsc{lean}\\
+Corollary~\ref{cor:reciprocal} & \texttt{normalizedAffineDet\_eq}, \texttt{normalizedAffineDet\_div\_eq} & \textsc{lean}\\
+Proposition~\ref{prop:Ksign} & \texttt{affineCoeff\_nonneg\_of\_posSemidef} & \textsc{lean}\\
+Proposition~\ref{prop:posdef} & \texttt{det\_affineForcing\_pos\_of\_posSemidef} & \textsc{lean}\\
+Corollary~\ref{cor:rankone} & \texttt{rankOne\_trace}, \texttt{affineCoeff\_rankOne}, \texttt{affineForcing\_rankOne}, \texttt{affineCov\_rankOne}, \texttt{det\_activeCov\_palindromic\_of\_general} & \textsc{lean}\\
+Proposition~\ref{prop:degenerate} & \texttt{activeCoeff\_eq\_zero\_iff} & \textsc{lean}\\
+Proposition~\ref{prop:mixing} & \texttt{mixing\_le\_quarter}, \texttt{rateContrast\_sq\_lt\_one} & \textsc{lean}\\
+Proposition~\ref{prop:selfdual} & \texttt{activeForcing\_self\_dual} & \textsc{lean}\\
+Theorem~\ref{thm:threshold} & \texttt{volumeRatio\_gt\_one\_iff} & \textsc{lean}\\
+Section~\ref{sec:K2} & \texttt{volume\_div\_volume0\_eq}, \texttt{reciprocalExcitation\_sq} & \textsc{lean}\\
+Corollary~\ref{cor:P3} & \texttt{p3\_thresholdCurve\_eq}, \texttt{p3\_threshold\_min/\_attained} & \textsc{lean}\\
+Corollary~\ref{cor:K3} & \texttt{k3\_thresholdCurve\_eq}, \texttt{k3\_threshold\_min/\_attained} & \textsc{lean}\\
+Proposition~\ref{prop:J2} & \texttt{J2\_eq\_reciprocalInvariant}, \texttt{eigen\_ratio\_unique\_of\_J2} & \textsc{lean}\\
+Proposition~\ref{prop:obstruction} & \texttt{exists\_same\_trace\_det\_different\_ratio} & \textsc{lean}\\
 \midrule
-Proposition~\ref{prop:factor} & --- & analytic only\\
-Section~\ref{sec:effdim} & --- & interpretation\\
+Remark~\ref{rem:selfdualnotnec} (anisotropic counterexample) & --- & \textsc{sym}\\
+Proposition~\ref{prop:cubic} (cubic response) & --- & \textsc{sym}\\
+Remark~\ref{rem:weak} (weak-coupling law) & --- & \textsc{sym}\\
+Proposition~\ref{prop:factor} ($n$-dimensional factorization) & --- & \textsc{an}\\
+Section~\ref{sec:effdim} (distinct-rate dimension) & --- & \textsc{int}\\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -946,14 +1072,13 @@ revision
 \begin{center}
 \texttt{0df444a360eaa60ab8c11dca51a86af692955474}.
 \end{center}
-The recorded build completes with $8715$ jobs.
 
 \paragraph{Audit.} A grep of the library for \texttt{sorry}, \texttt{admit} and \texttt{axiom}
-returns no matches. All $28$ audited theorems --- the $22$ of \texttt{ActivePlane.lean} and
-\texttt{SpectralShape.lean} together with the pre-existing main theorems --- report exactly the
-three standard axioms of mathlib's classical foundation under \texttt{\#print axioms}:
-\texttt{propext}, \texttt{Classical.choice}, \texttt{Quot.sound}. There is no custom axiom and no
-\texttt{sorryAx}.
+returns no matches. The $20$ theorems of the generalized development audited here, together with
+the $28$ audited for the earlier snapshot, report exactly the three standard axioms of mathlib's
+classical foundation under \texttt{\#print axioms}: \texttt{propext}, \texttt{Classical.choice},
+\texttt{Quot.sound}. There is no custom axiom and no \texttt{sorryAx}. The recorded build
+completes with $8716$ jobs.
 
 \paragraph{What is not formalized.} As stated in Remark~\ref{rem:formalized} and
 Table~\ref{tab:lean}: the $n$-dimensional factorization of Proposition~\ref{prop:factor}, the
@@ -971,7 +1096,7 @@ floating-point step in any claim: it solves the Lyapunov equation from scratch r
 checking a pre-written solution, extracts the determinant's coefficients in $\tau$ and compares
 leading against constant, derives $\Phi$ and $\Aco$ for $P_3$ and $K_3$ from the graph
 Laplacians, and confirms each exact minimum by algebraic factorization. The script reports
-$55/55$ checks passing.
+$88/88$ checks passing.
 
 Exact commit hashes, the branch name and file digests are recorded in the accompanying
 \texttt{README.md} and \texttt{SHA256SUMS.txt} at the state in which this draft was built.
@@ -994,38 +1119,6 @@ undergone independent human peer review.
 Recorded so that the gaps are explicit rather than silent.
 
 \begin{enumerate}\itemsep3pt
-\item \textbf{A general graph lower bound.} Preparatory work suggested
-  \begin{equation}
-    w^{*}_{\min}\;\ge\;2+\frac{64|E|}{\lambda}\;\ge\;34, \label{eq:graphbound}
-  \end{equation}
-  with equality only for $K_2$. The inequality chain behind it is elementary and we were able to
-  reconstruct it: it combines $c^2s^2\le\tfrac14$ (Proposition~\ref{prop:mixing}), the AM--GM
-  bound $(2a+\kappa\lambda)^2\ge8a\kappa\lambda$, and
-  $\Phi^{-1}-1=\prod_{j\ge1}(1+\kappa\lambda_j/a)-1\ge\kappa\,\tr L/a$, each holding pointwise in
-  $\kappa$ and hence surviving the minimization, together with $\tr L=2|E|$ and
-  $\lambda\le\tr L$.
-
-  It is nevertheless excluded from the body, because stating it correctly requires four
-  qualifications that are easy to lose and that we did not want to carry:
-  \begin{enumerate}\itemsep2pt
-  \item[(a)] $\lambda$ is the Laplacian eigenvalue of the \emph{single relative eigenmode excited
-    by $e$} --- the one giving $D_2=a+\kappa\lambda$. It is not the algebraic connectivity and not
-    $\lambda_{\max}$. Read loosely, \eqref{eq:graphbound} becomes a different and unproved claim.
-  \item[(b)] $|E|=\tfrac12\tr L$ is an unweighted edge count; for a weighted Laplacian it must be
-    read as total edge weight.
-  \item[(c)] The quantifier must be ``over connected graphs \emph{and admissible rank-one
-    excitations}'', where admissible means the excitation has modal support in exactly two
-    eigenmodes. That hypothesis genuinely fails for some graphs and nodes, and without it there is
-    no $w^{*}$ to bound.
-  \item[(d)] The derivation assumes the active plane \emph{contains the common mode}
-    ($D_1=a$). Theorem~\ref{thm:palindromic} permits an active plane spanned by two nonzero-$\lambda$
-    modes, and \eqref{eq:graphbound} as derived does not cover that case.
-  \end{enumerate}
-  The ``equality iff $K_2$'' direction also needs writing out rather than asserting: for a
-  connected graph with $n\ge3$ the third inequality is strict for every $\kappa>0$, whence
-  $w^{*}_{\min}>34$. Finally the bound is quantitatively weak away from $K_2$ (it gives $44.67$ for
-  $P_3$ against the true $68.54$, and $66$ for $K_3$ against $123.5$), so its only real content is
-  the corollary that $34$ is a global minimum attained only by $K_2$. Nothing above depends on it.
 \item \textbf{Characterizing admissible configurations.} Which pairs (graph, forced node) give a
   node indicator with modal support in exactly two eigenmodes? The $P_3$ centre node works because
   of a symmetry-induced vanishing; $K_3$ works because of eigenvalue degeneracy. A general

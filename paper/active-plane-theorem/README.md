@@ -1,4 +1,4 @@
-# Two-Mode Active-Subspace Reduction and Reciprocal Determinant Thresholds
+# Palindromic Covariance Determinants and Reciprocal Thresholds
 
 **First draft, September 2026. Not deposited, not submitted, no DOI.**
 
@@ -8,34 +8,46 @@ motivating special case and is recovered in Section 12 as a corollary.
 
 ## The result
 
-For a stable linear OU system whose drift restricted to a two-dimensional invariant subspace has
-rates `D1, D2 > 0`, and whose forcing on that subspace is a rank-one deformation of an isotropic
-baseline, `Q = q_b (I + (tau-1) e e^T)` along a unit excitation direction `e = c u + s v`:
+For a **symmetric** drift whose restriction to a two-dimensional invariant subspace has rates
+`D1, D2 > 0`, and an **arbitrary symmetric** forcing `Q` on that subspace:
 
 ```
-4 D1 D2 det Sigma = q_b^2 ( A tau^2 + (1 - 2A) tau + A ),    A = c^2 s^2 nu^2,
-                                                             nu = (D1-D2)/(D1+D2)
+4 D1 D2 det Sigma = det Q + nu^2 Q12^2 ,    nu = (D1-D2)/(D1+D2)
 ```
 
-The quadratic is **palindromic** — leading coefficient equals constant coefficient — because the
-forcing family is self-dual, `Q_e(tau) = tau * Q_{e_perp}(1/tau)`, which is
-`e e^T + e_perp e_perp^T = I` in disguise. Only then does the reciprocal coordinate
-`w = tau + 1/tau` appear: dividing by `tau` makes the normalized determinant exactly affine in
-`w`, giving an exact generalized-variance threshold. Graph corollaries follow: `K2` recovers the
-two-node threshold with `tau = r^2`, and `P3`, `K3` give `35 + 15*sqrt(5)` and `247/2`.
+with `Q12` the off-diagonal in the drift eigenbasis. No rank-one, isotropy or positivity
+assumption. For the affine family `Q(tau) = q_b I + (tau-1) H`, `H` symmetric of any rank:
 
-**`tau` is a variance ratio, not an amplitude ratio.** This is the single easiest way to misreport
-a constant by a square; see Remark 2 in the paper.
+```
+4 D1 D2 det Sigma(tau) = q_b^2 + q_b (tr H)(tau-1) + K (tau-1)^2 ,   K = det H + nu^2 H12^2
+```
+
+and — the structural point — the quadratic is **palindromic iff `tr H = q_b`**. Rank-one
+excitation `H = q_b e e^T` satisfies this automatically for every direction `e`, which is why
+it works; it is **not** the mechanism. Palindromicity then forces `w = tau + 1/tau`, giving an
+exact generalized-variance threshold. Graph corollaries: `K2` → 34, `P3` → `35+15*sqrt(5)`,
+`K3` → `247/2`.
+
+**`tau` is a variance ratio, not an amplitude ratio** — conflating them misreports a constant by
+a square (Remark 2).
+
+**Admissibility.** The identity is algebra and holds for any symmetric `H` and any real `tau`.
+For the stochastic reading take `H` positive semidefinite with `tr H = q_b`: then `K >= 0` and
+`Q(tau)` stays positive definite for every `tau > 0`.
+
+**Failure boundary.** With three *distinct* rates and genuine three-mode support the response is
+generically cubic, leading coefficient proportional to `prod_{i<j} (D_i - D_j)^2`. `K3` is not a
+counterexample: its relevant eigenspace is degenerate, so its *distinct-rate* dimension is two.
 
 ## Contents
 
 | file | |
 |---|---|
 | `main.tex` | the manuscript |
-| `main.pdf` | compiled, 18 pages, letter |
+| `main.pdf` | compiled, 20 pages, letter |
 | `references.bib` | self-contained bibliography, 23 entries, all cited |
 | `figures/fig1–3.pdf` | active-plane schematic; affine determinant; threshold curves |
-| `manuscript_checks.py` | 61 exact symbolic checks (SymPy) |
+| `manuscript_checks.py` | 88 exact symbolic checks (SymPy), including adversarial assumption tests |
 | `make_figures.py` | regenerates the figures from the exact formulas |
 | `build.sh`, `build.log` | build script and recorded transcript |
 | `SHA256SUMS.txt` | digests of every file above |
@@ -48,23 +60,28 @@ reconstructing it later cost real work. Do not repeat that.
 
 ```bash
 ./build.sh                       # latexmk -pdf, or pdflatex/bibtex/pdflatex x2
-python3 manuscript_checks.py     # 61/61 exact checks, exit 0
+python3 manuscript_checks.py     # 88/88 exact checks, exit 0
 python3 make_figures.py          # regenerate figures (needs matplotlib)
 ```
 
 Recorded build: **0 undefined citations, 0 undefined references, 0 overfull boxes, 0 BibTeX
-warnings, 23 bibliography entries, 18 pages.**
+warnings, 23 bibliography entries, 20 pages.**
 
 ## What is proved where
 
-- **Machine-checked in Lean 4 + mathlib** (see the paper's Table 2): the covariance block, the
-  forcing determinant, self-duality, the palindromic identity, the reciprocal reduction, the
-  degeneracy conditions, the coefficient bounds, the threshold equivalence, and all three graph
-  corollaries. Environment: Lean 4.33.1, mathlib `0df444a360ea…`, snapshot at
-  `verified/active-plane-2026-09/`, no `sorry`, only the three standard mathlib axioms.
+- **Machine-checked in Lean 4 + mathlib** (paper Table 2): the general determinant identity, the
+  affine formula, the trace criterion (both directions), the trace-normalized collapse, the
+  reciprocal reduction, the sign of `K` and positivity of `Q(tau)` under positive
+  semidefiniteness, the rank-one specialization recovering the earlier theorem, and all three
+  graph corollaries. Environment: Lean 4.33.1, mathlib `0df444a360ea…`, build 8716 jobs,
+  20 theorems audited, only `propext`/`Classical.choice`/`Quot.sound`, no `sorry`.
+  Snapshot: `verified/palindromic-generalization-2026-09/`. The earlier snapshot
+  `verified/active-plane-2026-09/` is unchanged and still verifies.
+- **Symbolically verified only**: the anisotropic self-duality counterexample, the cubic
+  three-mode coefficient, the weak-coupling law.
 - **Analytic only, not formalized**: the `n`-dimensional determinant factorization
-  (Proposition 10). The paper says so explicitly rather than implying Lean covers arbitrary `n`.
-- **Interpretation, not a theorem**: "effective active dimension" (Section 10.1).
+  (Proposition 10), which needs all five hypotheses listed in its accompanying remark.
+- **Interpretation**: "distinct-rate dimension".
 
 ## Bibliography note
 
@@ -79,7 +96,9 @@ see `docs/ZOTERO_SETUP.md` §6b for the dry-run evidence behind that decision.
 ## Deliberately excluded
 
 No universal-corridor or 63/37 claims; no Minkowski, Lorentz, Schwarzschild or relativity analogy;
-no philosophical projection language. The general graph lower bound
-`w* >= 2 + 64|E|/lambda >= 34` is **not** in the body: the inequality chain reconstructs, but
-stating it correctly needs four qualifiers, and it is not load-bearing. It is recorded, with those
-qualifiers, as open item 1 in the appendix.
+no philosophical projection language. The general graph lower bound `w* >= 2 + 64|E|/lambda >= 34` has been **removed entirely**: the
+inequality chain reconstructs, but stating it correctly needs four qualifiers (lambda is the
+*active* eigenvalue, not algebraic connectivity; `|E|` is an unweighted edge count; admissibility
+of the excitation is load-bearing; the derivation assumes the active plane contains the common
+mode), and the equality-iff-`K2` direction was never written out. It is not load-bearing for
+anything claimed, so the paper is stronger without it.
