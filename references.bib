@@ -1,0 +1,117 @@
+% references.bib -- ou-threshold-lean
+%
+% Bibliography assembled during the Zotero-assisted literature, provenance,
+% stochastic-process and formalization audit (September 2026).
+%
+% Every entry was obtained from publisher metadata by DOI content negotiation
+% (curl -LH 'Accept: application/x-bibtex' https://doi.org/<DOI>) or via the Crossref
+% transform endpoint. Nothing was typed from memory.
+%
+% Scope: the standard theory the project's model and objective rest on (OU processes,
+% stationary covariance via the Lyapunov equation, generalized variance, Gaussian
+% entropy), the literature the interpretation must be checked against (stochastic
+% synchronization, network coherence), and the closest physical prior art (two-temperature
+% linear Langevin systems and the Brownian gyrator). See docs/NOVELTY_AND_PROVENANCE.md
+% for what each source bears on. The repository previously carried no bibliography.
+
+% ---------------------------------------------------------------------------
+% September 2026 extension (branch zotero-literature-provenance).
+%
+% 13 further entries were added for the residual-threshold, cross-threshold and
+% active-plane results. Each was fetched by DOI content negotiation
+% (curl -LH 'Accept: application/x-bibtex' https://doi.org/<DOI>) and checked against
+% the CSL-JSON record; the two Zenodo entries were additionally checked against the
+% Zenodo REST API (version DOI, concept DOI, publication date, files).
+%
+% Two deliberate, documented departures from the registry strings:
+%   * Barucca2014 -- Crossref carries the typo "heterogenous"; the title below uses the
+%     publisher's own rendering ("heterogeneous", verified on link.aps.org).
+%   * GodrecheLuck2019 -- Crossref gives year 2018 (online-first); the article is
+%     J. Phys. A 52(3), 035002, in the 2019 volume, and is cited here as 2019.
+% Nothing else was altered.
+% ---------------------------------------------------------------------------
+
+@article{UhlenbeckOrnstein1930, title={On the Theory of the Brownian Motion}, volume={36}, ISSN={0031-899X}, url={http://dx.doi.org/10.1103/PhysRev.36.823}, DOI={10.1103/physrev.36.823}, number={5}, journal={Physical Review}, publisher={American Physical Society (APS)}, author={Uhlenbeck, G. E. and Ornstein, L. S.}, year={1930}, month=sep, pages={823–841} }
+
+@book{Gardiner2004, title={Handbook of Stochastic Methods}, ISBN={9783662053898}, ISSN={0172-7389}, url={http://dx.doi.org/10.1007/978-3-662-05389-8}, DOI={10.1007/978-3-662-05389-8}, journal={Springer Series in Synergetics}, publisher={Springer Berlin Heidelberg}, author={Gardiner, Crispin W.}, year={2004} }
+
+@article{Vatiwutipong2019, title={Alternative way to derive the distribution of the multivariate Ornstein–Uhlenbeck process}, volume={2019}, ISSN={1687-1847}, url={http://dx.doi.org/10.1186/s13662-019-2214-1}, DOI={10.1186/s13662-019-2214-1}, number={1}, journal={Advances in Difference Equations}, publisher={Springer Science and Business Media LLC}, author={Vatiwutipong, P. and Phewchean, N.}, year={2019}, month=jul }
+
+@article{Wilks1932, title={CERTAIN GENERALIZATIONS IN THE ANALYSIS OF VARIANCE}, volume={24}, ISSN={1464-3510}, url={http://dx.doi.org/10.1093/biomet/24.3-4.471}, DOI={10.1093/biomet/24.3-4.471}, number={3-4}, journal={Biometrika}, publisher={Oxford University Press (OUP)}, author={WILKS, S. S.}, year={1932}, pages={471–494} }
+
+@book{CoverThomas2005, title={Elements of Information Theory}, ISBN={9780471748823}, url={http://dx.doi.org/10.1002/047174882X}, DOI={10.1002/047174882x}, publisher={Wiley}, author={Cover, Thomas M. and Thomas, Joy A.}, year={2005}, month=Apr }
+
+@book{PikovskyEtAl2001, title={Synchronization: A Universal Concept in Nonlinear Sciences}, ISBN={9780511755743}, url={http://dx.doi.org/10.1017/CBO9780511755743}, DOI={10.1017/cbo9780511755743}, publisher={Cambridge University Press}, author={Pikovsky, Arkady and Rosenblum, Michael and Kurths, Jürgen}, year={2001}, month=Oct }
+
+@article{TeramaeTanaka2004, title={Robustness of the Noise-Induced Phase Synchronization in a General Class of Limit Cycle Oscillators}, volume={93}, ISSN={1079-7114}, url={http://dx.doi.org/10.1103/PhysRevLett.93.204103}, DOI={10.1103/physrevlett.93.204103}, number={20}, journal={Physical Review Letters}, publisher={American Physical Society (APS)}, author={Teramae, Jun-nosuke and Tanaka, Dan}, year={2004}, month=Nov }
+
+@article{BamiehEtAl2012, title={Coherence in Large-Scale Networks: Dimension-Dependent Limitations of Local Feedback}, volume={57}, ISSN={1558-2523}, url={http://dx.doi.org/10.1109/TAC.2012.2202052}, DOI={10.1109/tac.2012.2202052}, number={9}, journal={IEEE Transactions on Automatic Control}, publisher={Institute of Electrical and Electronics Engineers (IEEE)}, author={Bamieh, Bassam and Jovanovic, Mihailo R. and Mitra, Partha and Patterson, Stacy}, year={2012}, month=sep, pages={2235–2249} }
+
+@article{FilligerReimann2007, title={Brownian Gyrator: A Minimal Heat Engine on the Nanoscale}, volume={99}, ISSN={1079-7114}, url={http://dx.doi.org/10.1103/PhysRevLett.99.230602}, DOI={10.1103/physrevlett.99.230602}, number={23}, journal={Physical Review Letters}, publisher={American Physical Society (APS)}, author={Filliger, Roger and Reimann, Peter}, year={2007}, month=Dec }
+
+@article{DotsenkoEtAl2013, title={Two-temperature Langevin dynamics in a parabolic potential}, volume={87}, ISSN={1550-2376}, url={http://dx.doi.org/10.1103/PhysRevE.87.062130}, DOI={10.1103/physreve.87.062130}, number={6}, journal={Physical Review E}, publisher={American Physical Society (APS)}, author={Dotsenko, Victor and Maciołek, Anna and Vasilyev, Oleg and Oshanin, Gleb}, year={2013}, month=jun }
+
+@book{Antoulas2005, title={Approximation of Large-Scale Dynamical Systems}, ISBN={9780898718713}, url={http://dx.doi.org/10.1137/1.9780898718713}, DOI={10.1137/1.9780898718713}, publisher={Society for Industrial and Applied Mathematics}, author={Antoulas, Athanasios C.}, year={2005}, month=Jan }
+
+@misc{DeJesus2026ou,
+  author       = {De Jes{\'u}s, Elias},
+  title        = {Heterogeneity-Driven Expansion and Synchronization Collapse in Coupled
+                  Ornstein--Uhlenbeck Systems},
+  year         = {2026},
+  month        = aug,
+  howpublished = {Zenodo},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.22059089},
+  url          = {https://doi.org/10.5281/zenodo.22059089},
+  note         = {Technical note, deposited 2026-08-22, CC BY 4.0; single file main.pdf.
+                  Version DOI 10.5281/zenodo.22059089; concept (all-versions) DOI
+                  10.5281/zenodo.22059088. Metadata verified against the Zenodo REST API.}
+}
+
+@article{Barucca2014, title={Localization in covariance matrices of coupled heterogeneous Ornstein-Uhlenbeck processes}, volume={90}, ISSN={1550-2376}, url={http://dx.doi.org/10.1103/PhysRevE.90.062129}, DOI={10.1103/physreve.90.062129}, number={6}, journal={Physical Review E}, publisher={American Physical Society (APS)}, author={Barucca, Paolo}, year={2014}, month=Dec }
+
+@article{GodrecheLuck2019, title={Characterising the nonequilibrium stationary states of Ornstein–Uhlenbeck processes}, volume={52}, ISSN={1751-8121}, url={http://dx.doi.org/10.1088/1751-8121/aaf190}, DOI={10.1088/1751-8121/aaf190}, number={3}, journal={Journal of Physics A: Mathematical and Theoretical}, publisher={IOP Publishing}, author={Godrèche, Claude and Luck, Jean-Marc}, year={2019}, month=dec, pages={035002} }
+
+@article{FerreiraMetzBarucca2025, title={Random matrix ensemble for the covariance matrix of Ornstein-Uhlenbeck processes with heterogeneous temperatures}, volume={111}, ISSN={2470-0053}, url={http://dx.doi.org/10.1103/PhysRevE.111.014151}, DOI={10.1103/physreve.111.014151}, number={1}, journal={Physical Review E}, publisher={American Physical Society (APS)}, author={Ferreira, Leonardo S. and Metz, Fernando L. and Barucca, Paolo}, year={2025}, month=Jan }
+
+@article{Mauchly1940, title={Significance Test for Sphericity of a Normal $n$-Variate Distribution}, volume={11}, ISSN={0003-4851}, url={http://dx.doi.org/10.1214/aoms/1177731915}, DOI={10.1214/aoms/1177731915}, number={2}, journal={The Annals of Mathematical Statistics}, publisher={Institute of Mathematical Statistics}, author={Mauchly, John W.}, year={1940}, month=jun, pages={204–209} }
+
+@book{Muirhead1982, title={Aspects of Multivariate Statistical Theory}, ISBN={9780470316559}, ISSN={1940-6347}, url={http://dx.doi.org/10.1002/9780470316559}, DOI={10.1002/9780470316559}, journal={Wiley Series in Probability and Statistics}, publisher={Wiley}, author={Muirhead, Robb J.}, year={1982}, month=Mar }
+
+@article{SummersEtAl2016, title={On Submodularity and Controllability in Complex Dynamical Networks}, volume={3}, ISSN={2325-5870}, url={http://dx.doi.org/10.1109/TCNS.2015.2453711}, DOI={10.1109/tcns.2015.2453711}, number={1}, journal={IEEE Transactions on Control of Network Systems}, publisher={Institute of Electrical and Electronics Engineers (IEEE)}, author={Summers, Tyler H. and Cortesi, Fabrizio L. and Lygeros, John}, year={2016}, month=mar, pages={91–101} }
+
+@article{TownsendWilber2018, title={On the singular values of matrices with high displacement rank}, volume={548}, ISSN={0024-3795}, url={http://dx.doi.org/10.1016/j.laa.2018.02.025}, DOI={10.1016/j.laa.2018.02.025}, journal={Linear Algebra and its Applications}, publisher={Elsevier BV}, author={Townsend, Alex and Wilber, Heather}, year={2018}, month=jul, pages={19–41} }
+
+
+
+
+
+@book{Lauritzen1996, title={Graphical Models}, ISBN={9781383023596}, url={http://dx.doi.org/10.1093/oso/9780198522195.001.0001}, DOI={10.1093/oso/9780198522195.001.0001}, publisher={Oxford University PressOxford}, author={Lauritzen, Steffen L}, year={1996}, month=May }
+
+
+
+@misc{DeJesus2026dual,
+  author       = {De Jes{\'u}s, Elias},
+  title        = {The Dual Diagonal and Reconstruction of Orthogonal Hyperrectangles:
+                  An Alternative Invariant Basis},
+  year         = {2026},
+  month        = apr,
+  howpublished = {Zenodo},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.19632381},
+  url          = {https://doi.org/10.5281/zenodo.19632381},
+  note         = {Technical note, deposited 2026-04-17 (record modified 2026-06-17),
+                  CC BY 4.0; single file AggregatedScalars.pdf. Version DOI
+                  10.5281/zenodo.19632381; concept (all-versions) DOI
+                  10.5281/zenodo.18350240. Cited here only for the invariant-theoretic
+                  reconstruction background of Sections 4 and 5 (2D completeness of the
+                  reciprocal invariant; failure of single-scalar reconstruction for n >= 3).}
+}
+
+@article{WolkowiczStyan1980, title={Bounds for eigenvalues using traces}, volume={29}, ISSN={0024-3795}, url={http://dx.doi.org/10.1016/0024-3795(80)90258-X}, DOI={10.1016/0024-3795(80)90258-x}, journal={Linear Algebra and its Applications}, publisher={Elsevier BV}, author={Wolkowicz, Henry and Styan, George P.H.}, year={1980}, month=feb, pages={471–506} }
+
+@book{HornJohnson2012, title={Matrix Analysis}, ISBN={9780521548236}, url={http://dx.doi.org/10.1017/CBO9781139020411}, DOI={10.1017/cbo9781139020411}, publisher={Cambridge University Press}, author={Horn, Roger A. and Johnson, Charles R.}, year={2012}, month=Oct }
+
+@article{Simoncini2016, title={Computational Methods for Linear Matrix Equations}, volume={58}, ISSN={1095-7200}, url={http://dx.doi.org/10.1137/130912839}, DOI={10.1137/130912839}, number={3}, journal={SIAM Review}, publisher={Society for Industrial & Applied Mathematics (SIAM)}, author={Simoncini, V.}, year={2016}, month=jan, pages={377–441} }
+
+@incollection{Vieira2019, title={Polynomials with Symmetric Zeros}, ISBN={9781838802707}, url={http://dx.doi.org/10.5772/intechopen.82728}, DOI={10.5772/intechopen.82728}, booktitle={Polynomials - Theory and Application}, publisher={IntechOpen}, author={Vieira, Ricardo}, year={2019}, month=may, note={Open access. Theorem 3 gives the reduction of a self-reciprocal polynomial of even degree $2m$ to a degree-$m$ polynomial in $x = z + 1/z$; verified on the publisher page. Book chapter, not a journal article.} }
