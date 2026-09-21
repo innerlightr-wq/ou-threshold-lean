@@ -81,7 +81,16 @@ this as an unconditional \emph{if and only if} statement on the
 genuinely-coupled interior of parameter space (Theorem~\ref{thm:main}),
 via a stronger oriented result (Theorem~\ref{thm:monotone}) giving the
 sign of the log-determinant comparator $F=\log(\det C_2/\det C_1)$
-everywhere, not merely at the palindromic locus.
+everywhere, not merely at the palindromic locus. A targeted literature
+search did not locate an exact prior formulation of this criterion, the
+oriented comparator, or the balance-slope identity of
+Proposition~\ref{prop:slope}; the underlying machinery -- stationary
+covariances of linear systems via the Lyapunov equation
+\cite{kailath1980}, palindromic-polynomial algebra, and structured
+matrix-pencil eigenvalue theory \cite{mackey2006} -- is classical or a
+known tool, cited where it is used below. We report the absence of an
+exact match as a limitation of the search performed, not as a claim of
+priority.
 
 We emphasize at the outset that the change in polynomial degree between
 the first-order case (quadratic in $s$, affine in $w$) and the inertial
@@ -143,6 +152,18 @@ two single-bath problems solve the Lyapunov equations
 A C_i + C_i A^{\mathsf T} = -Q_i, \qquad i=1,2.
 \end{equation}
 
+\paragraph{Relation to prior models.} Two damped harmonic oscillators,
+each carrying its own position and momentum coordinate and each driven by
+an independent heat bath, is not a new model class: the same $4\times4$
+Lyapunov-equation setup (uniform damping, in that case) was used
+by Boffi and De Gregorio~\cite{boffi2024} to study a resonance phenomenon
+in the covariance entries as the ratio of the two spring constants
+varies. Their analysis fixes a common damping rate throughout and does
+not address palindromicity, reciprocal spectra, or any damping-ratio
+criterion; the present work instead varies the two specific damping
+rates $\delta_1,\delta_2$ independently and asks exactly when the
+resulting covariance-pencil determinant is palindromic.
+
 \paragraph{Admissible domain.} Throughout, $\omega_1,\omega_2,k,\delta_1,
 \delta_2>0$ (open, all strict). The sole boundary degeneracy is $k=0$: at
 $k=0$ the drift matrix $A$ becomes exactly block-diagonal, bath~1 cannot
@@ -178,7 +199,8 @@ Positive definiteness for $k>0$ follows from the exact controllability
 determinant $k^2$ (single-bath Kalman rank criterion applied
 to~\eqref{eq:lyap}) together with $A$'s stability for every
 $\delta_1,\delta_2>0$: a stable, controllable pair yields a positive
-definite stationary Gramian.
+definite stationary Gramian, a classical fact of linear systems theory
+\cite{kailath1980}.
 \end{proof}
 
 \section{Palindromic sufficiency}
@@ -325,6 +347,13 @@ with a single zero crossing at $\delta_1=\delta_2$:
 \[
 \operatorname{sign}F = -\operatorname{sign}(\delta_1-\delta_2).
 \]
+Monotonicity of Gramian-type quantities under parameter perturbations is
+a recurring theme in linear systems and sensitivity theory; we did not
+locate a general theorem in the literature searched that directly implies
+this specific determinant-ratio monotonicity for the pencil $sC_1+C_2$,
+so we record it here as established for this model by the explicit
+factorization of Lemma~\ref{lem:factorization} rather than as an instance
+of a known general result.
 \end{theorem}
 
 \section{Oriented volume theorem}
@@ -388,12 +417,20 @@ Theorem~\ref{thm:main}:
 We emphasize the convention: eigenvalues are those of $C_1^{-1}C_2$
 (equivalently, of the symmetrized matrix), not $C_2^{-1}C_1$; the sign
 convention $s=-\mu_i$ in the palindromic-root characterization follows
-from writing $P(s)=\det C_1\cdot\det(sI+C_1^{-1}C_2)$.
+from writing $P(s)=\det C_1\cdot\det(sI+C_1^{-1}C_2)$. Reciprocal
+eigenvalue pairing for structurally palindromic matrix pencils (those
+built from an explicit relation such as $B=A^{\mathsf T}$) is classical
+matrix-pencil theory~\cite{mackey2006}; the pencil $sC_1+C_2$ studied
+here carries no such a priori structural relation between $C_1$ and
+$C_2$ (each solves an independent Lyapunov equation), so the reciprocal
+pairing recorded in this corollary is a \emph{derived} consequence of
+Theorem~\ref{thm:main}, not an instance of the structural theory.
 
 \section{Reciprocal coordinate}
 
 On the palindromic locus ($\delta_1=\delta_2$), dividing $P(s)$ by $s^2$
-and using $s^2+s^{-2}=w^2-2$ with $w:=s+s^{-1}$,
+and using the classical reciprocal-equation identity $s^2+s^{-2}=w^2-2$
+with $w:=s+s^{-1}$,
 \[
 P(s)/s^2 = c_4w^2+c_3w+(c_2-2c_4),
 \]

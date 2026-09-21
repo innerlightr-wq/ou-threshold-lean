@@ -2,8 +2,10 @@
 
 Companion documentation for the two-mode inertial Ornstein–Uhlenbeck
 reciprocity result. See [`derivation.md`](derivation.md) for the proof
-outline and [`computer_assisted_proof.md`](computer_assisted_proof.md)
-for the exact computer-algebra disclosure. Full manuscript:
+outline, [`computer_assisted_proof.md`](computer_assisted_proof.md)
+for the exact computer-algebra disclosure, and
+[`literature_provenance.md`](literature_provenance.md) for the
+literature/attribution audit. Full manuscript:
 [`paper/inertial/main.tex`](../../paper/inertial/main.tex). Verification
 scripts: [`verification/inertial/`](../../verification/inertial/).
 

@@ -6,5 +6,10 @@ Build command:
 
 Result: 3 pdflatex passes + 1 bibtex pass, all exit code 0.
 Final pass: zero errors, zero warnings (no undefined references, no
-undefined citations, no overfull/underfull hbox warnings reported).
-Output: main.pdf, 8 pages.
+undefined citations, no duplicate bibliography keys, no overfull/underfull
+hbox warnings reported).
+Output: main.pdf, 8 pages, 4 bibliography entries.
+
+Rebuilt after the literature-provenance audit (added kailath1980,
+boffi2024, mackey2006 citations); mathematical content (theorems,
+equations, proof logic) unchanged.
