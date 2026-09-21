@@ -16,6 +16,8 @@ It also machine-checks, at the same level of exact real algebra, the paper's sec
 
 > **Scope:** This is a formal verification companion, not a formalization of the paper's complete stochastic-process content. See [Scope of the Formalization](#scope-of-the-formalization).
 
+> **Inertial extension:** this repository also contains a separate, standalone result for a different (inertial, two-mode) Ornstein–Uhlenbeck model, verified by exact computer algebra rather than Lean. See [Inertial Extension: Two-Mode Palindromic Reciprocity](#inertial-extension-two-mode-palindromic-reciprocity) below — it is not part of the Lean-formalized first-order result above and should not be conflated with it.
+
 ---
 
 ## Central Result
@@ -342,6 +344,41 @@ cross_threshold_eigenvalue_ratio
 
 ---
 
+## Inertial Extension: Two-Mode Palindromic Reciprocity
+
+A separate, standalone result, for a different model than the first-order
+system above: two damped harmonic oscillators (each with its own position
+and momentum coordinate), linearly coupled, each driven by an independent
+thermal bath on its own momentum coordinate. Let $\delta_i=\gamma_i/m_i$
+be the specific damping rates, $C_1,C_2$ the two single-bath stationary
+covariances, and $P(s)=\det(sC_1+C_2)$ the bath-pencil determinant. Then,
+on the genuinely coupled interior ($k>0$):
+
+$$
+P(s)\text{ is palindromic} \iff \delta_1=\delta_2 \iff \gamma_1/m_1=\gamma_2/m_2,
+$$
+
+together with the stronger oriented result
+
+$$
+\operatorname{sign}\log(\det C_2/\det C_1) = -\operatorname{sign}(\gamma_1/m_1-\gamma_2/m_2),
+$$
+
+and, at the balance locus $\delta_1=\delta_2=\delta$, the universal slope
+identity $\partial_{\delta_1}\log(\det C_2/\det C_1)=-4/\delta$,
+independent of the oscillator frequencies and coupling strength.
+
+- **Manuscript**: [`paper/inertial/main.tex`](paper/inertial/main.tex) (standalone; not part of the first-order paper above).
+- **Theorem summary and proof outline**: [`docs/inertial/`](docs/inertial/) — [`theorem.md`](docs/inertial/theorem.md), [`derivation.md`](docs/inertial/derivation.md), [`computer_assisted_proof.md`](docs/inertial/computer_assisted_proof.md).
+- **Verification**: this result is checked by exact computer algebra (SymPy, exact rational/symbolic arithmetic — not Lean, and not floating-point sampling). Reproduce every load-bearing identity with:
+  ```bash
+  python verification/inertial/verify_global_chain.py
+  ```
+  See [`docs/inertial/computer_assisted_proof.md`](docs/inertial/computer_assisted_proof.md) for exactly which identities are computer-assisted and how each was verified.
+- **Formalization status**: not yet formalized in Lean. See the manuscript's companion formalization-readiness assessment (project development history) for a scoped recommendation on which pieces are tractable near-term targets.
+
+---
+
 ## Repository Structure
 
 ```text
@@ -375,8 +412,18 @@ ou-threshold-lean/
 ├── lakefile.toml
 ├── lake-manifest.json
 ├── lean-toolchain
+├── docs/
+│   └── inertial/            (inertial extension: theorem/derivation/CAS-disclosure docs)
+├── paper/
+│   └── inertial/            (standalone inertial-extension manuscript source)
+├── verification/
+│   └── inertial/            (exact computer-algebra verification scripts, inertial extension)
 └── README.md
 ```
+
+`docs/inertial/`, `paper/inertial/`, and `verification/inertial/` belong to the
+inertial extension described above; they are independent of the Lean
+formalization in `OUCorridor/` and `verified/`.
 
 ### `OUCorridor/Threshold.lean`
 
