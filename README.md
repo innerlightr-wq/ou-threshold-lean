@@ -368,7 +368,11 @@ and, at the balance locus $\delta_1=\delta_2=\delta$, the universal slope
 identity $\partial_{\delta_1}\log(\det C_2/\det C_1)=-4/\delta$,
 independent of the oscillator frequencies and coupling strength.
 
-- **Manuscript**: [`paper/inertial/main.tex`](paper/inertial/main.tex) (standalone; not part of the first-order paper above).
+**Published**: Elias De Jesús. (2026). *Reciprocal Covariance Pencils and
+Equal-Specific-Damping Symmetry in Two-Mode Inertial
+Ornstein–Uhlenbeck Systems.* Zenodo. DOI: [10.5281/zenodo.22866116](https://doi.org/10.5281/zenodo.22866116)
+
+- **Manuscript**: [`paper/inertial/main.tex`](paper/inertial/main.tex) / [`paper/inertial/main.pdf`](paper/inertial/main.pdf) (standalone; not part of the first-order paper above). Also deposited on Zenodo at the DOI above.
 - **Theorem summary and proof outline**: [`docs/inertial/`](docs/inertial/) — [`theorem.md`](docs/inertial/theorem.md), [`derivation.md`](docs/inertial/derivation.md), [`computer_assisted_proof.md`](docs/inertial/computer_assisted_proof.md).
 - **Verification**: this result is checked by exact computer algebra (SymPy, exact rational/symbolic arithmetic — not Lean, and not floating-point sampling). Reproduce every load-bearing identity with:
   ```bash

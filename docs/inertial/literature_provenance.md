@@ -1,5 +1,11 @@
 # Literature provenance audit — inertial OU reciprocity theorem
 
+**Publication status**: the manuscript this audit supports is published.
+Elias De Jesús. (2026). *Reciprocal Covariance Pencils and
+Equal-Specific-Damping Symmetry in Two-Mode Inertial
+Ornstein–Uhlenbeck Systems.* Zenodo. DOI:
+[10.5281/zenodo.22866116](https://doi.org/10.5281/zenodo.22866116).
+
 Targeted literature and provenance audit performed to make
 `paper/inertial/main.tex` ready for public deposition. This is not an
 exhaustive systematic review; it is a targeted search sufficient to
