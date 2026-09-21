@@ -1,0 +1,10 @@
+Build command:
+  pdflatex -interaction=nonstopmode main.tex
+  bibtex main
+  pdflatex -interaction=nonstopmode main.tex
+  pdflatex -interaction=nonstopmode main.tex
+
+Result: 3 pdflatex passes + 1 bibtex pass, all exit code 0.
+Final pass: zero errors, zero warnings (no undefined references, no
+undefined citations, no overfull/underfull hbox warnings reported).
+Output: main.pdf, 8 pages.

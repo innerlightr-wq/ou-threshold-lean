@@ -1,0 +1,530 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dd}[2]{\frac{\partial #1}{\partial #2}}
+
+\title{Reciprocal Covariance Pencils and Equal-Specific-Damping\\ Symmetry in Two-Mode Inertial Ornstein--Uhlenbeck Systems}
+\author{Elias De Jes\'us\\[2pt] \small Independent Researcher\\[2pt] \small ORCID: \href{https://orcid.org/0009-0007-0190-9143}{0009-0007-0190-9143}}
+\date{September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study a two-mode inertial (position--momentum) Ornstein--Uhlenbeck
+system driven by two independent thermal baths, one coupled to each
+oscillator's momentum coordinate. Writing $C_1,C_2$ for the stationary
+covariance matrices produced by each bath acting alone, the joint
+stationary covariance is the affine pencil $\Sigma(T_1,T_2)=T_1C_1+T_2C_2$,
+and for the bath-scale ratio $s=T_1/T_2$ the quartic
+$P(s)=\det(sC_1+C_2)$ governs whether exchanging the two bath scales
+($s\mapsto 1/s$) induces a reciprocal symmetry of the stationary
+covariance determinant. We show that, on the genuinely coupled interior
+of parameter space, $P(s)$ is palindromic if and only if the two
+oscillators share equal specific damping $\delta_i=\gamma_i/m_i$,
+equivalently $\gamma_1/m_1=\gamma_2/m_2$. This is obtained from a
+stronger, oriented result: the log-determinant comparator
+$F=\log(\det C_2/\det C_1)$ is strictly monotone in $\delta_1$ at fixed
+$\omega_1,\omega_2,k,\delta_2$, so that
+$\operatorname{sign}F=-\operatorname{sign}(\delta_1-\delta_2)$
+throughout the admissible domain, with a single zero crossing exactly at
+$\delta_1=\delta_2$. At that balance locus we further establish the exact
+identity $\partial F/\partial\delta_1|_{\delta_1=\delta_2=\delta}=-4/\delta$,
+independent of the oscillator frequencies and coupling strength. We give
+the exact positivity certificate underlying global monotonicity, record
+an equivalent reciprocal-generalized-eigenvalue characterization of
+palindromicity via $C_1^{-1}C_2$, and reduce the palindromic quartic to
+an explicit quadratic in $w=s+s^{-1}$ on the balance locus. Several of the
+polynomial identities used below were established by exact computer
+algebra (symbolic simplification to zero and zero-remainder polynomial
+division, never floating-point sampling); this is disclosed explicitly
+where it occurs, together with the accompanying verification scripts.
+\end{abstract}
+
+\section{Introduction}
+
+A first-order (overdamped) pair of coupled Ornstein--Uhlenbeck processes
+driven by two independent baths produces a stationary covariance whose
+determinant, viewed as a function of the bath-scale ratio $s$, is
+quadratic in $s$; on the relevant reciprocal locus it reduces to an
+affine relation in $w=s+s^{-1}$. That first-order theory is developed
+separately~\cite{dejesus2026heterogeneity} and formalized in this
+repository's companion Lean development.
+
+Here we ask the analogous question for the \emph{inertial} extension of
+that system: two damped harmonic oscillators, each carrying its own
+position and momentum coordinate, linearly coupled through a shared
+spring constant, each driven by an independent thermal bath acting on its
+own momentum coordinate. The stationary covariance is now a $4\times4$
+matrix, and the bath-pencil determinant $P(s)=\det(sC_1+C_2)$ is a genuine
+quartic in $s$. We ask exactly when this quartic is palindromic --
+equivalently, when its four roots (necessarily real and positive, in a
+sense made precise below) close under $s\mapsto1/s$.
+
+The answer is that the criterion is \emph{equal specific damping}
+$\delta_1=\delta_2$, $\delta_i:=\gamma_i/m_i$ -- not equal raw damping
+constants $\gamma_i$ and not equal masses $m_i$ individually. We prove
+this as an unconditional \emph{if and only if} statement on the
+genuinely-coupled interior of parameter space (Theorem~\ref{thm:main}),
+via a stronger oriented result (Theorem~\ref{thm:monotone}) giving the
+sign of the log-determinant comparator $F=\log(\det C_2/\det C_1)$
+everywhere, not merely at the palindromic locus.
+
+We emphasize at the outset that the change in polynomial degree between
+the first-order case (quadratic in $s$, affine in $w$) and the inertial
+case (quartic in $s$, quadratic in $w$ on the reciprocal locus) is a
+computed fact about each specific model, not an instance of a general
+``dynamical-order law'' relating state dimension to reciprocal-polynomial
+degree; no such general claim is made or needed here.
+
+\section{Model}
+\label{sec:model}
+
+Consider two damped harmonic oscillators with masses $m_1,m_2$, natural
+frequencies $\omega_1,\omega_2$ (in the original, mass-bearing
+coordinates), raw damping constants $\gamma_1,\gamma_2$, and a linear
+spring coupling of strength $k$. Each oscillator's momentum coordinate is
+driven by an independent white-noise bath. The full state is
+$(x_1,p_1,x_2,p_2)\in\R^4$.
+
+\paragraph{Mass-weighted reduction.} The canonical transformation
+$(x_i,p_i)\mapsto(\sqrt{m_i}\,x_i,\,p_i/\sqrt{m_i})$ has Jacobian
+determinant exactly $1$, and reduces the general-mass problem to an
+equivalent \emph{unit-mass} problem depending on the masses and raw
+parameters only through the \emph{specific damping} rates
+\[
+\delta_i := \gamma_i/m_i,
+\]
+together with reduced frequencies absorbing the $1/m_i$ factors. Because
+the transformation has unit Jacobian, it preserves every covariance
+determinant appearing below; the palindromicity criterion we prove is
+therefore exactly a statement about $\delta_1,\delta_2$, not about
+$\gamma_i$ or $m_i$ individually. From here on, $\omega_1,\omega_2,k$
+denote the (already reduced) unit-mass parameters, and we work entirely
+in the unit-mass system; the final theorem is restated in terms of
+$\gamma_i/m_i$ in Section~\ref{sec:restore}.
+
+\paragraph{Drift and diffusion.} In the unit-mass system, with state
+ordering $(x_1,p_1,x_2,p_2)$,
+\[
+A =
+\begin{pmatrix}
+0 & 1 & 0 & 0\\
+-(\omega_1^2+k) & -\delta_1 & k & 0\\
+0 & 0 & 0 & 1\\
+k & 0 & -(\omega_2^2+k) & -\delta_2
+\end{pmatrix},
+\qquad
+Q_1 = \operatorname{diag}(0,2\delta_1,0,0),
+\qquad
+Q_2 = \operatorname{diag}(0,0,0,2\delta_2).
+\]
+$Q_1,Q_2$ are the diffusion matrices for bath 1 and bath 2 acting alone
+(unit temperature; a bath at temperature $T_i$ scales $Q_i$ by $T_i$, and
+the full joint stationary covariance under both baths simultaneously,
+$\Sigma(T_1,T_2)$, is linear in $T_1,T_2$ -- see
+Section~\ref{sec:pencil}). The stationary covariances $C_1,C_2$ of the
+two single-bath problems solve the Lyapunov equations
+\begin{equation}
+\label{eq:lyap}
+A C_i + C_i A^{\mathsf T} = -Q_i, \qquad i=1,2.
+\end{equation}
+
+\paragraph{Admissible domain.} Throughout, $\omega_1,\omega_2,k,\delta_1,
+\delta_2>0$ (open, all strict). The sole boundary degeneracy is $k=0$: at
+$k=0$ the drift matrix $A$ becomes exactly block-diagonal, bath~1 cannot
+influence oscillator~2 (and vice versa), and $C_1,C_2$ become rank-deficient
+(singular). For $k\neq0$, the single-bath Kalman/Krylov controllability
+determinant for each channel equals $k^2$ exactly, so $C_1,C_2\succ0$ for
+every $k>0$ (Lemma~\ref{lem:pencil}). No further restriction on any
+parameter is used anywhere below.
+
+\section{Bath-response covariances and the pencil}
+\label{sec:pencil}
+
+\begin{lemma}[Pencil and positivity]
+\label{lem:pencil}
+With $Q(T_1,T_2):=T_1Q_1+T_2Q_2$ and $\Sigma(T_1,T_2)$ the stationary
+solution of $A\Sigma+\Sigma A^{\mathsf T}=-Q(T_1,T_2)$,
+\[
+\Sigma(T_1,T_2) = T_1 C_1 + T_2 C_2.
+\]
+Writing $s:=T_1/T_2$ and $P(s):=\det(sC_1+C_2)$,
+\[
+P(s) = c_4 s^4+c_3s^3+c_2s^2+c_1s+c_0, \qquad c_4=\det C_1,\ \ c_0=\det C_2.
+\]
+For $k>0$, $C_1\succ0$ and $C_2\succ0$.
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+Linearity of $\Sigma$ in $(T_1,T_2)$ follows from linearity of the
+Lyapunov equation~\eqref{eq:lyap} in the forcing term. $c_4,c_0$ are the
+$s^4,s^0$ coefficients of $\det(sC_1+C_2)$, which equal $\det C_1,\det
+C_2$ by multilinearity of the determinant in the pencil parameter.
+Positive definiteness for $k>0$ follows from the exact controllability
+determinant $k^2$ (single-bath Kalman rank criterion applied
+to~\eqref{eq:lyap}) together with $A$'s stability for every
+$\delta_1,\delta_2>0$: a stable, controllable pair yields a positive
+definite stationary Gramian.
+\end{proof}
+
+\section{Palindromic sufficiency}
+\label{sec:sufficiency}
+
+\begin{lemma}[Sufficiency]
+\label{lem:sufficiency}
+If $\delta_1=\delta_2$ then $P(s)$ is palindromic: $c_4=c_0$ and
+$c_3=c_1$, for every admissible $\omega_1,\omega_2,k>0$.
+\end{lemma}
+
+The shortest available proof substitutes $\delta_1=\delta_2=\delta$
+directly into~\eqref{eq:lyap} before solving. This is a genuine
+structural simplification, not merely a reduction in the number of free
+symbols: with common specific damping, the $p$-block of $A$'s damping is
+proportional to the identity, hence commutes with any orthogonal
+transform diagonalizing the stiffness block
+$\begin{psmallmatrix}\omega_1^2+k&-k\\-k&\omega_2^2+k\end{psmallmatrix}$.
+This decouples the deterministic drift into two independent normal modes
+with frequencies $\Omega_1,\Omega_2$ (the stiffness block's eigenvalues)
+and common damping $\delta$, while the per-bath noise becomes a rank-one
+source correlated across the two modes -- the same structure used for
+Proposition~\ref{prop:slope} below. Solving~\eqref{eq:lyap} in these
+coordinates gives $C_1(\delta),C_2(\delta)$ in closed form, and
+$c_4-c_0=0$, $c_3-c_1=0$ are then confirmed by exact symbolic
+simplification (Section~\ref{sec:cas}, item~1).
+
+\section{The log-determinant comparator}
+
+\begin{definition}
+\label{def:F}
+$F(\delta_1,\delta_2;\omega_1,\omega_2,k) := \log(\det C_2/\det C_1)$,
+well-defined on the admissible interior by Lemma~\ref{lem:pencil}.
+\end{definition}
+
+$F=0$ is exactly bath-response volume balance ($\det C_1=\det C_2$), and
+$\operatorname{sign}F$ distinguishes the two possible orderings of the
+two single-bath covariance volumes. By Lemma~\ref{lem:sufficiency},
+$F(\delta_2,\delta_2)=0$ for every admissible $\omega_1,\omega_2,k,
+\delta_2$ -- the base point used throughout Sections~\ref{sec:slope}--\ref{sec:oriented}.
+
+\section{Universal balance slope}
+\label{sec:slope}
+
+\begin{proposition}[Balance-locus slope]
+\label{prop:slope}
+At $\delta_1=\delta_2=\delta$,
+\[
+\left.\dd{F}{\delta_1}\right|_{\delta_1=\delta_2=\delta} = -\frac{4}{\delta},
+\]
+for every admissible $\omega_1,\omega_2,k,\delta>0$ -- independent of the
+oscillator frequencies and the coupling strength.
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+Using the normal-mode decoupling of Section~\ref{sec:sufficiency}, the
+adjoint-Lyapunov sensitivity identity gives, for $X_i:=\partial
+C_i/\partial\delta_1$,
+\[
+\dd{F}{\delta_1} = \operatorname{tr}(C_2^{-1}X_2)-\operatorname{tr}(C_1^{-1}X_1)
+ = 2\left[e_2^{\mathsf T}Y_2v_2 - e_2^{\mathsf T}Y_1u_1\right],
+\]
+where $e_2=(0,1,0,0)^{\mathsf T}$, $u_1=C_1e_2-e_2$, $v_2=C_2e_2$, and
+$Y_i$ solves $A^{\mathsf T}Y_i+Y_iA=C_i^{-1}$ (this sign -- positive, not
+negative -- was fixed after an initial sign error was caught by
+cross-checking against direct differentiation; see
+Section~\ref{sec:cas}). Substituting the closed-form $C_1(\delta),
+C_2(\delta)$ from Section~\ref{sec:sufficiency} and solving for $Y_1,Y_2$
+symbolically (fully general in $\omega_1,\omega_2,k,\delta$) yields the
+stated closed form after exact simplification. The
+$\omega_1,\omega_2,k$-cancellation arises from a combination of (i) the
+equipartition structure of each normal mode's self-covariance, (ii) the
+two channels sharing the identical denominator
+$k^4/(\Delta D_{12}^2)$ at $\delta_1=\delta_2$ (with $\Delta,D_{12}$ as
+in Section~\ref{sec:factorization}), which cancels in the derivative
+ratio, and (iii) the shared specific damping making the rank-one
+sensitivity $A'=-e_2e_2^{\mathsf T}$ act identically on both channels'
+drift operator. This is a proved structural fact about this specific
+model class, not claimed to generalize beyond it.
+\end{proof}
+
+\section{Global monotonicity}
+\label{sec:factorization}
+
+\begin{lemma}[Derivative factorization]
+\label{lem:factorization}
+\[
+\dd{F}{\delta_1} = \frac{K_{\mathrm{total}}(\omega_1,\omega_2,k)\cdot
+\delta_1^3\delta_2^4}{K(\delta_1,\delta_2)^4\cdot\det C_1\cdot\det C_2},
+\]
+where
+\[
+K(\delta_1,\delta_2) = a_1\delta_1^3\delta_2+a_2\delta_1^2\delta_2^2
++a_3\delta_1^2+a_4\delta_1\delta_2^3+a_5\delta_1\delta_2+a_6\delta_2^2,
+\]
+\[
+a_1=\omega_2^2+k,\quad a_2=\omega_1^2+\omega_2^2+2k,\quad a_3=k^2,\quad
+a_4=\omega_1^2+k,\quad a_5=(\omega_1^2-\omega_2^2)^2+2k^2,\quad a_6=k^2,
+\]
+and
+\[
+K_{\mathrm{total}}(\omega_1,\omega_2,k) = -\frac{4k^8}{\Delta^2},
+\qquad
+\Delta := k\omega_1^2+k\omega_2^2+\omega_1^2\omega_2^2.
+\]
+\end{lemma}
+
+\begin{proof}[Proof sketch]
+The six-monomial support and coefficient functions $a_1,\dots,a_6$ were
+obtained by exact-rational interpolation across many
+$(\omega_1,\omega_2,k)$ configurations and then proved as an identity by
+exact zero-remainder polynomial division at independent, freshly chosen
+points (Section~\ref{sec:cas}, item~2). $K_{\mathrm{total}}$ is
+determined by evaluating the identity at the (fully general, symbolic)
+balance locus $\delta_1=\delta_2=\delta$, where $K(\delta,\delta)=
+\delta^2D_{12}$ with $D_{12}=(\Omega_1^2-\Omega_2^2)^2+2\delta^2
+(\Omega_1^2+\Omega_2^2)$ the normal-mode cross-Sylvester-resolvent
+denominator of Section~\ref{sec:sufficiency}, $\Delta=\Omega_1^2\Omega_2^2$
+the product of squared normal-mode frequencies, and $\det C_1=\det C_2=
+k^4/(\Delta D_{12}^2)$ there; combined with Proposition~\ref{prop:slope}'s
+closed form $F'=-4/\delta$, this determines $K_{\mathrm{total}}$
+uniquely (it is independent of $\delta$ by construction, so any one
+evaluation point suffices), and the result is independently re-confirmed
+by exact zero-remainder division against the general (non-symmetric)
+identity at several fresh points, including off-diagonal ones
+(Section~\ref{sec:cas}, item~3).
+\end{proof}
+
+\begin{theorem}[Global monotonicity and oriented comparator]
+\label{thm:monotone}
+Each $a_1,\dots,a_6>0$ by inspection (sums of squares and manifestly
+positive terms; $a_5>0$ even at $\omega_1=\omega_2$, since $k>0$), so
+$K>0$ for all $\delta_1,\delta_2>0$ (a sum of six positive terms).
+$\Delta>0$ (a sum of three positive terms), so $K_{\mathrm{total}}<0$.
+Since $\det C_1,\det C_2>0$ (Lemma~\ref{lem:pencil}), every factor in
+Lemma~\ref{lem:factorization}'s identity has manifest sign, giving
+\[
+\dd{F}{\delta_1} < 0
+\]
+for every admissible interior point (fixed $\omega_1,\omega_2,k,\delta_2$).
+Combined with the base point $F(\delta_2,\delta_2)=0$
+(Section~\ref{sec:sufficiency}), $F$ is strictly decreasing in $\delta_1$
+with a single zero crossing at $\delta_1=\delta_2$:
+\[
+\operatorname{sign}F = -\operatorname{sign}(\delta_1-\delta_2).
+\]
+\end{theorem}
+
+\section{Oriented volume theorem}
+\label{sec:oriented}
+
+\begin{corollary}[Unique volume balance]
+\label{cor:balance}
+\[
+\det C_1 = \det C_2 \iff \delta_1=\delta_2.
+\]
+\end{corollary}
+
+This is immediate from Theorem~\ref{thm:monotone} and Definition~\ref{def:F}
+(($F=0\iff\det C_1=\det C_2$)), and is a central result in its own right,
+not merely a device toward palindromicity: it establishes that the
+bath-response covariance \emph{volumes} $\det C_1,\det C_2$ coincide
+exactly once, at exactly the equal-specific-damping locus, with a definite
+orientation on either side.
+
+\section{Global palindromicity theorem}
+\label{sec:main}
+
+\begin{theorem}[Palindromicity iff equal specific damping]
+\label{thm:main}
+For the admissible genuinely coupled two-mode inertial OU system,
+\[
+P(s) \text{ is palindromic} \iff \delta_1=\delta_2.
+\]
+\end{theorem}
+
+\begin{proof}
+\emph{Necessity.} If $P(s)$ is palindromic then $c_4=c_0$, i.e.\ $\det
+C_1=\det C_2$ (Lemma~\ref{lem:pencil}), hence $\delta_1=\delta_2$
+(Corollary~\ref{cor:balance}). The coefficient identity $c_3=c_1$ is not
+invoked. \emph{Sufficiency.} Lemma~\ref{lem:sufficiency}.
+\end{proof}
+
+\subsection{Restoring general masses}
+\label{sec:restore}
+
+Restoring $\delta_i=\gamma_i/m_i$ (Section~\ref{sec:model}; the
+mass-weighted reduction is exact and preserves every determinant used
+above):
+\[
+P(s)\text{ is palindromic} \iff \frac{\gamma_1}{m_1}=\frac{\gamma_2}{m_2}.
+\]
+
+\section{Spectral interpretation}
+
+\begin{corollary}[Reciprocal generalized eigenvalues]
+For $k>0$, $N:=C_1^{-1}C_2$ is similar to a symmetric positive-definite
+matrix (via $C_1^{-1/2}$), hence has four strictly positive real
+eigenvalues $\mu_1,\dots,\mu_4$ -- the roots of $P(s)=0$ are $s=-\mu_i$.
+$P(s)$ is palindromic if and only if $\{\mu_1,\dots,\mu_4\}$ splits into
+two reciprocal pairs $\{\mu,1/\mu\},\{\nu,1/\nu\}$. Combined with
+Theorem~\ref{thm:main}:
+\[
+\delta_1=\delta_2 \iff P(s)\text{ palindromic} \iff \{\mu_i\}\text{ splits into reciprocal pairs.}
+\]
+\end{corollary}
+We emphasize the convention: eigenvalues are those of $C_1^{-1}C_2$
+(equivalently, of the symmetrized matrix), not $C_2^{-1}C_1$; the sign
+convention $s=-\mu_i$ in the palindromic-root characterization follows
+from writing $P(s)=\det C_1\cdot\det(sI+C_1^{-1}C_2)$.
+
+\section{Reciprocal coordinate}
+
+On the palindromic locus ($\delta_1=\delta_2$), dividing $P(s)$ by $s^2$
+and using $s^2+s^{-2}=w^2-2$ with $w:=s+s^{-1}$,
+\[
+P(s)/s^2 = c_4w^2+c_3w+(c_2-2c_4),
+\]
+a genuine (non-degenerate) quadratic in $w$, with $c_4,c_3,c_2$ explicit
+rational functions of $\omega_1,\omega_2,k,\delta$. This is the inertial
+analogue of the affine reciprocal-coordinate reduction in the first-order
+OU problem~\cite{dejesus2026heterogeneity}; the change in degree (affine
+versus quadratic) is a fact about the two specific models, not an
+instance of a general law relating state dimension to reduced-polynomial
+degree.
+
+\section{Discussion}
+
+\emph{Specific damping, not raw parameters, controls reciprocal
+symmetry.} The palindromicity criterion is $\gamma_1/m_1=\gamma_2/m_2$,
+not $\gamma_1=\gamma_2$ or $m_1=m_2$ individually -- a direct consequence
+of the mass-weighted reduction (Section~\ref{sec:model}) having unit
+Jacobian. \emph{Volume balance is unique} (Corollary~\ref{cor:balance}):
+the two single-bath covariance determinants coincide at exactly one
+locus. \emph{The comparator is oriented}: $F$ does more than vanish at
+balance -- its sign tracks which bath produces the larger stationary
+covariance volume, throughout the whole domain
+(Theorem~\ref{thm:monotone}). \emph{The balance crossing has a universal
+slope}, $-4/\delta$, independent of frequencies and coupling
+(Proposition~\ref{prop:slope}). \emph{Reciprocal spectral pairing}
+(Section~7) gives a coordinate-independent restatement of the same
+criterion. The decomposition of the monotonicity identity into canonical
+internal response terms ($F'=2(R_2-R_1)$ in the notation of
+Proposition~\ref{prop:slope}'s proof) may provide a direction for future
+work.
+
+\subsection{Relation to the first-order theory}
+
+The first-order OU reciprocity result~\cite{dejesus2026heterogeneity} (see
+also this repository's Lean formalization) concerns a $2\times2$
+stationary covariance, a quadratic pencil determinant, a trace-normalized
+forcing-ratio criterion, and an affine reduction in $w$. The inertial
+system studied here has a $4\times4$ covariance, a quartic pencil
+determinant, an equal-specific-damping criterion, a quadratic
+$w$-reduction on the reciprocal locus, and the additional oriented-volume
+theorem with no first-order analogue established here. The inertial
+result is not a routine extension of the first-order one: the
+palindromicity criterion, the reduced polynomial's degree, and the proof
+architecture (normal-mode decoupling, adjoint-Lyapunov sensitivity) are
+each specific to the inertial state-space structure.
+
+\subsection{Limitations}
+
+This work concerns a linear Gaussian system with exactly two inertial
+modes, stationary statistics only, and the specific per-bath forcing
+structure of Section~\ref{sec:model} (each bath coupled to exactly one
+oscillator's momentum coordinate). Results are established on the
+genuinely coupled interior $k>0$; no claim is made at $k=0$. No claim is
+made about nonlinear extensions, about networks of more than two
+oscillators, or that the exact slope $-4/\delta$ holds outside this
+specific model class.
+
+\section{Computer-assisted proof disclosure}
+\label{sec:cas}
+
+Several polynomial identities used above were verified by exact computer
+algebra. These checks use symbolic or exact-rational arithmetic rather
+than floating-point sampling; the accompanying verification scripts
+(\texttt{verification/inertial/} in the project repository) reproduce
+every load-bearing identity from a single documented entry point,
+\texttt{verify\_global\_chain.py}.
+
+\begin{enumerate}
+\item \textbf{Sufficiency} (Lemma~\ref{lem:sufficiency}): exact symbolic
+computation -- $C_1(\delta),C_2(\delta)$ solved via exact linear algebra
+with $\delta_1=\delta_2=\delta$ substituted before solving;
+$c_4-c_0,c_3-c_1$ confirmed to simplify symbolically to $0$.
+(\texttt{verify\_sufficiency.py})
+\item \textbf{The six-coefficient $K$ identity} (Lemma~\ref{lem:factorization}):
+discovered via exact-rational interpolation, proved by exact
+zero-remainder polynomial division against the independently computed
+true numerator, at fresh points not used in the interpolation.
+\item \textbf{$K_{\mathrm{total}}=-4k^8/\Delta^2$} (Lemma~\ref{lem:factorization}):
+derived from the balance-slope proposition, independently re-confirmed
+by exact zero-remainder division at fresh points including an
+off-diagonal ($\delta_1\neq\delta_2$) end-to-end check.
+(\texttt{verify\_general\_Fprime.py})
+\item \textbf{The balance-slope proposition} (Proposition~\ref{prop:slope}):
+fully symbolic exact derivation (not sampled) via the adjoint-Lyapunov
+route, with the sign convention on the $Y_i$ equation independently
+cross-checked against direct symbolic differentiation.
+(\texttt{verify\_balance\_slope.py})
+\end{enumerate}
+
+Given these closed forms, $K>0$, $K_{\mathrm{total}}<0$, $F'<0$, the
+oriented sign theorem, and palindromicity necessity are each short,
+human-checkable steps (Section~\ref{sec:factorization}--\ref{sec:main}).
+Earlier stages of this investigation used large parameter sweeps (a
+729-point rational search, 215 and 102 exact line searches, 17
+six-monomial discovery configurations, 66 scalar-sign spot checks) to
+locate the closed forms above before they were proved in general; that
+search history carries no theorem weight and is not part of this proof.
+
+\section{Reproducibility}
+
+All symbolic computation uses SymPy with exact (arbitrary-precision
+integer and rational) arithmetic; no floating-point computation is used
+in any load-bearing step. The verification workflow is:
+\begin{center}
+\texttt{python verification/inertial/verify\_global\_chain.py}
+\end{center}
+which reproduces, from a single command, every identity disclosed in
+Section~\ref{sec:cas} together with a fresh end-to-end regression check
+(new parameter points, not used in discovery) confirming
+positive-definiteness, the base point, global monotonicity, the oriented
+sign theorem, and palindromicity exactly at $\delta_1=\delta_2$ together
+with its exact failure at representative $\delta_1\neq\delta_2$ points.
+Proof-generating and verification scripts (\texttt{verification/inertial/})
+are kept separate from this project's historical exploratory search
+scripts, which are not included in this repository.
+
+\section*{AI assistance disclosure}
+
+The research and conceptual development are by Elias De Jes\'us, with AI
+assistance used in symbolic-workflow development, code generation and
+debugging, adversarial proof auditing, and manuscript editing.
+Mathematical claims in this manuscript were checked through the
+documented exact computational workflow of Section~\ref{sec:cas} and
+Section~9; independent human derivation is not claimed for the
+identities disclosed there as computer-assisted.
+
+\section*{Acknowledgments}
+
+None.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
