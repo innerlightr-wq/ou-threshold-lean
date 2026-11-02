@@ -316,6 +316,313 @@ Companion results:
 
 ---
 
+## Normalized Lyapunov Form of the Threshold
+
+`OUCorridor/NormalizedLyapunov.lean` re-derives the central result above through the *normalized
+Lyapunov map*, giving the threshold constants an interpretation. Full derivation:
+[`docs/normalized-lyapunov/DERIVATION.md`](docs/normalized-lyapunov/DERIVATION.md); exact scope:
+[`SCOPE.md`](docs/normalized-lyapunov/SCOPE.md); prior-art audit:
+[`SOURCES.md`](docs/normalized-lyapunov/SOURCES.md).
+
+Writing `Phi_H(X) = 2 H^(1/2) S_H(X) H^(1/2)`, where `S_H` solves `H S + S H = X`, one finds that
+in an eigenbasis of `H` the map is entrywise multiplication by the geometric-over-arithmetic mean
+matrix, `c_ij = 2*sqrt(a_i*a_j)/(a_i + a_j)`. Dividing the repository's `bracket` by `r^2 * k > 0`
+then separates the noise from the coupling:
+
+```
+bracket k r  =  r^2 * k * ( anisotropy r  -  couplingCost k )
+anisotropy r   = (r - 1/r)^2            -- depends only on the noise
+couplingCost k = 8*(1 + k)^2 / k        -- depends only on the coupling
+```
+
+So **the volume improves exactly when the noise anisotropy exceeds the cost of the coupling**.
+The cost has an exact floor, `couplingCost k - 32 = 8*(k-1)^2/k >= 0`, minimized at `k = 1` for
+every `r`. Hence improvement is possible for some `k > 0` iff `(r - 1/r)^2 > 32`, i.e.
+`r > 3 + 2*sqrt(2)`.
+
+This identifies the two constants of the quartic route: **`34` is `32 + 2`**, the minimal coupling
+cost shifted by `(r - 1/r)^2 = r^2 - 2 + 1/r^2`, and **`3 + 2*sqrt(2)` is the noise ratio at which
+the anisotropy first pays that minimum**.
+
+A corollary records that **`k = 1` always suffices**: since it minimizes the coupling cost for
+every `r`, if any coupling improves the volume then the unit coupling already does. It is *not*
+volume-maximizing — above the threshold the volume is still rising at `k = 1`, with
+`d/dk [A(k,r)/A(0,r)]` at `k = 1` equal to `((r - 1/r)^2 - 32)/144 > 0`. Lean pins this down with
+an explicit witness (`volume_one_not_maximal`: `volume 1 9 = 481/12 < 657/16 = volume (3/2) 9`),
+and the minimal-cost coupling being `1` turns out to be **two-mode-specific**: for the three-node
+path with centre-node noise the optimal coupling is the positive root of `27k^3 + 36k^2 - 8 = 0`,
+`k_* = 0.4120226592...`.
+
+Machine-checked, no `sorry`/`admit`/`axiom`, `#print axioms` reporting only
+`[propext, Classical.choice, Quot.sound]`:
+
+```lean
+bracket_normalized                    -- the separation identity
+couplingCost_sub_32                   -- 8*(k-1)^2/k, the exact excess over the floor
+couplingCost_ge, couplingCost_eq_32_iff
+volume_gt_iff_anisotropy              -- explanatory form of improvement
+anisotropy_gt_32_iff_gt_threshold     -- identifies 32 with the threshold
+exists_improvement_iff_gt_threshold   -- the central result, re-proved without the discriminant
+unit_coupling_suffices                -- k = 1 suffices whenever any coupling works
+volume_one_not_maximal                -- ... but k = 1 does not maximize the volume
+volume_three_halves_improves, anisotropy_threshold
+```
+
+`exists_improvement_iff_gt_threshold` is **the same statement** as
+`exists_volume_improvement_iff_threshold`, not a new theorem — it is a second proof that uses
+neither `discr` nor the sum-of-squares certificate. No existing definition or proof was changed.
+
+> **Many modes.** The same analysis extends to `n` modes with `H = I + k*L`, but **the threshold
+> does not**. For the three-node path Laplacian the critical noise ratio is bracketed at
+> `[8.278000767, 8.278100768]` with the noise on the centre node and `[10.720241993,
+> 10.720242994]` with it on an end node — both certified (an exact rational witness on the
+> expansion side, a Bernstein positivity certificate on the other), and both far from
+> `3 + 2*sqrt(2) = 5.828427...`. Since `diag(1,1,r^2)` and `diag(1,r^2,1)` have the *same*
+> spectrum, **the threshold is not a function of the noise and coupling spectra**: it depends on
+> the orientation of the noise relative to the network. These statements are verified by exact
+> rational arithmetic (`verification/normalized-lyapunov/`, 144 checks), not in Lean.
+>
+> With noise on the centre node the three-mode threshold is in closed form: expansion holds iff
+> `(r - 1/r)^2 > 8/k + 30 + 36k + 27k^2/2`, minimized at the root `k_*` above, giving
+> `r_* = 8.2780690232...`.
+>
+> Three general facts do hold for all `n`: coupling always *decreases* volume to first order
+> (`d/dk [det Sigma_k / det Sigma_0] at k=0  =  -tr L`); the large-coupling decay is
+> `Theta(k^-rank L)`, so `k^-1` for the two-mode model and `k^-(n-1)` for a connected `n`-node
+> graph; and expansion is always confined to the bounded window `det H_k < rho(Q,L)`, where `rho`
+> is the Hadamard ratio of the noise rotated into the eigenbasis of `L`. A classical
+> Oppenheim-Schur refinement also gives an explicit *sufficient* condition
+> `1 + det C * (rho - 1) > det H_k` with `det C = prod_{i<j} ((a_i - a_j)/(a_i + a_j))^2`; it is
+> exact for two modes but overshoots the certified three-mode thresholds by `7.5x` and `1.2x`
+> (because `det C -> (9/16) k^6` as `k -> 0`, so it is negligible in the window where expansion
+> actually occurs).
+
+### A general threshold theorem for one correlated pair
+
+`OUCorridor/SinglePair.lean` proves that both models above are instances of a single result. Let
+`L >= 0`, `H_k = I + k L` with eigenvalues `lam_i`, and let `Q > 0` be a noise matrix whose
+rotation `Qt` into an eigenbasis of `L` has exactly **one** off-diagonal pair `(p,q)`. With
+
+```
+eta   = |Qt_pq|^2/(Qt_pp Qt_qq - |Qt_pq|^2)     -- the correlated pair's strength
+s     = lam_p + lam_q,   Delta = lam_p - lam_q
+D(k)  = prod_i (1 + k lam_i) = det H_k
+```
+
+the determinant identity gives the exact ratio
+
+```
+det Sigma_k / det Sigma_0  =  ( 1 + eta k^2 Delta^2/(2 + s k)^2 ) / D(k)
+```
+
+so **one correlated pair supplies the gain, while every damped mode contributes to the cost**. If
+`Delta = 0` there is no gain at any coupling. Otherwise expansion at `k` is exactly `eta > T(k)`
+with `T(k) = (D(k) - 1)(2 + s k)^2/(k^2 Delta^2)`, and expanding `D(k) - 1` in elementary
+symmetric functions puts `T` in the normal form `A/k + (polynomial with nonnegative
+coefficients)`, `A = 4 (tr L)/Delta^2`. From that normal form:
+
+* `T` is **strictly convex** on `(0, inf)`, with `T'' >= 8 (tr L)/(Delta^2 k^3)`;
+* the **onset coupling is unique** and solves a polynomial of degree `rank L + 1`;
+* the expanding couplings form a **single interval**, and at the critical noise level the ratio
+  touches `1` at exactly one coupling;
+* `eta_crit >= 8 (tr L)(lam_p + lam_q)/(lam_p - lam_q)^2 >= 8` — adding damped modes without
+  adding noise correlation can never lower the threshold.
+
+| model | `eta` | onset coupling | `eta_crit` |
+|---|---|---|---|
+| two modes, `lam = 0,2` | `(r - 1/r)^2/4` | `k = 1` | `8` |
+| three-node path, centre noise, `lam = 0,1,3` | `2(r - 1/r)^2/9` | `27k^3 + 36k^2 - 8 = 0` | `14.7869...` |
+
+The first row gives `(r - 1/r)^2 > 32`, i.e. `r > 3 + 2*sqrt(2)`, and `couplingCost = 4T` — so the
+normalization above is the `n = 2` case. Machine-checked (`strictConvexOn_thresholdFn`,
+`convex_expansion_set`, `onset_coupling_unique`, `thresholdFloor`, `thresholdFloor_ge_eight`, plus
+both instantiations). The matrix-level derivation of the normal form is analytic and verified by
+exact rational arithmetic, not in Lean.
+
+> **Scope, and sharpness.** The theorem needs `Qt` to have exactly one off-diagonal pair, and that
+> hypothesis cannot be dropped. With **two** correlated pairs at separated damping scales the
+> expansion set can be disconnected. An exact witness, on a connected weighted triangle with edge
+> weights `299/6, 1/3, 1/3` (Laplacian eigenvalues `0, 100, 1`) and
+> `Qt = [[2035,3,45],[3,1,0],[45,0,1]]`:
+>
+> | `k` | exact `det Sigma_k / det Sigma_0` | |
+> |---|---|---|
+> | `1/50` | `3517825/3121506 = 1.126964...` | expansion |
+> | `1/10` | `1055/1078 = 0.978664...` | **contraction** |
+> | `1` | `33907/29189 = 1.161636...` | expansion again |
+>
+> `Qt_12 = 0` here, so the determinant cycle term vanishes: the mechanism is simply two correlated
+> pairs whose gain windows lie at different couplings. Machine-checked as
+> `witness_expansion_set_not_convex`. So the correct general statement is that **a single
+> correlated pair guarantees one expansion interval, while several pairs can produce separated
+> ones** — already for three modes on a connected network.
+>
+> Note also that "one expansion interval" is weaker than unimodality: since
+> `d/dk [det Sigma_k/det Sigma_0]` at `k = 0` is `-tr L < 0`, the ratio always starts by
+> decreasing, so whenever expansion occurs it is not unimodal. (With commuting noise the ratio is
+> exactly `1/det H_k`, which is monotone, so the two notions must be kept apart.)
+
+### How many expansion intervals? At most one per correlated pair
+
+`OUCorridor/ComponentCount.lean` supports the quantitative companion to that counterexample. If
+`Qt` has `k` nonzero off-diagonal pairs `E`, then **`{k > 0 : det Sigma_k > det Sigma_0}` has at
+most `k` connected components.** With `B(k) = prod_{E} (a_i + a_j)^2` and `D(k) = det H_k`, the
+product `B * det(C o Qt)` is a *polynomial* of degree at most `2k` — the square roots in the
+`c_ij` cancel around every cycle of the permutation expansion, and each surviving denominator
+divides `B` — so
+
+```
+det Sigma_k/det Sigma_0 - 1  =  k * A(k) / (det Q * D(k) * B(k))
+```
+
+for a polynomial `A` with `A(0) = -4^k (det Q)(tr L) < 0` and **every coefficient nonpositive from
+degree `2k` on** (those degrees receive nothing from `B * det(C o Qt)`, only `-B*D*det Q`, whose
+coefficients are nonnegative). Such a coefficient pattern permits at most `2k` sign variations,
+hence at most `2k` positive roots by Descartes' rule, and each bounded component needs two.
+
+Machine-checked: the combinatorial step, `signVariations_le_of_tail_nonpos` and
+`roots_pos_le_of_tail_nonpos`, built on Mathlib's `Polynomial.roots_countP_pos_le_signVariations`.
+The construction of `A` from the matrix data and the final counting step are analytic, verified by
+exact rational arithmetic across 7 instances with `n = 2..5` and `k = 0..5`, with and without
+cycle terms. The bound is **attained** at `k = 1` (two modes), `k = 2` (the witness above) and `k = 3`. The
+`k = 3` witness uses three *disjoint* correlated pairs: with `Q_b = [[1,b],[b,1+b^2]]` (positive
+definite, `det Q_b = 1`),
+
+```
+Qt = diag(Q_3, Q_60, Q_3500),   L = diag(0, 1000, 0, 1, 0, 1/10000)
+```
+
+both matrices are block diagonal, so the ratio factors as a **product** over pairs,
+`prod_j [1 + b_j^2 (a_j k/(2 + a_j k))^2]/(1 + a_j k)`, and seven exact evaluations alternate:
+
+| `k` | `10^-5` | `1/500` | `1/20` | `1` | `10` | `100` | `1000` |
+|---|---|---|---|---|---|---|---|
+| ratio | `0.99031` | `1.08506` | `0.54687` | `2.05672` | `0.92162` | `1.03214` | `0.90484` |
+| | contract | expand | contract | expand | contract | expand | contract |
+
+That forces at least three components, and the theorem permits at most three, so there are exactly
+three. The numerator polynomial has signs `-,+,-,+,-,+,-,-,-`, i.e. exactly `2k = 6` sign
+variations, so Descartes is tight here. A connected realization exists: six vertices in three
+pairs, every inter-pair edge of weight `10^-8` and the edge inside pair `j` of weight
+`(a_j - 4*10^-8)/2`, giving Laplacian eigenvalues `0, a_1, a_2, a_3, 6*10^-8, 6*10^-8`; all seven
+signs survive. Machine-checked as `sharp3_not_union_of_two_convex`.
+
+> **What sharpness does not mean.** It is attainment of a structural ceiling, not a claim that the
+> component count is determined by the correlation pattern. The same `k = 3` pattern with each
+> `b_j` halved (diagonal adjusted to keep `det Qt = 1`, so `eta_j -> eta_j/4`) has *no* expansion
+> window at all. (And raising the correlations does not help: multiplying every `b_j` by `10`
+> merges the windows into one.) Attainment at `k = 4` and `k = 5` is established below; arbitrary
+> `k` is open.
+
+### A sufficient criterion, certifying whole parameter boxes
+
+All of the above is exclusion. For a positive criterion, note `F_j(k) = [1 + b_j^2 g(a_j k)]/(1 +
+a_j k)` with `g(z) = (z/(2+z))^2` increasing, so over a box `a in [a-, a+]`, `b in [b-, b+]`
+
+```
+[1 + (b-)^2 g(a- k)]/(1 + a+ k)  <=  F(k)  <=  [1 + (b+)^2 g(a+ k)]/(1 + a- k)
+```
+
+Multiplying these over disjoint blocks bounds the ratio outward. If the **upper** product is `< 1`
+at separating couplings and the **lower** product is `> 1` at interleaved ones, then *every*
+parameter choice in the box has those separated windows. Around
+
+```
+(a_j) = (1000, 1, 10^-4, 10^-8, 10^-12),   (b_j) = (3, 60, 3500, 45000, 2000000)
+```
+
+with every `a_j` free within `+/-0.1%` and every `b_j` within `+/-0.25%`, eleven exact rational
+bounds certify **exactly four** windows for the first four blocks and **exactly five** for all
+five. So the component bound is attained at `k = 1,...,5`, and at `k = 4, 5` *robustly* — under
+simultaneous perturbation of all rates and all strengths, not at isolated parameter values. Both
+families also saturate Descartes (`signVariations(A) = 2k`).
+
+Machine-checked: the envelope itself (`gFactor_le_gFactor`, `blockRatio_mem_box`). The eleven
+numerical bounds are exact rational arithmetic.
+
+> **Why separation must be certified.** A lower bound on noise strength alone cannot force several
+> windows: raising all `b_j` fills the contraction gaps. Multiplying every `b_j` by `10` makes every
+> free coefficient of `A` positive, collapsing the sign pattern to `-,+,...,+,-,...,-` and leaving a
+> single component.
+>
+> The radii above are not maximal: enlarging both by `5/3` (rates `+/-1/600`, strengths
+> `+/-1/240`) still passes every exact envelope comparison, the tightest expansion bound being
+> `1.001246350696674...` at `k = 100`.
+
+### A necessary cost for every component count
+
+On a **matching** pattern (`k` pairwise disjoint correlated pairs, each with positive rate sum),
+with `s_* = max_E (lam_p + lam_q)`, having at least `c` expansion components requires
+
+```
+rho_inf  >  max{ 1 + 8*(tr L)/s_* ,  [k^{2c}](D*B)/[k^{2c}]B }
+```
+
+where `rho_inf = det(C_inf o Qt)/det Qt` — **not** `rho = prod Qt_ii/det Qt`. Hadamard gives
+`rho_inf <= rho`, so the weaker condition `rho > ...` follows; the two coincide only when the
+limiting channel kills every correlation, as it does for the rate pairs `(0, a_j)` used here, but
+not in general.
+
+The band disjunction — "some coefficient in degrees `2c-1 .. 2k-1` is positive" — collapses because
+two things hold: `N` is dominated *coefficientwise* by `(det Q) * rho_inf * B`, from the exact
+per-block numerator `n_j = 4 + 4*s*k + s^2*r_inf*k^2`; and `q_m = [k^m](D*B)/[k^m]B` is
+nondecreasing in `m`, by Newton's inequalities on the real-rooted `B`. So the band's minimum sits at
+its bottom, `m = 2c`.
+
+**The endpoint matters.** At `c = k = 1` the two terms are `9` and `5`, so the bound reads
+`rho_inf = 1 + eta > 9`, i.e. `eta > 8` — exactly the single-pair threshold proved above. The `max`
+is what retains it; the coefficient ratio alone gives only `eta > 4`.
+
+For the rate pairs `(0,1000)`, `(0,1)`, `(0,10^-4)` the floors are
+
+| at least | necessary `rho_inf` |
+|---|---|
+| 1 component | `9.0080008` |
+| 2 components | `8022.603677...` |
+| 3 components | `400400440125.444004...` |
+
+and the three-window witness has `rho_inf = 441122536010`.
+
+> **Scope.** Necessary only, not sufficient and not claimed optimal, and proved for matching
+> patterns. The matching hypothesis enters in **two** places: the coefficientwise domination is
+> obtained by multiplying per-block inequalities, which needs disjointness; and the single-window
+> term relies on the product representation `G = prod_j (1 + w_j u_j)` with nonnegative weights,
+> which a general network is not known to admit. The abstract saturation inequality is proved for
+> any such product but does not supply the representation. Machine-checked: that inequality
+> (`prod_one_add_mul_le`, with `one_le_prod_one_add`).
+
+### How strong must the correlations be? A necessary cost floor
+
+Attaining the full ceiling `c = k` forces `A` to use all `2k` permitted sign variations, which pins
+its last potentially positive coefficient: `[k^{2k-1}] A > 0`. Unwinding that through
+`N = B*det(C o Qt)` gives a **necessary** lower bound on the aggregate correlation
+`rho = prod Qt_ii/det Qt` (which equals `prod_j (1 + eta_j)` for disjoint blocks):
+
+```
+rho  >  T(E,L)  :=  [k^{2k}](D*B) / [k^{2k}]B
+```
+
+For three disjoint blocks with rate pairs `(0, a_j)` this evaluates in closed form to
+
+```
+prod_i (1 + eta_i)  >  125 + 40 * sum_{i != j} a_i/a_j  +  4*a_1*a_2*a_3 * sum_i a_i^-3
+```
+
+At the witness's rates `(1000, 1, 10^-4)` the floor is
+`T = 400400440125.444004...` against `rho = 441122536010`, so holding `b_1 = 3` and `b_2 = 60`
+fixed **forces `b_3 > 3334.538168...`** — the witness's `b_3 = 3500` is only `4.96%` above it. At
+`eta_3 = 11000000` the coefficient turns negative, the sign count drops from 6 to 4, and three
+windows become impossible. Machine-checked as `witness_rho_gt_costFloor3` and
+`eta3_11e6_lt_costFloor3`.
+
+> **Scope.** This is an exclusion test: below the floor `k` components are impossible, above it
+> they are not guaranteed. It is also not optimal — for a single isolated pair it gives `eta > 4`
+> where the exact threshold above is `eta > 8`. And the forced `b_3` is specific to that fixed
+> construction, not a universal cost across spectra and correlation patterns.
+
+
+---
+
 ## Scope of the Formalization
 
 This repository does **not** claim to formalize the paper in full.
@@ -440,6 +747,32 @@ Contains the sum-of-squares certificate, bracket-existence theorem, and the cent
 ```lean
 exists_volume_improvement_iff_threshold
 ```
+
+### `OUCorridor/NormalizedLyapunov.lean`
+
+Re-derivation of the central threshold through the normalized Lyapunov map: the separation
+`bracket k r = r^2*k*(anisotropy r - couplingCost k)`, the exact cost floor `32` attained only at
+`k = 1`, and a second proof of `exists_volume_improvement_iff_threshold` that uses neither the
+discriminant nor the SOS certificate. See [Normalized Lyapunov Form of the Threshold](#normalized-lyapunov-form-of-the-threshold).
+
+### `OUCorridor/SinglePair.lean`
+
+The single-correlated-pair threshold theorem: strict convexity of the threshold function in its
+normal form `A/k + (nonnegative-coefficient polynomial)`, uniqueness of the onset coupling,
+the interval structure of the expansion set, and the floor `eta_crit >= 8`. Both repository
+models appear as instances, and a two-pair witness shows the single-pair hypothesis is sharp. See
+[A general threshold theorem for one correlated pair](#a-general-threshold-theorem-for-one-correlated-pair).
+
+### `OUCorridor/ComponentCount.lean`
+
+The combinatorial core of the component-count theorem: a real polynomial whose coefficients are
+nonpositive from degree `m` on has at most `m` sign variations, hence at most `m` positive roots
+with multiplicity. Applied with `m = 2k` this bounds the number of expansion intervals by the
+number of correlated noise pairs. Also contains the three-disjoint-pair witness showing the bound
+is attained at `k = 3`, the necessary cost floor for attaining the ceiling, and the monotone
+envelope behind the sufficient box criterion, plus the saturation envelope behind the
+per-component cost floor. See
+[How many expansion intervals?](#how-many-expansion-intervals-at-most-one-per-correlated-pair).
 
 ### `OUCorridor/Covariance.lean`
 
